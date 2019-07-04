@@ -1,0 +1,122 @@
+.fond {
+    width: 42%;
+    height: auto;   
+    border-radius: 14px;
+    background-color: #e7e6e6;
+    clear: both;
+    margin: 0 auto;
+  }
+
+.wrapper-form {
+    margin-left: auto;  
+    margin-right: auto;
+    position: relative;   
+    height: auto;
+    width: 60%;
+}
+
+.title {
+
+  width: 213px;
+  height: 28px;
+  font-family: Roboto;
+  font-size: 20px;
+  font-weight: 500;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.4;
+  letter-spacing: normal;
+  color: rgba(0, 0, 0, 0.54);
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 4%;
+  margin-bottom: 32px;
+}
+
+.formInscription{
+  width: 100%;
+}
+
+.bounds {
+  width: 99%;
+  height: 48px;
+  clear: both;
+  margin: 0 auto;
+  margin-top: 15px;
+  display: flex;
+}
+
+.bounds.submit {
+margin-left: 50%;  
+}
+
+.bounds.submit > button {
+margin-left: 25px;
+}
+
+.check {
+background-color: #17998c;
+}
+
+.cancel {
+background-color:#4a4a4a;
+}
+
+.Hint-text {
+  font-family: Roboto;
+  font-size: 16px;    
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.5;
+  letter-spacing: normal;
+  color: rgba(0, 0, 0, 0.38);
+} 
+
+.box-artist {
+	display: flex;
+	align-items: center;
+	margin-top: 33px;
+}
+
+.Text_Input {
+    height: 100%;
+    background: transparent;
+    border-top: none; 
+    border-left: none;
+    border-right: none;
+    -webkit-box-flex: 1;
+    flex: 1;
+    margin-left: 10px;
+
+    font-family: Roboto;
+    font-size: 16px;    
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.5;
+    letter-spacing: normal;
+    color: rgba(0, 0, 0, 0.38);
+  }
+
+.line {
+  width: 99%;
+  height: 1px;    
+  border-bottom: solid 1px rgba(0, 0, 0, 0.12); 
+}
+
+input[type='checkbox']{
+  /* width: 30px; */
+}
+
+
+.button-bg {
+  padding: 0;
+  border: none;
+  width: 93px;  
+  height: 36px;  
+  border-radius: 2px;  
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.24), 0 0 2px 0 rgba(0, 0, 0, 0.12);  
+  color:#fff;
+
+}
