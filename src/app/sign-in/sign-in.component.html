@@ -1,0 +1,52 @@
+<div class="wrapper fond">
+    <h2 class="title">Formulaire d'inscription</h2>
+    <form (ngSubmit) = "handleSubmit()" [formGroup]="formInscription">
+      <div class="bounds">
+        <label class="Hint-text">Identifiant </label>
+          <input class="Text_Input" type="text" formControlName="idUser" />
+    
+          <div *ngIf="formInscription.get('idUser').dirty && formInscription.get('idUser').hasError('required')">
+              identifiant requis
+          </div>
+      </div> 
+      <div class="bounds">
+       <label class="Hint-text">Mot de passe </label>
+            <input class="Text_Input" type="password" formControlName="password" />  
+        <div *ngIf="formInscription.get('password').dirty && formInscription.get('password').hasError('required')">
+                    mot de passe requis
+        </div>
+      </div>  
+      
+      <div class="bounds">
+       <label class="Hint-text">Confirmez le mot de passe </label>
+            <input class="Text_Input" type="password" formControlName="passwordConfirm" /> 
+    
+    
+            <div *ngIf="formInscription.get('passwordConfirm').dirty && formInscription.get('passwordConfirm').hasError('required')">
+              mot de passe de confirmation requis
+            </div>
+      </div>
+    
+      <div class="bounds">
+       <label class="Hint-text">Email </label>
+            <input class="Text_Input" type="text" formControlName="email" />
+    
+            <div *ngIf="formInscription.get('email').dirty && formInscription.get('email').hasError('email')">
+                Email invalide
+            </div>
+      </div>
+    
+      <div class="bounds">
+       <label class="Hint-text">Ville </label>
+    
+        <select formControlName="city" [(ngModel)]="city">
+            <option [ngValue]="city" *ngFor="let city of cities">
+                    {{city}}
+            </option>
+        </select>
+    
+      </div>
+         <button type="submit" [disabled]="formInscription.invalid">Envoyer</button>
+         <button type="reset" (click)="handleClear()">Clear</button>
+     </form>
+    </div>

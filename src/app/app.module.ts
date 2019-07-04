@@ -8,15 +8,39 @@ import {APP_CONFIG} from './app.config';
 import {TokenInterceptorService} from './services/interceptors/token-interceptor.service';
 import {ErrorInterceptorService} from './services/interceptors/error-interceptor.service';
 import {CommonHeadersInterceptorService} from './services/interceptors/common-headers-interceptor.service';
-import { FormulaireInscriptionComponent } from './formulaire-inscription/formulaire-inscription.component';
-import { RouterModule } from '@angular/router';
-import { ROUTES } from './app.routing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HomeComponent } from './home/home.component';
+import { LoginComponent } from './login/login.component';
+import { SignInComponent } from './sign-in/sign-in.component';
+import { IndexComponent } from './index/index.component';
+import { ArtistComponent } from './artist/artist.component';
+import { EventsComponent } from './events/events.component';
+import { SettingsComponent } from './settings/settings.component';
+import { ContactComponent } from './contact/contact.component';
+import { BookComponent } from './book/book.component';
+import { ErrorComponent } from './error/error.component';
+import { HeaderComponent } from './header/header.component';
+import { SideMenuComponent } from './side-menu/side-menu.component';
+import { OptionsComponent } from './options/options.component';
+import {RouterModule} from '@angular/router';
+import {ROUTES} from './app.routes';
 
 @NgModule({
   declarations: [
     AppComponent,
-    FormulaireInscriptionComponent
+    HomeComponent,
+    LoginComponent,
+    SignInComponent,
+    IndexComponent,
+    ArtistComponent,
+    EventsComponent,
+    SettingsComponent,
+    ContactComponent,
+    BookComponent,
+    ErrorComponent,
+    HeaderComponent,
+    SideMenuComponent,
+    OptionsComponent
   ],
   imports: [
     BrowserModule,
@@ -24,6 +48,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     RouterModule.forRoot(ROUTES),
     FormsModule,
     ReactiveFormsModule
+
   ],
   providers: [
     {provide: APP_CONFIG, useValue: environment},
