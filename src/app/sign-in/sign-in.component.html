@@ -1,3 +1,60 @@
-<p>
-  sign-in works!
-</p>
+<div class="wrapper fond">
+  <div class="wrapper-form">
+    <h2 class="title">Formulaire d'inscription</h2>
+    <form class="formInscription" (ngSubmit) = "handleSubmit()" [formGroup]="formInscription">
+      <div class="bounds">
+          <input class="Text_Input" type="text" formControlName="idUser" placeholder="Identifiant" />
+    
+          <div *ngIf="formInscription.get('idUser').dirty && formInscription.get('idUser').hasError('required')">
+              identifiant requis
+          </div>
+      </div> 
+      <div class="line"></div>
+      <div class="bounds">
+            <input class="Text_Input" type="password" formControlName="password" placeholder="Mot de passe"/>  
+        <div *ngIf="formInscription.get('password').dirty && formInscription.get('password').hasError('required')">
+                    mot de passe requis
+        </div>
+      </div>  
+      <div class="line"></div>
+
+      <div class="bounds">
+            <input class="Text_Input" type="password" placeholder="Confirmez le mot de passe" 
+            formControlName="passwordConfirm" />     
+    
+            <div *ngIf="formInscription.get('passwordConfirm').dirty && formInscription.get('passwordConfirm').hasError('required')">
+              mot de passe de confirmation requis
+            </div>
+      </div>
+      <div class="line"></div>
+
+      <div class="bounds">
+            <input class="Text_Input" type="text" placeholder="Email" formControlName="email" />
+    
+            <div *ngIf="formInscription.get('email').dirty && formInscription.get('email').hasError('email')">
+                Email invalide
+            </div>
+      </div>
+      <div class="line"></div>
+      
+     
+      <div class="bounds">
+        <input  class="Text_Input" type="text" [(ngModel)]="city" placeholder="Ville"/>
+      </div>
+
+      <div class="line"></div>
+	  <div class="box-artist">
+			<input type="checkbox" id="checkbox-1" [(ngModel)]="isArtist" [ngModelOptions]="{standalone: true}"/>
+			<div class="bounds">
+				<div class="Hint-text" > Êtes vous un artiste proposant des prestations privées ? </div>
+			</div>
+		</div>
+      
+      <div class="bounds submit">
+        <button type="reset" class="button-bg cancel" (click)="handleClear()">Annuler</button>
+        <button type="submit" class="button-bg check" [disabled]="formInscription.invalid">Envoyer</button>
+      </div>
+         
+     </form>
+    </div>
+  </div>
