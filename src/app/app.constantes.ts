@@ -1,4 +1,4 @@
-//Routes
+// Routes
 export const PATH_INDEX = '';
 export const PATH_HOME = 'home';
 export const PATH_LOGIN = 'login';
