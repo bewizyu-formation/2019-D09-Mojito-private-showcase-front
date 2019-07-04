@@ -25,14 +25,14 @@
         </div>
      
         <div class="bounds">
+
             <input class="Text_Input" type="text" placeholder="Email" formControlName="email" />
     
             <div *ngIf="formInscription.get('email').dirty && formInscription.get('email').hasError('email')">
                 Email invalide
             </div>
       </div>
-   
-           
+
       <div class="bounds-smaller">
           <label class="Hint-text-small">Ville</label>
           <input  formControlName="city" class="Text_Input" type="text"  [(ngModel)]="city"  placeholder=""/>
@@ -51,9 +51,7 @@
         <button type="reset" class="button-bg cancel" (click)="goBack()">Annuler</button>
         <button type="submit" class="button-bg check" [disabled]="formInscription.invalid">Envoyer</button>
       </div> 
-          
-          
-    
-         </form>
+       </form>
     </div>
   </div>
+

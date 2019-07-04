@@ -4,6 +4,7 @@ import {User} from '../user/user';
 import { Router } from '@angular/router';
 import {PATH_HOME, PATH_SIGN_IN} from '../app.constantes';
 
+
 @Component({
   selector: 'app-sign-in',
   templateUrl: './sign-in.component.html',
@@ -18,8 +19,8 @@ export class SignInComponent implements OnInit {
   citiesCtrl: FormControl;
   isArtistCtrl: FormControl;
   formInscription: FormGroup;
-
   user: User;
+
   cities: string[] = [
     'Lyon Rhône',
     'Marseille Bouches Rhône',
@@ -80,7 +81,6 @@ export class SignInComponent implements OnInit {
       this.router.navigate([PATH_SIGN_IN]);
     }
   }
-
 
 }
 
