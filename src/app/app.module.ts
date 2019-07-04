@@ -1,7 +1,12 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {MatToolbarModule} from '@angular/material';
+import {
+	MatToolbarModule,
+	MatMenuModule,
+	MatButtonModule,
+	MatIconModule,
+} from '@angular/material';
 
 import {AppComponent} from './app.component';
 import {environment} from '../environments/environment';
@@ -42,12 +47,15 @@ import {ROUTES} from './app.routes';
 		ErrorComponent,
 		HeaderComponent,
 		SideMenuComponent,
-		OptionsComponent
+		OptionsComponent,
 	],
 	imports: [
 		BrowserModule,
 		BrowserAnimationsModule,
 		MatToolbarModule,
+		MatMenuModule,
+		MatButtonModule,
+		MatIconModule,
 		HttpClientModule,
 		FormsModule,
 		ReactiveFormsModule,

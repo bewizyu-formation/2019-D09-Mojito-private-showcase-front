@@ -12,3 +12,17 @@
 	font-stretch: normal;
 	line-height: 0.89;
 }
+
+.mat-menu{
+	min-width: 320px;
+	border-radius: 0px;
+}
+
+.mat-menu-item{
+	margin:0px;
+}
+
+.mat-menu-item-close{
+	color: white;
+	background-color: #4a4a4a;
+}

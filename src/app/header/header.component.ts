@@ -1,8 +1,9 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {Router} from '@angular/router';
 import {Location} from '@angular/common';
 import {Subscription} from 'rxjs';
-import {PATH_ARTIST, PATH_BOOK, PATH_EVENTS, PATH_HOME} from '../app.constantes';
+import {PATH_ARTIST, PATH_BOOK, PATH_CONTACT, PATH_EVENTS, PATH_HOME, PATH_INDEX} from '../app.constantes';
+import {MatMenuTrigger} from "@angular/material";
 
 const TITLE_DEFAULT = 'Private ShowCase';
 const TITLE_HOME = 'Artistes dans votre département';
@@ -17,12 +18,19 @@ const TITLE_EVENTS = 'Évènements';
 })
 export class HeaderComponent implements OnInit, OnDestroy {
 
+	@ViewChild(MatMenuTrigger) trigger: MatMenuTrigger;
+
 	title = '';
-	displayBackButton = true;
-	currentUrl: string;
+	displayBackButton = false;
+	displaySideMenu = false;
+	displayOptions = false;
 	subscribeCurrentUrl: Subscription;
 
 	constructor(private location: Location, private router: Router) {
+	}
+
+	closeMenu() {
+		this.trigger.closeMenu();
 	}
 
 	/**
@@ -46,19 +54,58 @@ export class HeaderComponent implements OnInit, OnDestroy {
 		return title;
 	}
 
+	/**
+	 * Indicates if the header displays the back button or not
+	 */
+	isBackButtonDisplayed(path: string){
+		console.log('isBackButtonDisplayed PATH', path);
+		let result: boolean;
+		if (path === '/' + PATH_HOME || path === PATH_INDEX) {
+			result = false;
+		} else {
+			result = true;
+		}
+		return result;
+	}
+
+	/**
+	 * Indicates if the menu is displayed or not
+	 */
+	isSideMenuDisplayed(path: string) {
+		let result: boolean;
+		if (path === '/' + PATH_HOME) {
+			result = true;
+		} else {
+			result = false;
+		}
+		return result;
+	}
+
+	navigateToIndex() {
+		this.router.navigate([PATH_INDEX]);
+	}
+
 	navigateToHome() {
 		this.router.navigate([PATH_HOME]);
 	}
 
+	navigateToEvents() {
+		this.router.navigate([PATH_EVENTS]);
+	}
+
+	navigateToContact() {
+		this.router.navigate([PATH_CONTACT]);
+	}
+
 	ngOnInit() {
-		this.subscribeCurrentUrl = this.router.events.subscribe(val => {
-			this.currentUrl = this.location.path(); // TODO for debug, remove when done
+		this.subscribeCurrentUrl = this.router.events.subscribe(() => {
 			this.title = this.getTitleFrom(this.location.path());
+			this.displayBackButton = this.isBackButtonDisplayed(this.location.path());
+			this.displaySideMenu = this.isSideMenuDisplayed(this.location.path());
 		});
 	}
 
 	ngOnDestroy() {
 		this.subscribeCurrentUrl.unsubscribe();
 	}
-
 }
