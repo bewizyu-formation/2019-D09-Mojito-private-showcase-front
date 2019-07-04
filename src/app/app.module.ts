@@ -8,6 +8,7 @@ import {APP_CONFIG} from './app.config';
 import {TokenInterceptorService} from './services/interceptors/token-interceptor.service';
 import {ErrorInterceptorService} from './services/interceptors/error-interceptor.service';
 import {CommonHeadersInterceptorService} from './services/interceptors/common-headers-interceptor.service';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { SignInComponent } from './sign-in/sign-in.component';
@@ -25,34 +26,36 @@ import {RouterModule} from '@angular/router';
 import {ROUTES} from './app.routes';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    HomeComponent,
-    LoginComponent,
-    SignInComponent,
-    IndexComponent,
-    ArtistComponent,
-    EventsComponent,
-    SettingsComponent,
-    ContactComponent,
-    BookComponent,
-    ErrorComponent,
-    HeaderComponent,
-    SideMenuComponent,
-    OptionsComponent
-  ],
-  imports: [
-    BrowserModule,
-    HttpClientModule,
-    RouterModule.forRoot(ROUTES),
-  ],
-  providers: [
-    {provide: APP_CONFIG, useValue: environment},
-    {provide : HTTP_INTERCEPTORS, useClass : CommonHeadersInterceptorService, multi: true},
-    {provide : HTTP_INTERCEPTORS, useClass : TokenInterceptorService, multi: true},
-    {provide : HTTP_INTERCEPTORS, useClass : ErrorInterceptorService, multi: true},
-  ],
-  bootstrap: [AppComponent]
+	declarations: [
+	AppComponent,
+	HomeComponent,
+	LoginComponent,
+	SignInComponent,
+	IndexComponent,
+	ArtistComponent,
+	EventsComponent,
+	SettingsComponent,
+	ContactComponent,
+	BookComponent,
+	ErrorComponent,
+	HeaderComponent,
+	SideMenuComponent,
+	OptionsComponent
+	],
+	imports: [
+	BrowserModule,
+	HttpClientModule,
+	FormsModule,
+	ReactiveFormsModule,
+	RouterModule.forRoot(ROUTES),
+	],
+	providers: [
+	{provide: APP_CONFIG, useValue: environment},
+	{provide : HTTP_INTERCEPTORS, useClass : CommonHeadersInterceptorService, multi: true},
+	{provide : HTTP_INTERCEPTORS, useClass : TokenInterceptorService, multi: true},
+	{provide : HTTP_INTERCEPTORS, useClass : ErrorInterceptorService, multi: true},
+	],
+	bootstrap: [AppComponent]
 })
 export class AppModule {
 }
