@@ -1,4 +1,5 @@
 <div class="wrapper fond">
+  <div class="wrapper-form">
     <h2 class="title">Formulaire d'inscription</h2>
     <form (ngSubmit) = "handleSubmit()" [formGroup]="formInscription">
       <div class="bounds">
@@ -9,6 +10,7 @@
               identifiant requis
           </div>
       </div> 
+      <div class="line"></div>
       <div class="bounds">
        <label class="Hint-text">Mot de passe </label>
             <input class="Text_Input" type="password" formControlName="password" />  
@@ -16,7 +18,8 @@
                     mot de passe requis
         </div>
       </div>  
-      
+      <div class="line"></div>
+
       <div class="bounds">
        <label class="Hint-text">Confirmez le mot de passe </label>
             <input class="Text_Input" type="password" formControlName="passwordConfirm" /> 
@@ -26,7 +29,8 @@
               mot de passe de confirmation requis
             </div>
       </div>
-    
+      <div class="line"></div>
+
       <div class="bounds">
        <label class="Hint-text">Email </label>
             <input class="Text_Input" type="text" formControlName="email" />
@@ -35,18 +39,28 @@
                 Email invalide
             </div>
       </div>
-    
+      <div class="line"></div>
+      <div class="bounds">
+          <label class="Hint-text">Artiste </label>
+          <input type="checkbox" [(ngModel)]="isArtist" [ngModelOptions]="{standalone: true}"  />
+        </div>
       <div class="bounds">
        <label class="Hint-text">Ville </label>
-    
-        <select formControlName="city" [(ngModel)]="city">
-            <option [ngValue]="city" *ngFor="let city of cities">
-                    {{city}}
-            </option>
-        </select>
-    
+        <div></div>           
       </div>
-         <button type="submit" [disabled]="formInscription.invalid">Envoyer</button>
-         <button type="reset" (click)="handleClear()">Clear</button>
+      
+      <div class="bounds">
+         <select formControlName="city" [(ngModel)]="city">
+          <option [ngValue]="city" *ngFor="let city of cities">
+                  {{city}}
+          </option>
+          </select>
+      </div>
+      <div class="bounds submit">
+        <button type="reset" class="button-bg cancel" (click)="handleClear()">Annuler</button>
+        <button type="submit" class="button-bg check" [disabled]="formInscription.invalid">Envoyer</button>
+      </div>
+         
      </form>
     </div>
+  </div>

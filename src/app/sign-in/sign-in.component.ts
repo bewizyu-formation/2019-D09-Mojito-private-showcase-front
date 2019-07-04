@@ -21,6 +21,8 @@ export class SignInComponent implements OnInit {
     'Rennes, Ille-et-Vilaine'
   ]
 
+  isArtist:boolean = false;
+
   city: string = this.cities[0];
   
   constructor(private fb:FormBuilder) {
