@@ -23,7 +23,7 @@ import { SideMenuComponent } from './side-menu/side-menu.component';
 import { OptionsComponent } from './options/options.component';
 import {RouterModule} from '@angular/router';
 import {ROUTES} from './app.routes';
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent,
@@ -45,6 +45,8 @@ import {ROUTES} from './app.routes';
     BrowserModule,
     HttpClientModule,
     RouterModule.forRoot(ROUTES),
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [
     {provide: APP_CONFIG, useValue: environment},
