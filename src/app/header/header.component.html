@@ -1,7 +1,11 @@
-<div>
+<mat-toolbar class="header">
 
+	<i *ngIf="displayBackButton"
+		class="material-icons"
+	(click)="navigateToHome()">
+		arrow_back
+	</i>
+	<p>{{title}}</p>
 	<i class="material-icons">face</i>
 
-	<p>header works!</p>
-
-</div>
+</mat-toolbar>
