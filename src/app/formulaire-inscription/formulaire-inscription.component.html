@@ -4,7 +4,6 @@
   <div class="bounds">
     <label class="Hint-text">Identifiant </label>
       <input class="Text_Input" type="text" formControlName="idUser" />
-      <div class="line"></div>
 
       <div *ngIf="formInscription.get('idUser').dirty && formInscription.get('idUser').hasError('required')">
           identifiant requis
@@ -13,7 +12,6 @@
   <div class="bounds">
    <label class="Hint-text">Mot de passe </label>
         <input class="Text_Input" type="password" formControlName="password" />  
-    <div class="line"></div>
     <div *ngIf="formInscription.get('password').dirty && formInscription.get('password').hasError('required')">
                 mot de passe requis
     </div>
@@ -22,7 +20,7 @@
   <div class="bounds">
    <label class="Hint-text">Confirmez le mot de passe </label>
         <input class="Text_Input" type="password" formControlName="passwordConfirm" /> 
-        <div class="line"></div>
+
 
         <div *ngIf="formInscription.get('passwordConfirm').dirty && formInscription.get('passwordConfirm').hasError('required')">
           mot de passe de confirmation requis
@@ -32,7 +30,7 @@
   <div class="bounds">
    <label class="Hint-text">Email </label>
         <input class="Text_Input" type="text" formControlName="email" />
-        <div class="line"></div>
+
         <div *ngIf="formInscription.get('email').dirty && formInscription.get('email').hasError('email')">
             Email invalide
         </div>
@@ -46,7 +44,6 @@
                 {{city}}
         </option>
     </select>
-    <div class="line"></div>
 
   </div>
      <button type="submit" [disabled]="formInscription.invalid">Envoyer</button>
