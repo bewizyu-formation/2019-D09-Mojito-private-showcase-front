@@ -14,7 +14,7 @@ export class LoginComponent implements OnInit {
 
 	constructor(fb: FormBuilder, private router:Router) {
 		this.loginCtrl = fb.control('',[Validators.required]);
-		this.passwordCtrl = fb.control('', [Validators.required, Validators.pattern('#^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*\W)#')]);
+		this.passwordCtrl = fb.control('', [Validators.required, Validators.pattern('^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{8,}$')]);
 		this.loginForm = fb.group({
 			login: this.loginCtrl,
 			password: this.passwordCtrl
@@ -26,10 +26,21 @@ export class LoginComponent implements OnInit {
 
 
 	handleSubmit() {
-		// this.router.navigate([PATH_HOME]);
-		console.log("here");
+		if(this.checkLogin(this.loginForm.value.login, this.loginForm.value.password)){
+			this.createSession();
+			this.router.navigate([PATH_HOME]);
+		} else {
+
+			console.log(this.loginForm.value);
+		}
 	}
 
+	createSession() {
+		// how do we create a session of user?
+		// token JWT
+	}
+
+	//to think : switch this function to make a api call in bdd
 	checkLogin(login:string,password:string){
 
 		return true;

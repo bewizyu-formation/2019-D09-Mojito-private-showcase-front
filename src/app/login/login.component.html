@@ -1,22 +1,32 @@
 <p>
 	login works!
 </p>
-<form (ngSubmit)="handleSubmit()" [formGroup]="loginForm">
-	<div>
-		<label>Login: </label>
-		<input formControlName="login" class="input-angular">
-		<div *ngIf="loginForm.get('login').dirty && loginForm.get('login').hasError('require')">
-			Le login doit être rempli
-		</div>
 
-		<label>Password: </label>
-		<input formControlName="password" type="password" class="input-angular">
-		<div *ngIf="loginForm.get('password').dirty && loginForm.get('password').hasError('require')">
-			Le mot de passe doit être rempli
-		</div>
-		<div *ngIf="loginForm.get('password').dirty && loginForm.get('password').hasError('pattern')">
-			Le mot de passe 8 caractères minimum, comporte au moins une majascule, une minuscule et un chiffre
-		</div>
+<div class="wrapper fond">
+	<div class="wrapper-form">
+		<div class="title">Formulaire de connexion</div>
+		<form (ngSubmit)="handleSubmit()" [formGroup]="loginForm">
+			<div class="bounds">
+				<input class="Text_Input" formControlName="login" placeholder="Identifiant" >
+			</div>
+			<div class="line"></div>
+			<div class="bounds message" *ngIf="loginForm.get('login').dirty && loginForm.get('login').hasError('require')">
+				Le login doit être rempli
+			</div>
+			<div class="bounds">
+				<input class="Text_Input" formControlName="password" type="password" placeholder="Password">
+			</div>
+			<div class="line"></div>
+			<div class="bounds message" *ngIf="loginForm.get('password').dirty && loginForm.get('password').hasError('require')">
+				Le mot de passe doit être rempli
+			</div>
+			<div class="bounds message" *ngIf="loginForm.get('password').dirty && loginForm.get('password').hasError('pattern')">
+				Le mot de passe 8 caractères minimum, comporte au moins une majuscule, une minuscule et un chiffre
+			</div>
+			<div class="bounds submit">
+				<button type="reset" class="button-bg cancel" (click)="handleClear()">Annuler</button>
+				<button type="submit" class="button-bg check" [disabled]="loginForm.invalid">Login </button>
+			</div>
+		</form>
 	</div>
-	<button type="submit" [disabled]="loginForm.invalid">Login </button>
-</form>
+</div>
