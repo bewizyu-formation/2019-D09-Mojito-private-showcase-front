@@ -1,9 +1,9 @@
 .fond {
-    /* width: 46%; */
+    /* width: 48%; */
     width: 682px;
 
-    /* height: auto; */
-    height: 554px;
+  height: auto; 
+    /*height: 554px;*/
     border-radius: 14px;
     background-color: #e7e6e6;
     clear: both;
@@ -35,9 +35,20 @@
 }
 
 .formInscription{
-  width: 100%;
+  width: 396px;
 }
-
+.bounds-line {
+  margin: auto;
+  position: relative;   
+  height: auto;
+  width: 61.5%;
+  height: 48px;
+  clear: both;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row-reverse;
+  padding-bottom: 12px;
+}
 .bounds {
   width: 99%;
   height: 48px;
@@ -48,20 +59,42 @@
   flex-direction: column;
 }
 
+.bounds-smaller {
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  margin-top: 25px;
+}
+
+.bounds-smaller > input {
+  font-size: 12px;
+  margin-top: 15px;
+}
+
 .bounds.submit {
-margin-left: 50%;  
+  
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: reverse;
+  margin-top: 39px;
+  padding-bottom: 12px;
+  flex-direction: revert;
+  margin-left: 18px;
+  justify-content: end;
 }
 
 .bounds.submit > button {
-margin-left: 25px;
+  margin-left: 18px;
 }
 
 .check {
-background-color: #17998c;
+  background-color: #17998c;
 }
 
+
+
 .cancel {
-background-color:#4a4a4a;
+  background-color:#4a4a4a;
 }
 
 .Hint-text {
@@ -75,11 +108,28 @@ background-color:#4a4a4a;
   color: rgba(0, 0, 0, 0.38);
 } 
 
+.Hint-text-small {
+  font-family: Roboto;
+  font-size: 12px;    
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  letter-spacing: normal;
+  color: rgba(0, 0, 0, 0.38);
+  margin-left:12px;
+} 
+
 .box-artist {
 	display: flex;
 	align-items: baseline;
   margin-top: 33px;
   padding-left: 5px;
+  flex-wrap: nowrap;
+  width: 115%;
+}
+
+.box-artist > input {
+  width: 6%;
 }
 
 .Text_Input {
@@ -89,7 +139,6 @@ background-color:#4a4a4a;
     border-left: none;
     border-right: none;
     -webkit-box-flex: 1;
-    flex: 1;
     margin-left: 10px;
 
     font-family: Roboto;
