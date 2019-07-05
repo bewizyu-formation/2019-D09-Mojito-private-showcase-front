@@ -21,6 +21,7 @@ export class SignInComponent implements OnInit {
   formInscription: FormGroup;
   user: User;
 
+
   cities: string[] = [
     'Lyon Rhône',
     'Marseille Bouches Rhône',
@@ -31,8 +32,8 @@ export class SignInComponent implements OnInit {
 
   city = 'Lyon Rhône';
 
-  constructor(private fb: FormBuilder, private router: Router) {
 
+  constructor(private fb: FormBuilder, private router: Router) {
       this.idUserCtrl = this.fb.control('', [Validators.required]);
       this.passwordCtrl = this.fb.control('', [Validators.required]);
       this.passwordConfirmCtrl = this.fb.control('', [Validators.required]);
@@ -81,7 +82,6 @@ export class SignInComponent implements OnInit {
       this.router.navigate([PATH_SIGN_IN]);
     }
   }
-
 }
 
 
