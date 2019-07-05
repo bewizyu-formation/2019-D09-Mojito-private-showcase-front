@@ -1,106 +1,15 @@
 <mat-toolbar class="header">
 
 	<div class="header__menu">
-		<div *ngIf="displayBackButton"
-			 class="menu__button header__text__unselectable"
-			 (click)="navigateToHome()">
-			<mat-icon class="menu__buttonIcon">
-				arrow_back
-			</mat-icon>
-		</div>
-
-		<div *ngIf="displaySideMenu" (click)="handleMenuButtonClick()">
-			<div class="menu__button header__text__unselectable">
-				<mat-icon class="menu__buttonIcon">
-					{{sideMenuIcon}}
-				</mat-icon>
-			</div>
-
-			<div *ngIf="openSideMenu"
-				 class="menu__choices">
-				<div class="menu__choice"
-					 (click)="navigateToIndex()">
-					<mat-icon class="menu__choiceIcon">
-						move_to_inbox
-					</mat-icon>
-					Accueil
-				</div>
-
-				<div class="menu__choice"
-					 (click)="navigateToEvents()">
-					<mat-icon class="menu__choiceIcon">
-						send
-					</mat-icon>
-					Évènements
-				</div>
-
-				<div class="menu__choice"
-					 (click)="navigateToContact()">
-					<mat-icon class="menu__choiceIcon">
-						group
-					</mat-icon>
-					Contact
-				</div>
-			</div>
-		</div>
+		<app-back-button *ngIf="displayBackButton"></app-back-button>
+		<app-side-menu *ngIf="displaySideMenu"></app-side-menu>
 	</div>
 
 	<p>{{title}}</p>
 
 	<div class="header__options">
-
-		<div *ngIf="displayConnectionButtons"
-			class="header__connection">
-			<a (click)="navigateToLogin()"
-				class="header__connectionText">
-				Se connecter
-			</a>
-			<a class="header__connectionText">
-				&nbsp;|&nbsp;
-			</a>
-			<a (click)="navigateToSignIn()"
-			   class="header__connectionText header__connectionText__last">
-				S'inscrire
-			</a>
-		</div>
-
-		<div *ngIf="displayOptions"
-			 class="options__button"
-			 (click)="handleOptionsButtonClick()"
-			 (clickOutside)="handleOutsideOptionsButtonClick()">
-			<mat-icon class="options__buttonIcon header__text__unselectable">
-				more_vert
-			</mat-icon>
-		</div>
-
-		<div *ngIf="openOptions"
-			class="options__choices">
-
-			<!-- TODO Display only if current user is an artist and send him to his artist page -->
-			<div class="options__choice"
-				(click)="navigateToArtist()">
-				<mat-icon class="options__choiceIcon">
-					group
-				</mat-icon>
-				Artistes
-			</div>
-
-			<div class="options__choice"
-				 (click)="navigateToSettings()">
-				<mat-icon class="options__choiceIcon">
-					settings
-				</mat-icon>
-				Profil
-			</div>
-
-			<div class="options__choice"
-				 (click)="disconnect()">
-				<mat-icon class="options__choiceIcon">
-					exit_to_app
-				</mat-icon>
-				Déconnexion
-			</div>
-		</div>
+		<app-connection-buttons *ngIf="displayConnectionButtons"></app-connection-buttons>
+		<app-options *ngIf="displayOptions"></app-options>
 	</div>
 
 </mat-toolbar>

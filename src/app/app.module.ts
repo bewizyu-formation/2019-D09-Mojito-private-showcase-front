@@ -27,11 +27,13 @@ import {ContactComponent} from './contact/contact.component';
 import {BookComponent} from './book/book.component';
 import {ErrorComponent} from './error/error.component';
 import {HeaderComponent} from './header/header.component';
-import {SideMenuComponent} from './side-menu/side-menu.component';
-import {OptionsComponent} from './options/options.component';
+import {SideMenuComponent} from './header/side-menu/side-menu.component';
+import {OptionsComponent} from './header/options/options.component';
 import {RouterModule} from '@angular/router';
 import {ROUTES} from './app.routes';
 import {ClickOutsideModule} from 'ng-click-outside';
+import { BackButtonComponent } from './header/back-button/back-button.component';
+import { ConnectionButtonsComponent } from './header/connection-buttons/connection-buttons.component';
 
 @NgModule({
 	declarations: [
@@ -49,6 +51,8 @@ import {ClickOutsideModule} from 'ng-click-outside';
 		HeaderComponent,
 		SideMenuComponent,
 		OptionsComponent,
+		BackButtonComponent,
+		ConnectionButtonsComponent,
 	],
 	imports: [
 		BrowserModule,
