@@ -24,6 +24,9 @@ export class LoginComponent implements OnInit {
 	ngOnInit() {
 	}
 
+	handleClear() {
+		this.router.navigate([PATH_INDEX]);
+	}
 
 	handleSubmit() {
 		if(this.checkLogin(this.loginForm.value.login, this.loginForm.value.password)){
