@@ -1,0 +1,37 @@
+<div
+	 class="options__button"
+	 (click)="handleOptionsButtonClick()"
+	 (clickOutside)="handleOutsideOptionsButtonClick()">
+	<mat-icon class="options__buttonIcon header__text__unselectable">
+		more_vert
+	</mat-icon>
+</div>
+
+<div *ngIf="openOptions"
+	 class="options__choices">
+
+	<!-- TODO Display only if current user is an artist and send him to his artist page -->
+	<div class="options__choice"
+		 (click)="navigateToArtist()">
+		<mat-icon class="options__choiceIcon">
+			group
+		</mat-icon>
+		Artistes
+	</div>
+
+	<div class="options__choice"
+		 (click)="navigateToSettings()">
+		<mat-icon class="options__choiceIcon">
+			settings
+		</mat-icon>
+		Profil
+	</div>
+
+	<div class="options__choice"
+		 (click)="disconnect()">
+		<mat-icon class="options__choiceIcon">
+			exit_to_app
+		</mat-icon>
+		Déconnexion
+	</div>
+</div>
