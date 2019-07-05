@@ -1,6 +1,13 @@
+<div class="bounds">
+  <div class="bounds"></div>
+</div>
+<div class="bounds">
+  <div class="bounds"></div>
+</div>
+<div class="bounds"></div>
 <div class="wrapper fond">
+  <h2 class="title">Formulaire d'inscription</h2>
   <div class="wrapper-form">
-    <h2 class="title">Formulaire d'inscription</h2>
     <form class="formInscription" (ngSubmit) = "handleSubmit()" [formGroup]="formInscription">
       <div class="bounds">
           <input class="Text_Input" type="text" formControlName="idUser" placeholder="Identifiant" />
@@ -9,15 +16,12 @@
               identifiant requis
           </div>
       </div> 
-      <div class="line"></div>
       <div class="bounds">
             <input class="Text_Input" type="password" formControlName="password" placeholder="Mot de passe"/>  
         <div *ngIf="formInscription.get('password').dirty && formInscription.get('password').hasError('required')">
                     mot de passe requis
         </div>
       </div>  
-      <div class="line"></div>
-
       <div class="bounds">
             <input class="Text_Input" type="password" placeholder="Confirmez le mot de passe" 
             formControlName="passwordConfirm" />     
@@ -26,7 +30,7 @@
               mot de passe de confirmation requis
             </div>
       </div>
-      <div class="line"></div>
+   
 
       <div class="bounds">
             <input class="Text_Input" type="text" placeholder="Email" formControlName="email" />
@@ -35,14 +39,14 @@
                 Email invalide
             </div>
       </div>
-      <div class="line"></div>
-      
-     
+   
+           
       <div class="bounds">
         <input  class="Text_Input" type="text" [(ngModel)]="city" placeholder="Ville"/>
       </div>
 
-      <div class="line"></div>
+ 
+
 	  <div class="box-artist">
 			<input type="checkbox" id="checkbox-1" [(ngModel)]="isArtist" [ngModelOptions]="{standalone: true}"/>
 			<div class="bounds">
