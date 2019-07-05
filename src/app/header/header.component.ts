@@ -1,15 +1,13 @@
-import {Component, HostListener, OnDestroy, OnInit, ViewChild} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {Location} from '@angular/common';
 import {Subscription} from 'rxjs';
 import {
 	PATH_ARTIST,
 	PATH_BOOK,
-	PATH_CONTACT,
 	PATH_EVENTS,
 	PATH_HOME,
-	PATH_INDEX, PATH_LOGIN,
-	PATH_SETTINGS, PATH_SIGN_IN
+	PATH_INDEX,
 } from '../app.constantes';
 
 
@@ -18,9 +16,6 @@ const TITLE_HOME = 'Artistes dans votre département';
 const TITLE_ARTIST = 'Fiche Artiste';
 const TITLE_BOOK = 'Créez un évènement';
 const TITLE_EVENTS = 'Évènements';
-
-const MENU_ICON_CLOSED = 'menu';
-const MENU_ICON_OPENED = 'close';
 
 @Component({
 	selector: 'app-header',
@@ -33,10 +28,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
 	subscribeCurrentUrl: Subscription;
 	displayBackButton = false;
 	displaySideMenu = false;
-	openSideMenu = false;
-	sideMenuIcon = MENU_ICON_CLOSED;
 	displayOptions = false;
-	openOptions = false;
 	displayConnectionButtons = false;
 
 	constructor(private location: Location, private router: Router) {
@@ -102,6 +94,9 @@ export class HeaderComponent implements OnInit, OnDestroy {
 		return result;
 	}
 
+	/**
+	 * Indicates if connection buttons are displayed or not are displayed or not
+	 */
 	isConnectionButtonDisplayed(path: string) {
 		let result: boolean;
 		if (path === PATH_INDEX) {
@@ -112,75 +107,16 @@ export class HeaderComponent implements OnInit, OnDestroy {
 		return result;
 	}
 
-	/**
-	 * Handle clicks on the menu to open/close it and change its icon
-	 */
-	handleMenuButtonClick() {
-		this.sideMenuIcon = this.sideMenuIcon === MENU_ICON_CLOSED ? MENU_ICON_OPENED : MENU_ICON_CLOSED;
-		this.openSideMenu = !this.openSideMenu;
-	}
-
-	/**
-	 * Handle clicks on options button to open/close it
-	 */
-	handleOptionsButtonClick() {
-		this.openOptions = !this.openOptions;
-	}
-
-	/**
-	 * Handle clicks outside options choices to close it
-	 */
-	handleOutsideOptionsButtonClick() {
-		this.openOptions = false;
-	}
-
-	navigateToIndex() {
-		this.router.navigate([PATH_INDEX]);
-	}
-
-	navigateToHome() {
-		this.router.navigate([PATH_HOME]);
-	}
-
-	navigateToLogin() {
-		this.router.navigate([PATH_LOGIN]);
-	}
-
-	navigateToSignIn() {
-		this.router.navigate([PATH_SIGN_IN]);
-	}
-
-	navigateToEvents() {
-		this.router.navigate([PATH_EVENTS]);
-	}
-
-	navigateToContact() {
-		this.router.navigate([PATH_CONTACT]);
-	}
-
-	navigateToArtist() {
-		const idartist = '42'; // TODO get artist id
-		this.router.navigate([PATH_ARTIST, idartist]);
-	}
-
-	navigateToSettings() {
-		this.router.navigate([PATH_SETTINGS]);
-	}
-
-	disconnect() {
-		// TODO disconnect the user
-		this.router.navigate([PATH_INDEX]);
-	}
-
 	ngOnInit() {
 		// Subscribing to url changes to adapt the header
 		this.subscribeCurrentUrl = this.router.events.subscribe(() => {
-			this.openOptions = false;
-			this.title = this.getTitleFrom(this.location.path());
-			this.displayBackButton = this.isBackButtonDisplayed(this.location.path());
-			this.displaySideMenu = this.isSideMenuDisplayed(this.location.path());
-			this.displayOptions = this.areOptionsDisplayed(this.location.path());
-			this.displayConnectionButtons = this.isConnectionButtonDisplayed(this.location.path());
+			setTimeout(() => {
+				this.title = this.getTitleFrom(this.location.path());
+				this.displayBackButton = this.isBackButtonDisplayed(this.location.path());
+				this.displaySideMenu = this.isSideMenuDisplayed(this.location.path());
+				this.displayOptions = this.areOptionsDisplayed(this.location.path());
+				this.displayConnectionButtons = this.isConnectionButtonDisplayed(this.location.path());
+			}, 100);
 		});
 	}
 
