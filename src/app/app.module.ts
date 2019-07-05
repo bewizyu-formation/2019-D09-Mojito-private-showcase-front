@@ -31,6 +31,7 @@ import {SideMenuComponent} from './side-menu/side-menu.component';
 import {OptionsComponent} from './options/options.component';
 import {RouterModule} from '@angular/router';
 import {ROUTES} from './app.routes';
+import {ClickOutsideModule} from 'ng-click-outside';
 
 @NgModule({
 	declarations: [
@@ -53,9 +54,8 @@ import {ROUTES} from './app.routes';
 		BrowserModule,
 		BrowserAnimationsModule,
 		MatToolbarModule,
-		MatMenuModule,
-		MatButtonModule,
 		MatIconModule,
+		ClickOutsideModule,
 		HttpClientModule,
 		FormsModule,
 		ReactiveFormsModule,
