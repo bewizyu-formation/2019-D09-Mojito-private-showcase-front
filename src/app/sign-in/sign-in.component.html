@@ -4,16 +4,16 @@
 <div class="bounds">
   <div class="bounds"></div>
 </div>
-<div class="bounds"></div>
+
 <div class="wrapper fond">
   <h2 class="title">Formulaire d'inscription</h2>
   <div class="wrapper-form">
       <form class="formInscription" (ngSubmit) = "handleSubmit()" [formGroup]="formInscription">
           <div class="bounds">
               <input class="Text_Input" type="text" formControlName="identifiant" placeholder="Identifiant" />
-        
+
               <div *ngIf="formInscription.get('identifiant').dirty && formInscription.get('identifiant').hasError('required')">
-                  identifiant requis
+                    identifiant requis
               </div>
           </div>
           <div class="bounds">
@@ -40,19 +40,18 @@
       </div>
 
            
-      <div class="bounds">
-        <input  class="Text_Input" type="text" [(ngModel)]="city" placeholder="Ville"/>
+      <div class="bounds-smaller">
+          <label class="Hint-text-small">Ville</label>
+          <input  formControlName="city" class="Text_Input" type="text"  [(ngModel)]="city" placeholder=""/>
       </div>
 
- 
-	  <div class="box-artist">
-			<input type="checkbox" id="checkbox-1" [(ngModel)]="isArtist" [ngModelOptions]="{standalone: true}"/>
-			<div class="bounds">
-				<div class="Hint-text" > Êtes vous un artiste proposant des prestations privées ? </div>
-			</div>
-		</div>
+      <div class="box-artist">
+        <input type="checkbox" id="checkbox-1" [(ngModel)]="isArtist" [ngModelOptions]="{standalone: true}"/>
+        <div class="label-checkbox">
+          <div class="Hint-text" > Êtes vous un artiste proposant des prestations privées ? </div>
+        </div>
+      </div>
 
-  
       <div class="bounds submit">
         <button type="reset" class="button-bg cancel" (click)="goBack()">Annuler</button>
         <button type="submit" class="button-bg check" [disabled]="formInscription.invalid">Envoyer</button>
