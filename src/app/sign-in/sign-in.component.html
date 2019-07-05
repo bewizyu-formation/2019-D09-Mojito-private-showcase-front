@@ -10,9 +10,9 @@
   <div class="wrapper-form">
       <form class="formInscription" (ngSubmit) = "handleSubmit()" [formGroup]="formInscription">
           <div class="bounds">
-              <input class="Text_Input" type="text" formControlName="idUser" placeholder="Identifiant" />
+              <input class="Text_Input" type="text" formControlName="identifiant" placeholder="Identifiant" />
         
-              <div *ngIf="formInscription.get('idUser').dirty && formInscription.get('idUser').hasError('required')">
+              <div *ngIf="formInscription.get('identifiant').dirty && formInscription.get('identifiant').hasError('required')">
                   identifiant requis
               </div>
           </div>
