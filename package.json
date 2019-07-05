@@ -25,6 +25,7 @@
     "@angular/router": "^6.1.10",
     "core-js": "^2.5.4",
     "material-design-icons": "^3.0.1",
+    "ng-click-outside": "^4.0.0",
     "rxjs": "~6.2.0",
     "zone.js": "^0.8.29"
   },
