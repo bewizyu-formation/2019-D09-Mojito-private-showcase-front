@@ -2,7 +2,7 @@
 
 	<div class="header__menu">
 		<div *ngIf="displayBackButton"
-			 class="menu__button"
+			 class="menu__button header__text__unselectable"
 			 (click)="navigateToHome()">
 			<mat-icon class="menu__buttonIcon">
 				arrow_back
@@ -10,7 +10,7 @@
 		</div>
 
 		<div *ngIf="displaySideMenu" (click)="handleMenuButtonClick()">
-			<div class="menu__button">
+			<div class="menu__button header__text__unselectable">
 				<mat-icon class="menu__buttonIcon">
 					{{sideMenuIcon}}
 				</mat-icon>
@@ -47,8 +47,42 @@
 
 	<p>{{title}}</p>
 
-	<div>
-		<mat-icon>more_vert</mat-icon>
+	<div class="header__options">
+		<div *ngIf="displayOptions"
+			 class="options__button"
+			 (click)="handleOptionsButtonClick()"
+			 (clickOutside)="handleOutsideOptionsButtonClick()">
+			<mat-icon class="options__buttonIcon header__text__unselectable">
+				more_vert
+			</mat-icon>
+		</div>
+
+		<div *ngIf="openOptions"
+			class="options__choices">
+			<div class="options__choice"
+				(click)="navigateToArtist()">
+				<mat-icon class="options__choiceIcon">
+					group
+				</mat-icon>
+				Artistes
+			</div>
+
+			<div class="options__choice"
+				 (click)="navigateToSettings()">
+				<mat-icon class="options__choiceIcon">
+					settings
+				</mat-icon>
+				Profil
+			</div>
+
+			<div class="options__choice"
+				 (click)="disconnect()">
+				<mat-icon class="options__choiceIcon">
+					exit_to_app
+				</mat-icon>
+				Déconnexion
+			</div>
+		</div>
 	</div>
 
 </mat-toolbar>
