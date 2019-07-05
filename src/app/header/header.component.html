@@ -1,39 +1,52 @@
 <mat-toolbar class="header">
 
-	<div>
-		<mat-icon *ngIf="displayBackButton"
-			class="material-icons"
-		(click)="navigateToHome()">
-			arrow_back
-		</mat-icon>
-		<div *ngIf="displaySideMenu">
-			<button
-				mat-button [matMenuTriggerFor]="menu">
-				<mat-icon>menu</mat-icon>
-			</button>
-			<mat-menu #menu="matMenu" class="mat-menu">
-				<button
-					class="mat-menu-item-close"
-					mat-menu-item
-					(click)="closeMenu()">
-					<mat-icon>close</mat-icon>
-				</button>
-				<button mat-menu-item (click)="navigateToIndex()">
-					<mat-icon>move_to_inbox</mat-icon>
+	<div class="header__menu">
+		<div *ngIf="displayBackButton"
+			 class="menu__button"
+			 (click)="navigateToHome()">
+			<mat-icon class="menu__buttonIcon">
+				arrow_back
+			</mat-icon>
+		</div>
+
+		<div *ngIf="displaySideMenu" (click)="handleMenuButtonClick()">
+			<div class="menu__button">
+				<mat-icon class="menu__buttonIcon">
+					{{sideMenuIcon}}
+				</mat-icon>
+			</div>
+
+			<div *ngIf="openSideMenu"
+				 class="menu__choices">
+				<div class="menu__choice"
+					 (click)="navigateToIndex()">
+					<mat-icon class="menu__choiceIcon">
+						move_to_inbox
+					</mat-icon>
 					Accueil
-				</button>
-				<button mat-menu-item (click)="navigateToEvents()">
-					<mat-icon>send</mat-icon>
+				</div>
+
+				<div class="menu__choice"
+					 (click)="navigateToEvents()">
+					<mat-icon class="menu__choiceIcon">
+						send
+					</mat-icon>
 					Évènements
-				</button>
-				<button mat-menu-item (click)="navigateToContact()">
-					<mat-icon>group</mat-icon>
+				</div>
+
+				<div class="menu__choice"
+					 (click)="navigateToContact()">
+					<mat-icon class="menu__choiceIcon">
+						group
+					</mat-icon>
 					Contact
-				</button>
-			</mat-menu>
+				</div>
+			</div>
 		</div>
 	</div>
+
 	<p>{{title}}</p>
+
 	<div>
 		<mat-icon>more_vert</mat-icon>
 	</div>
