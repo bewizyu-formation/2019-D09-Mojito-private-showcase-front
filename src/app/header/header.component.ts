@@ -8,8 +8,8 @@ import {
 	PATH_CONTACT,
 	PATH_EVENTS,
 	PATH_HOME,
-	PATH_INDEX,
-	PATH_SETTINGS
+	PATH_INDEX, PATH_LOGIN,
+	PATH_SETTINGS, PATH_SIGN_IN
 } from '../app.constantes';
 
 
@@ -37,6 +37,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
 	sideMenuIcon = MENU_ICON_CLOSED;
 	displayOptions = false;
 	openOptions = false;
+	displayConnectionButtons = false;
 
 	constructor(private location: Location, private router: Router) {
 	}
@@ -101,6 +102,16 @@ export class HeaderComponent implements OnInit, OnDestroy {
 		return result;
 	}
 
+	isConnectionButtonDisplayed(path: string) {
+		let result: boolean;
+		if (path === PATH_INDEX) {
+			result = true;
+		} else {
+			result = false;
+		}
+		return result;
+	}
+
 	/**
 	 * Handle clicks on the menu to open/close it and change its icon
 	 */
@@ -129,6 +140,14 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
 	navigateToHome() {
 		this.router.navigate([PATH_HOME]);
+	}
+
+	navigateToLogin() {
+		this.router.navigate([PATH_LOGIN]);
+	}
+
+	navigateToSignIn() {
+		this.router.navigate([PATH_SIGN_IN]);
 	}
 
 	navigateToEvents() {
@@ -161,6 +180,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
 			this.displayBackButton = this.isBackButtonDisplayed(this.location.path());
 			this.displaySideMenu = this.isSideMenuDisplayed(this.location.path());
 			this.displayOptions = this.areOptionsDisplayed(this.location.path());
+			this.displayConnectionButtons = this.isConnectionButtonDisplayed(this.location.path());
 		});
 	}
 

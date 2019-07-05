@@ -48,6 +48,22 @@
 	<p>{{title}}</p>
 
 	<div class="header__options">
+
+		<div *ngIf="displayConnectionButtons"
+			class="header__connection">
+			<a (click)="navigateToLogin()"
+				class="header__connectionText">
+				Se connecter
+			</a>
+			<a class="header__connectionText">
+				&nbsp;|&nbsp;
+			</a>
+			<a (click)="navigateToSignIn()"
+			   class="header__connectionText header__connectionText__last">
+				S'inscrire
+			</a>
+		</div>
+
 		<div *ngIf="displayOptions"
 			 class="options__button"
 			 (click)="handleOptionsButtonClick()"
@@ -59,6 +75,8 @@
 
 		<div *ngIf="openOptions"
 			class="options__choices">
+
+			<!-- TODO Display only if current user is an artist and send him to his artist page -->
 			<div class="options__choice"
 				(click)="navigateToArtist()">
 				<mat-icon class="options__choiceIcon">
