@@ -6,15 +6,18 @@
 	color: white;
 	background-color: #4a4a4a;
 	max-height: 64px;
-	font-family: Roboto;
+	font-family: Roboto, sans-serif;
 	font-size: 36px;
 	font-weight: normal;
 	font-style: normal;
 	font-stretch: normal;
 	line-height: 0.89;
+	letter-spacing: normal;
 }
 
-
+.header__title{
+	padding-left: 82px;
+}
 
 .header__menu {
 	position: relative;

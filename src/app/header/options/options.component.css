@@ -8,10 +8,10 @@
 }
 
 .options__buttonIcon {
-	max-width: 14px;
-	max-height: 14px;
-	font-size: 18px;
-	margin: 25px;
+	max-width: 24px;
+	max-height: 24px;
+	font-size: 24px;
+	margin: 20px;
 }
 
 .options__choices {
