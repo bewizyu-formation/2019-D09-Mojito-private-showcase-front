@@ -4,7 +4,6 @@ import {User} from '../user/user';
 import { Router } from '@angular/router';
 import {PATH_HOME, PATH_SIGN_IN} from '../app.constantes';
 
-
 @Component({
   selector: 'app-sign-in',
   templateUrl: './sign-in.component.html',
@@ -69,6 +68,9 @@ export class SignInComponent implements OnInit {
        };
   }
 
+  goBack() {
+        this.router.navigate([PATH_HOME]);
+  }
 
   ngOnInit() {
   }

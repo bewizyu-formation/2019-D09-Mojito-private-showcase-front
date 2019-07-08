@@ -24,13 +24,18 @@
               </div>
           </div>
         <div class="bounds">
-              <input class="Text_Input" type="password" placeholder="Confirmez le mot de passe" 
+
+             <input class="Text_Input" type="password" placeholder="Confirmez le mot de passe"
               formControlName="passwordConfirm" />
 
-        <div *ngIf="formInscription.get('passwordConfirm').errors?.notEquivalent && formInscription.get('passwordConfirm').touched">Mots de passe non identique</div>
-              <div *ngIf="formInscription.get('passwordConfirm').dirty && formInscription.get('passwordConfirm').hasError('required')">
+            <div *ngIf="formInscription.get('passwordConfirm').errors?.notEquivalent &&
+            formInscription.get('passwordConfirm').touched">Mots de passe non identique</div>
+
+            <div *ngIf="formInscription.get('passwordConfirm').dirty &&
+             formInscription.get('passwordConfirm').hasError('required')">
                 mot de passe de confirmation requis
-              </div>
+            </div>
+
         </div>
      
         <div class="bounds">
