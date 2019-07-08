@@ -1,12 +1,7 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {
-	MatToolbarModule,
-	MatMenuModule,
-	MatButtonModule,
-	MatIconModule,
-} from '@angular/material';
+import {MatToolbarModule, MatIconModule} from '@angular/material';
 
 import {AppComponent} from './app.component';
 import {environment} from '../environments/environment';
@@ -32,46 +27,46 @@ import {OptionsComponent} from './header/options/options.component';
 import {RouterModule} from '@angular/router';
 import {ROUTES} from './app.routes';
 import {ClickOutsideModule} from 'ng-click-outside';
-import { BackButtonComponent } from './header/back-button/back-button.component';
-import { ConnectionButtonsComponent } from './header/connection-buttons/connection-buttons.component';
+import {BackButtonComponent} from './header/back-button/back-button.component';
+import {ConnectionButtonsComponent} from './header/connection-buttons/connection-buttons.component';
 
 @NgModule({
-	declarations: [
-		AppComponent,
-		HomeComponent,
-		LoginComponent,
-		SignInComponent,
-		IndexComponent,
-		ArtistComponent,
-		EventsComponent,
-		SettingsComponent,
-		ContactComponent,
-		BookComponent,
-		ErrorComponent,
-		HeaderComponent,
-		SideMenuComponent,
-		OptionsComponent,
-		BackButtonComponent,
-		ConnectionButtonsComponent,
-	],
-	imports: [
-		BrowserModule,
-		BrowserAnimationsModule,
-		MatToolbarModule,
-		MatIconModule,
-		ClickOutsideModule,
-		HttpClientModule,
-		FormsModule,
-		ReactiveFormsModule,
-		RouterModule.forRoot(ROUTES),
-	],
-	providers: [
-		{provide: APP_CONFIG, useValue: environment},
-		{provide: HTTP_INTERCEPTORS, useClass: CommonHeadersInterceptorService, multi: true},
-		{provide: HTTP_INTERCEPTORS, useClass: TokenInterceptorService, multi: true},
-		{provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptorService, multi: true},
-	],
-	bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+        HomeComponent,
+        LoginComponent,
+        SignInComponent,
+        IndexComponent,
+        ArtistComponent,
+        EventsComponent,
+        SettingsComponent,
+        ContactComponent,
+        BookComponent,
+        ErrorComponent,
+        HeaderComponent,
+        SideMenuComponent,
+        OptionsComponent,
+        BackButtonComponent,
+        ConnectionButtonsComponent,
+    ],
+    imports: [
+        BrowserModule,
+        BrowserAnimationsModule,
+        MatToolbarModule,
+        MatIconModule,
+        ClickOutsideModule,
+        HttpClientModule,
+        FormsModule,
+        ReactiveFormsModule,
+        RouterModule.forRoot(ROUTES),
+    ],
+    providers: [
+        {provide: APP_CONFIG, useValue: environment},
+        {provide: HTTP_INTERCEPTORS, useClass: CommonHeadersInterceptorService, multi: true},
+        {provide: HTTP_INTERCEPTORS, useClass: TokenInterceptorService, multi: true},
+        {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptorService, multi: true},
+    ],
+    bootstrap: [AppComponent]
 })
 export class AppModule {
 }
