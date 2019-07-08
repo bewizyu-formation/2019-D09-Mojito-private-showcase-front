@@ -35,7 +35,8 @@ export class SignInComponent implements OnInit {
   constructor(private fb: FormBuilder, private router: Router) {
 
       this.idUserCtrl = this.fb.control('', [Validators.required]);
-      this.passwordCtrl = this.fb.control('', [Validators.required]);
+      this.passwordCtrl = this.fb.control('', [Validators.required,
+          Validators.pattern(/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d).*$/)]);
       this.passwordConfirmCtrl = this.fb.control('', [Validators.required]);
       this.emailCtrl = this.fb.control('', [Validators.required, Validators.email]);
       this.isArtistCtrl = this.fb.control(false);
