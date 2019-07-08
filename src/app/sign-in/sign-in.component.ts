@@ -3,6 +3,7 @@ import { FormControl, FormGroup, FormBuilder, Validators, ReactiveFormsModule } 
 import {User} from '../user/user';
 import { Router } from '@angular/router';
 import { PATH_SIGN_IN } from '../app.constantes';
+import { confirmSimilarValidator } from '../validators/confirmCheckValidator';
 
 @Component({
   selector: 'app-sign-in',
@@ -16,7 +17,10 @@ export class SignInComponent implements OnInit {
   passwordConfirmCtrl: FormControl;
   emailCtrl: FormControl;
   citiesCtrl: FormControl;
+  artistName: FormControl;
+  description: FormControl;
   formInscription: FormGroup;
+
 
   user: User;
 
@@ -34,11 +38,13 @@ export class SignInComponent implements OnInit {
 
       this.idUserCtrl = this.fb.control(' ', [ Validators.required ]);
       this.passwordCtrl = this.fb.control(' ', [ Validators.required]);
-      this.passwordConfirmCtrl = this.fb.control('', [Validators.required]);
+      this.passwordConfirmCtrl = this.fb.control('', [Validators.required,confirmSimilarValidator(this.passwordCtrl)]);
       this.emailCtrl = this.fb.control('', [Validators.required, Validators.email]);
-
+      this.artistName = this.fb.control('',[Validators.required]);
+      this.description = this.fb.control('',[Validators.required]);
       this.formInscription = this.fb.group(
         {
+          artistName : this.artistName,
           identifiant : this.idUserCtrl,
           password: this.passwordCtrl,
           passwordConfirm: this.passwordConfirmCtrl,
@@ -76,8 +82,8 @@ export class SignInComponent implements OnInit {
     }
   }
 
+  isRegisteringArtist(){
+    return this.isArtist;
+  }
 
 }
-
-
-
