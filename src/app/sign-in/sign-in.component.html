@@ -40,9 +40,8 @@
       </div>
    
            
-      <div class="bounds-smaller">
-          <label class="Hint-text-small">Ville</label>
-          <input  formControlName="city" class="Text_Input" type="text"  [(ngModel)]="city" placeholder=""/>
+      <div class="bounds">
+          <input  formControlName="city" class="Text_Input" type="text"  [(ngModel)]="city" placeholder="Ville"/>
       </div>
   
       
@@ -53,14 +52,25 @@
         </div>
       </div>
       
+      <div class="bounds">
+            <input class="Text_Input" type="name" placeholder="Nom d'artiste" 
+            formControlName="passwordConfirm" />     
+      </div>
+   
+      <div class="boundDescription">
+        <label class="Hint-text-small">Description</label>
+
+          <textarea name="description"
+           class="DescriptionTextArea"
+           placeholder="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam gravida venenatis accumsan. In mi massa tempus"
+           ></textarea>
+      </div>
+  
   
       <div class="bounds submit">
         <button type="reset" class="button-bg cancel" (click)="handleClear()">Annuler</button>
         <button type="submit" class="button-bg check" [disabled]="formInscription.invalid">Envoyer</button>
       </div> 
-          
-          
-    
          </form>
     </div>
   </div>
