@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
 import {User} from '../user/user';
 import { Router } from '@angular/router';
-import { PATH_SIGN_IN } from '../app.constantes';
+import {PATH_HOME, PATH_SIGN_IN} from '../app.constantes';
 
 @Component({
   selector: 'app-sign-in',
@@ -54,8 +54,8 @@ export class SignInComponent implements OnInit {
   ngOnInit() {
   }
 
-  handleClear() {
-    this.formInscription.reset();
+  goBack() {
+    this.router.navigate([PATH_HOME]);
   }
   handleSubmit() {
     if (this.formInscription.valid) {
