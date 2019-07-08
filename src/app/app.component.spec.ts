@@ -14,6 +14,9 @@ describe('AppComponent', () => {
                 RouterTestingModule.withRoutes([]),
                 HttpClientModule,
             ],
+            providers: [
+                {provide: APP_CONFIG, useValue: environment},
+            ]
         }).compileComponents();
     }));
 

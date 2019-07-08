@@ -78,7 +78,7 @@
   -webkit-box-direction: reverse;
   margin-top: 39px;
   padding-bottom: 12px;
-  flex-direction: revert;
+  flex-direction: row-reverse;
   margin-left: 18px;
   justify-content: end;
 }
