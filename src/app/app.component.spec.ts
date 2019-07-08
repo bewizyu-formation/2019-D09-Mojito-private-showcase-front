@@ -4,16 +4,17 @@ import {HttpClientModule} from '@angular/common/http';
 import {APP_CONFIG} from './app.config';
 import {environment} from '../environments/environment';
 import { RouterTestingModule } from '@angular/router/testing';
+import {AppModule} from './app.module';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [
-        AppComponent
       ],
       imports: [
-        HttpClientModule,
-        RouterTestingModule
+          AppModule,
+          RouterTestingModule.withRoutes([]),
+          HttpClientModule,
       ],
       providers: [
         {provide: APP_CONFIG, useValue: environment},
