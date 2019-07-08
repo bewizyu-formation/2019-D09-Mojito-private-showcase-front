@@ -11,12 +11,12 @@ import { PATH_SIGN_IN } from '../app.constantes';
 })
 export class SignInComponent implements OnInit {
 
-  idUserCtrl:FormControl;
-  passwordCtrl:FormControl;
-  passwordConfirmCtrl:FormControl;
-  emailCtrl:FormControl;
+  idUserCtrl: FormControl;
+  passwordCtrl: FormControl;
+  passwordConfirmCtrl: FormControl;
+  emailCtrl: FormControl;
   citiesCtrl: FormControl;
-  formInscription:FormGroup;
+  formInscription: FormGroup;
 
   user: User;
 
@@ -24,18 +24,18 @@ export class SignInComponent implements OnInit {
     'Lyon Rhône',
     'Marseille Bouches Rhône',
     'Rennes, Ille-et-Vilaine'
-  ]
+  ];
 
-  isArtist:boolean = false;
+  isArtist = false;
 
   city: string = this.cities[0];
-  
-  constructor(private fb:FormBuilder, private router:Router) {
 
-      this.idUserCtrl = this.fb.control("",[Validators.required]);
-      this.passwordCtrl = this.fb.control("",[Validators.required]);
-      this.passwordConfirmCtrl = this.fb.control("",[Validators.required]);
-      this.emailCtrl = this.fb.control("",[Validators.required, Validators.email]);
+  constructor(private fb: FormBuilder, private router: Router) {
+
+      this.idUserCtrl = this.fb.control(' ', [ Validators.required ]);
+      this.passwordCtrl = this.fb.control(' ', [ Validators.required]);
+      this.passwordConfirmCtrl = this.fb.control('', [Validators.required]);
+      this.emailCtrl = this.fb.control('', [Validators.required, Validators.email]);
 
       this.formInscription = this.fb.group(
         {
@@ -57,27 +57,26 @@ export class SignInComponent implements OnInit {
       console.log('form submitted');
       console.log(this.formInscription.get('email'));
 
-      let userObj = {};
+      const userObj = {};
 
-      Object.keys(this.formInscription.controls).forEach(field => { 
-        const control = this.formInscription.get(field);           
-        control.markAsTouched({ onlySelf: true });  
-        
-        let value = control.value;
+      Object.keys(this.formInscription.controls).forEach(field => {
+        const control = this.formInscription.get(field);
+        control.markAsTouched({ onlySelf: true });
+
+        const value = control.value;
         userObj[field] = value;
       });
 
-      this.user = new User(userObj['identifiant'],userObj['email'],userObj['city']);
+      this.user = new User(userObj['identifiant'], userObj['email'], userObj['city']);
 
       console.log(this.user);
-    
-    } 
-    else {
+
+    } else {
       this.router.navigate([PATH_SIGN_IN]);
     }
   }
 
-  
+
 }
 
 
