@@ -46,10 +46,26 @@ export class SignInComponent implements OnInit {
           email: this.emailCtrl,
           city: this.citiesCtrl,
           isArtist: this.isArtistCtrl
-        }
+        },
+          {validator: this.matchingPasswords('password', 'passwordConfirm')}
       );
-
    }
+
+   matchingPasswords(password: string, passwordConfirmation: string) {
+       return (group: FormGroup) => {
+           const passwordInput = group.controls[password],
+               passwordConfirmationInput = group.controls[passwordConfirmation];
+           if (passwordInput.value !== passwordConfirmationInput.value) {
+               console.log('password not equals');
+               return passwordConfirmationInput.setErrors({notEquivalent: true});
+           } else {
+               console.log('password confirmed');
+
+               return passwordConfirmationInput.setErrors(null);
+           }
+       };
+  }
+
 
   ngOnInit() {
   }
@@ -66,6 +82,8 @@ export class SignInComponent implements OnInit {
 
       Object.keys(this.formInscription.controls).forEach(field => {
         const control = this.formInscription.get(field);
+        console.log(control);
+        console.log(this.formInscription.validator);
         control.markAsTouched({ onlySelf: true });
 
         const value = control.value;
