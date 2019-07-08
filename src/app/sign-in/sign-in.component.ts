@@ -24,16 +24,15 @@ export class SignInComponent implements OnInit {
     'Lyon Rhône',
     'Marseille Bouches Rhône',
     'Rennes, Ille-et-Vilaine'
-  ];
+  ]
 
   isArtist = false;
 
   city: string = this.cities[0];
-
   constructor(private fb: FormBuilder, private router: Router) {
 
-      this.idUserCtrl = this.fb.control(' ', [ Validators.required ]);
-      this.passwordCtrl = this.fb.control(' ', [ Validators.required]);
+      this.idUserCtrl = this.fb.control('', [Validators.required]);
+      this.passwordCtrl = this.fb.control('', [Validators.required]);
       this.passwordConfirmCtrl = this.fb.control('', [Validators.required]);
       this.emailCtrl = this.fb.control('', [Validators.required, Validators.email]);
 
