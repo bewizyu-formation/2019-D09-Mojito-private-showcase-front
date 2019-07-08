@@ -9,9 +9,9 @@ export const APP_CONFIG = new InjectionToken<AppConfig>('app.config');
  * Application configuration interface
  */
 export interface AppConfig {
-  production: boolean;
+    production: boolean;
 
-  server: {
-    uri: string
-  };
+    server: {
+        uri: string
+    };
 }

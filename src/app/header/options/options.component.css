@@ -1,0 +1,47 @@
+.options__button {
+	min-width: 64px;
+	min-height: 64px;
+}
+
+.options__button:hover {
+	cursor: pointer;
+}
+
+.options__buttonIcon {
+	max-width: 24px;
+	max-height: 24px;
+	font-size: 24px;
+	margin: 20px;
+}
+
+.options__choices {
+	position: absolute;
+	top: 100%;
+	right: 0;
+	background-color: #fafafa;
+	border: 1px lightgrey solid;
+	cursor: pointer;
+}
+
+.options__choices:last-child {
+	padding-bottom: 19px;
+}
+
+.options__choice {
+	display: flex;
+	align-content: center;
+	padding-top: 16px;
+	padding-right: 51px;
+	color: rgb(0, 0, 0);
+	font-size: 14px;
+	line-height: 24px;
+}
+
+.options__choiceIcon {
+	padding-left: 23px;
+	padding-right: 16px;
+}
+
+.options__choice:hover {
+	color: #f5a623;
+}
