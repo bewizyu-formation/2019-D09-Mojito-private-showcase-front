@@ -1,3 +1,15 @@
-<p>
-  header works!
-</p>
+<mat-toolbar class="header">
+
+	<div class="header__menu">
+		<app-back-button *ngIf="displayBackButton"></app-back-button>
+		<app-side-menu *ngIf="displaySideMenu"></app-side-menu>
+	</div>
+
+	<p class="header__title">{{title}}</p>
+
+	<div class="header__options">
+		<app-connection-buttons *ngIf="displayConnectionButtons"></app-connection-buttons>
+		<app-options *ngIf="displayOptions"></app-options>
+	</div>
+
+</mat-toolbar>
