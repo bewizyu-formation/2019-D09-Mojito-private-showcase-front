@@ -1,9 +1,11 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {EnvironmentService} from '../services/environment.service';
 
 export const RESOURCES_LOGIN = '/login';
+export const RESOURCES_ARTIST_BY_USERNAME = '/artist/name/';
+export const RESOURCES_COMMON_USER_BY_USERNAME = 'common/name/';
 
 @Injectable({
   providedIn: 'root'
@@ -25,5 +27,17 @@ export class UserRepository {
     },
       {observe: 'response'}
     );
+  }
+
+    /**
+     * Get an artist from its name
+     */
+  getArtistFromName(name: string, token: string): Observable<any> {
+      const headers = new HttpHeaders();
+      headers.set('token', token);
+      return this.http.get(
+          `${this.env.getPrivateShowcaseApiConfig().uri}${RESOURCES_ARTIST_BY_USERNAME}${name}`,
+          {headers}
+      );
   }
 }
