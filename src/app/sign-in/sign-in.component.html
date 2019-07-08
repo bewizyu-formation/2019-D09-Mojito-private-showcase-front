@@ -4,56 +4,66 @@
       <form class="formInscription" (ngSubmit) = "handleSubmit()" [formGroup]="formInscription">
           <div class="bounds">
               <input class="Text_Input" type="text" formControlName="identifiant" placeholder="Identifiant" />
-        
+
               <div *ngIf="formInscription.get('identifiant').dirty && formInscription.get('identifiant').hasError('required')">
                   identifiant requis
               </div>
           </div>
           <div class="bounds">
-              <input class="Text_Input" type="password" formControlName="password" placeholder="Mot de passe"/>  
+              <input class="Text_Input" type="password" formControlName="password" placeholder="Mot de passe"/>
           <div *ngIf="formInscription.get('password').dirty && formInscription.get('password').hasError('required')">
                       mot de passe requis
           </div>
-        </div>  
+        </div>
         <div class="bounds">
-              <input class="Text_Input" type="password" placeholder="Confirmez le mot de passe" 
-              formControlName="passwordConfirm" />     
-      
+              <input class="Text_Input" type="password" placeholder="Confirmez le mot de passe"
+              formControlName="passwordConfirm" />
+
               <div *ngIf="formInscription.get('passwordConfirm').dirty && formInscription.get('passwordConfirm').hasError('required')">
                 mot de passe de confirmation requis
               </div>
         </div>
-     
+
         <div class="bounds">
             <input class="Text_Input" type="text" placeholder="Email" formControlName="email" />
-    
+
             <div *ngIf="formInscription.get('email').dirty && formInscription.get('email').hasError('email')">
                 Email invalide
             </div>
       </div>
-   
-           
-      <div class="bounds-smaller">
-          <label class="Hint-text-small">Ville</label>
-          <input  formControlName="city" class="Text_Input" type="text"  [(ngModel)]="city"  placeholder=""/>
+
+
+      <div class="bounds">
+          <input  formControlName="city" class="Text_Input" type="text"  [(ngModel)]="city" placeholder="Ville"/>
       </div>
-  
-      
+
+
       <div class="box-artist">
         <input type="checkbox" id="checkbox-1" [(ngModel)]="isArtist" [ngModelOptions] = "{standalone: true}" />
         <div class="label-checkbox">
           <div class="Hint-text" > Êtes vous un artiste proposant des prestations privées ? </div>
         </div>
       </div>
-      
-  
+
+      <div class="bounds">
+            <input class="Text_Input" type="name" placeholder="Nom d'artiste"
+            formControlName="passwordConfirm" />
+      </div>
+
+      <div class="boundDescription">
+        <label class="Hint-text-small">Description</label>
+
+          <textarea name="description"
+           class="DescriptionTextArea"
+           placeholder="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam gravida venenatis accumsan. In mi massa tempus"
+           ></textarea>
+      </div>
+
+
       <div class="bounds submit">
         <button type="reset" class="button-bg cancel" (click)="goBack()">Annuler</button>
         <button type="submit" class="button-bg check" [disabled]="formInscription.invalid">Envoyer</button>
-      </div> 
-          
-          
-    
+      </div>
          </form>
     </div>
   </div>

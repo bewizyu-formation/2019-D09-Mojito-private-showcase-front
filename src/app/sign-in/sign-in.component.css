@@ -2,7 +2,7 @@
     /* width: 48%; */
     width: 682px;
 
-  height: auto; 
+  height: auto;
     /*height: 554px;*/
     border-radius: 14px;
     background-color: #e7e6e6;
@@ -14,7 +14,7 @@
 
 .wrapper-form {
     margin: auto;
-    position: relative;   
+    position: relative;
     height: auto;
     width: 61.5%;
 }
@@ -22,9 +22,7 @@
 .title {
   margin-left: 230px;
   margin-top: 28px;
-  width: 213px;
-  height: 28px;
-  font-family: Roboto;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   font-size: 20px;
   font-weight: 500;
   font-style: normal;
@@ -39,7 +37,7 @@
 }
 .bounds-line {
   margin: auto;
-  position: relative;   
+  position: relative;
   height: auto;
   width: 61.5%;
   height: 48px;
@@ -71,8 +69,17 @@
   margin-top: 15px;
 }
 
+.boundDescription{
+  width: 99%;
+  clear: both;
+  margin: 0 auto;
+  margin-top: 15px;
+  display: flex;
+  flex-direction: column;
+}
+
 .bounds.submit {
-  
+
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: reverse;
@@ -98,26 +105,26 @@
 }
 
 .Hint-text {
-  font-family: Roboto;
-  font-size: 16px;    
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-size: 16px;
   font-weight: normal;
   font-style: normal;
   font-stretch: normal;
   line-height: 1.5;
   letter-spacing: normal;
   color: rgba(0, 0, 0, 0.38);
-} 
+}
 
 .Hint-text-small {
-  font-family: Roboto;
-  font-size: 12px;    
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-size: 12px;
   font-weight: normal;
   font-style: normal;
   font-stretch: normal;
   letter-spacing: normal;
   color: rgba(0, 0, 0, 0.38);
   margin-left:12px;
-} 
+}
 
 .box-artist {
 	display: flex;
@@ -135,22 +142,46 @@
 .Text_Input {
     height: 100%;
     background: transparent;
-    border-top: none; 
+    border-top: none;
     border-left: none;
     border-right: none;
     -webkit-box-flex: 1;
     margin-left: 10px;
 
-    font-family: Roboto;
-    font-size: 16px;    
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 16px;
     font-weight: normal;
     font-style: normal;
     font-stretch: normal;
     line-height: 1.5;
     letter-spacing: normal;
     color: rgba(0, 0, 0, 0.38);
-    border-bottom: solid 1px rgba(0, 0, 0, 0.12); 
+    border-bottom: solid 1px rgba(0, 0, 0, 0.12);
   }
+
+  .DescriptionTextArea {
+      resize:none;
+      height: 6em;
+      background: transparent;
+      border-top: none;
+      border-left: none;
+      border-right: none;
+      margin-left: 10px;
+
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      font-size: 16px;
+      font-weight: normal;
+      font-style: normal;
+      font-stretch: normal;
+      text-align: left;
+
+      vertical-align:top;
+
+      line-height: 1.5;
+      letter-spacing: normal;
+      color: rgba(0, 0, 0, 0.38);
+      border-bottom: solid 1px rgba(0, 0, 0, 0.12);
+    }
 
 
 input[type='checkbox']{
@@ -161,10 +192,10 @@ input[type='checkbox']{
 .button-bg {
   padding: 0;
   border: none;
-  width: 93px;  
-  height: 36px;  
-  border-radius: 2px;  
-  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.24), 0 0 2px 0 rgba(0, 0, 0, 0.12);  
+  width: 93px;
+  height: 36px;
+  border-radius: 2px;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.24), 0 0 2px 0 rgba(0, 0, 0, 0.12);
   color:#fff;
 
 }
