@@ -75,6 +75,7 @@ export class SignInComponent implements OnInit {
     this.formInscription.reset();
   }
   handleSubmit() {
+
     if (this.formInscription.valid) {
       console.log('form submitted');
       console.log(this.formInscription.get('email'));
@@ -93,6 +94,16 @@ export class SignInComponent implements OnInit {
 
       this.user = new User(userObj['identifiant'], userObj['email'], userObj['city']);
 
+      if (!this.isArtist){
+          //call user inscription
+          console.log('inscription user');
+
+      } else {
+
+          console.log('inscription artiste');
+
+          //call artist inscription
+      }
       console.log(this.user);
 
     } else {
