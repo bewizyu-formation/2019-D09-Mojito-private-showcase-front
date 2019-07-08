@@ -17,7 +17,7 @@
 .options__choices {
 	position: absolute;
 	top: 100%;
-	right: 0%;
+	right: 0;
 	background-color: #fafafa;
 	border: 1px lightgrey solid;
 	cursor: pointer;
