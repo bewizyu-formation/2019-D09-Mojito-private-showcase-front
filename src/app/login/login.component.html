@@ -1,3 +1,31 @@
 <p>
-  login works!
+	login works!
 </p>
+<div class="wrapper fond">
+	<h2 class="title">Formulaire de connexion</h2>
+	<div class="wrapper-form">
+		<form (ngSubmit)="handleSubmit()" [formGroup]="loginForm">
+			<div class="bounds">
+				<input class="Text_Input" formControlName="login" placeholder="Identifiant" >
+
+			</div>
+			<div class="bounds message" *ngIf="loginForm.get('login').hasError('require')">
+				Le login doit être rempli
+			</div>
+			<div class="bounds">
+				<input class="Text_Input" formControlName="password" type="password" placeholder="Password">
+				<div class="bounds message" *ngIf="loginForm.get('password').dirty && loginForm.get('password').hasError('require')">
+					Le mot de passe doit être rempli
+				</div>
+				<div class="bounds message password" *ngIf="loginForm.get('password').dirty && loginForm.get('password').hasError('pattern')">
+					Le mot de passe 8 caractères minimum, comporte au moins une majuscule, une minuscule et un chiffre
+				</div>
+			</div>
+
+			<div class="wrapper-submit">
+				<button type="submit" class="button-bg check" [disabled]="loginForm.invalid">Valider</button>
+				<button type="reset" class="button-bg cancel" (click)="handleClear()">Annuler</button>
+			</div>
+		</form>
+	</div>
+</div>
