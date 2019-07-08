@@ -10,7 +10,7 @@
 .header__connection{
 	position: absolute;
 	right: 0px;
-	top: -10px;
+	top: -25px;
 	display: flex;
 	align-items: center;
 }
