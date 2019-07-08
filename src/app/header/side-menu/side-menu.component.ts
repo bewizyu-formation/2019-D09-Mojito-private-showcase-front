@@ -6,38 +6,39 @@ const MENU_ICON_CLOSED = 'menu';
 const MENU_ICON_OPENED = 'close';
 
 @Component({
-	selector: 'app-side-menu',
-	templateUrl: './side-menu.component.html',
-	styleUrls: ['./side-menu.component.css']
+    selector: 'app-side-menu',
+    templateUrl: './side-menu.component.html',
+    styleUrls: ['./side-menu.component.css']
 })
 export class SideMenuComponent implements OnInit {
 
-	sideMenuIcon = MENU_ICON_CLOSED;
-	openSideMenu = false;
+    sideMenuIcon = MENU_ICON_CLOSED;
+    openSideMenu = false;
 
-	constructor(private router: Router) {}
+    constructor(private router: Router) {
+    }
 
-	/**
-	 * Handle clicks on the menu to open/close it and change its icon
-	 */
-	handleMenuButtonClick() {
-		this.sideMenuIcon = this.sideMenuIcon === MENU_ICON_CLOSED ? MENU_ICON_OPENED : MENU_ICON_CLOSED;
-		this.openSideMenu = !this.openSideMenu;
-	}
+    /**
+     * Handle clicks on the menu to open/close it and change its icon
+     */
+    handleMenuButtonClick() {
+        this.sideMenuIcon = this.sideMenuIcon === MENU_ICON_CLOSED ? MENU_ICON_OPENED : MENU_ICON_CLOSED;
+        this.openSideMenu = !this.openSideMenu;
+    }
 
-	navigateToIndex() {
-		this.router.navigate([PATH_INDEX]);
-	}
+    navigateToIndex() {
+        this.router.navigate([PATH_INDEX]);
+    }
 
-	navigateToEvents() {
-		this.router.navigate([PATH_EVENTS]);
-	}
+    navigateToEvents() {
+        this.router.navigate([PATH_EVENTS]);
+    }
 
-	navigateToContact() {
-		this.router.navigate([PATH_CONTACT]);
-	}
+    navigateToContact() {
+        this.router.navigate([PATH_CONTACT]);
+    }
 
-	ngOnInit() {
-	}
+    ngOnInit() {
+    }
 
 }
