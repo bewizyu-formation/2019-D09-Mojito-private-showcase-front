@@ -98,15 +98,15 @@ export class SignInComponent implements OnInit {
 
       this.user = new User(userObj['identifiant'], userObj['email'], userObj['city']);
 
-      if (!this.isArtist){
-          //call user inscription
+      if (!this.isArtist) {
+          // call user inscription
           console.log('inscription user');
 
       } else {
 
           console.log('inscription artiste');
 
-          //call artist inscription
+          // call artist inscription
       }
       console.log(this.user);
 
