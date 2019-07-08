@@ -26,7 +26,7 @@ export class SignInComponent implements OnInit {
     'Lyon Rhône',
     'Marseille Bouches Rhône',
     'Rennes, Ille-et-Vilaine'
-  ];
+  ]
 
   isArtist = false;
 
@@ -34,6 +34,7 @@ export class SignInComponent implements OnInit {
 
 
   constructor(private fb: FormBuilder, private router: Router) {
+
       this.idUserCtrl = this.fb.control('', [Validators.required]);
       this.passwordCtrl = this.fb.control('', [Validators.required]);
       this.passwordConfirmCtrl = this.fb.control('', [Validators.required]);
