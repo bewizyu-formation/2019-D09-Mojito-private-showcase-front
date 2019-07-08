@@ -10,13 +10,12 @@ describe('SignInComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SignInComponent ],
-      imports: [
+      imports:[
         FormsModule,
         ReactiveFormsModule,
-        RouterTestingModule
+        RouterTestingModule.withRoutes([])
       ],
-      providers: [  ]
+      declarations: [ SignInComponent]
     })
     .compileComponents();
   }));

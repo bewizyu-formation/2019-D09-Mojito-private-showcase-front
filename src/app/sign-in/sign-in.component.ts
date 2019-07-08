@@ -2,7 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
 import {User} from '../user/user';
 import { Router } from '@angular/router';
+<<<<<<< HEAD
 import {PATH_HOME, PATH_SIGN_IN} from '../app.constantes';
+=======
+import { PATH_SIGN_IN } from '../app.constantes';
+import { confirmSimilarValidator } from '../validators/confirmCheckValidator';
+>>>>>>> 6 inscription artist-
 
 @Component({
   selector: 'app-sign-in',
@@ -17,10 +22,16 @@ export class SignInComponent implements OnInit {
   emailCtrl: FormControl;
   citiesCtrl: FormControl;
 <<<<<<< HEAD
+<<<<<<< HEAD
   isArtistCtrl: FormControl;
 =======
 >>>>>>> 3_US002_form signin lint
+=======
+  artistName: FormControl;
+  description: FormControl;
+>>>>>>> 6 inscription artist-
   formInscription: FormGroup;
+
 
   user: User;
   cities: string[] = [
@@ -42,8 +53,9 @@ export class SignInComponent implements OnInit {
 
       this.idUserCtrl = this.fb.control(' ', [ Validators.required ]);
       this.passwordCtrl = this.fb.control(' ', [ Validators.required]);
-      this.passwordConfirmCtrl = this.fb.control('', [Validators.required]);
+      this.passwordConfirmCtrl = this.fb.control('', [Validators.required,confirmSimilarValidator(this.passwordCtrl)]);
       this.emailCtrl = this.fb.control('', [Validators.required, Validators.email]);
+<<<<<<< HEAD
 >>>>>>> 3_US002_form signin lint
 
       this.idUserCtrl = this.fb.control('', [Validators.required]);
@@ -52,8 +64,13 @@ export class SignInComponent implements OnInit {
       this.emailCtrl = this.fb.control('', [Validators.required, Validators.email]);
       this.isArtistCtrl = this.fb.control(false);
       this.citiesCtrl = this.fb.control('', [Validators.required]);
+=======
+      this.artistName = this.fb.control('',[Validators.required]);
+      this.description = this.fb.control('',[Validators.required]);
+>>>>>>> 6 inscription artist-
       this.formInscription = this.fb.group(
         {
+          artistName : this.artistName,
           identifiant : this.idUserCtrl,
           password: this.passwordCtrl,
           passwordConfirm: this.passwordConfirmCtrl,
@@ -95,8 +112,8 @@ export class SignInComponent implements OnInit {
     }
   }
 
+  isRegisteringArtist(){
+    return this.isArtist;
+  }
 
 }
-
-
-

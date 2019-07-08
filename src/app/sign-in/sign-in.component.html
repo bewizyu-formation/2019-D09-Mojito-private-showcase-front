@@ -16,10 +16,17 @@
           </div>
         </div>
         <div class="bounds">
+<<<<<<< HEAD
               <input class="Text_Input" type="password" placeholder="Confirmez le mot de passe"
               formControlName="passwordConfirm" />
 
               <div *ngIf="formInscription.get('passwordConfirm').dirty && formInscription.get('passwordConfirm').hasError('required')">
+=======
+              <input class="Text_Input" type="password" placeholder="Confirmez le mot de passe" 
+              formControlName="passwordConfirm" />     
+      
+              <div *ngIf="formInscription.get('passwordConfirm').dirty && formInscription.get('passwordConfirm').hasError('confirmSimilar')">
+>>>>>>> 6 inscription artist-
                 mot de passe de confirmation requis
               </div>
         </div>
@@ -44,6 +51,7 @@
           <div class="Hint-text" > Êtes vous un artiste proposant des prestations privées ? </div>
         </div>
       </div>
+<<<<<<< HEAD
 
       <div class="bounds">
             <input class="Text_Input" type="name" placeholder="Nom d'artiste"
@@ -60,6 +68,33 @@
       </div>
 
 
+=======
+      
+      <div *ngIf="isRegisteringArtist()" class="">
+        <div class="bounds">
+              <input class="Text_Input" type="text" placeholder="Nom d'artiste" 
+              formControlName="artistName" />    
+              <div *ngIf="formInscription.get('artistName').dirty && formInscription.get('artistName').hasError('required')">
+                  <span>Nom d'artiste requis</span>
+              </div>
+        </div>
+        
+        <div class="boundDescription">
+          <label class="Hint-text-small">Description</label>
+  
+            <textarea name="description"
+             class="DescriptionTextArea"
+             formControlName="description"
+             placeholder="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam gravida venenatis accumsan. In mi massa tempus"
+             ></textarea>
+        </div>
+      </div>
+    
+   
+      
+  
+  
+>>>>>>> 6 inscription artist-
       <div class="bounds submit">
         <button type="reset" class="button-bg cancel" (click)="goBack()">Annuler</button>
         <button type="submit" class="button-bg check" [disabled]="formInscription.invalid">Envoyer</button>
