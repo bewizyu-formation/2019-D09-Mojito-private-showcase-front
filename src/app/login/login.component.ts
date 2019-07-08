@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {PATH_HOME, PATH_INDEX} from '../app.constantes';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import {UserService} from '../user/user.service';
 
 @Component({
     selector: 'app-login',
@@ -13,9 +14,9 @@ export class LoginComponent implements OnInit {
     passwordCtrl: FormControl;
     loginForm: FormGroup;
 
-    constructor(fb: FormBuilder, private router: Router) {
+    constructor(fb: FormBuilder, private router: Router, private userService: UserService) {
         this.loginCtrl = fb.control('', [Validators.required]);
-        this.passwordCtrl = fb.control('', [Validators.required, Validators.pattern('^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{8,}$')]);
+        this.passwordCtrl = fb.control(''/* TODO, [Validators.required, Validators.pattern('^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{8,}$')] */);
         this.loginForm = fb.group({
             login: this.loginCtrl,
             password: this.passwordCtrl
@@ -30,13 +31,25 @@ export class LoginComponent implements OnInit {
     }
 
     handleSubmit() {
-        if (this.checkLogin(this.loginForm.value.login, this.loginForm.value.password)) {
-            this.createSession();
-            this.router.navigate([PATH_HOME]);
-        } else {
-
-            console.log(this.loginForm.value);
-        }
+        this.checkLogin(this.loginForm.value.login, this.loginForm.value.password)
+            .then(() => {
+                return this.userService.getArtistByUsername(this.loginForm.value.login);
+            }).then(httpResponse => {
+                if (httpResponse !== null) {
+                    console.log('No answer in artist');
+                    // TODO getUserByName()
+                } else {
+                    console.log('get artist by name', httpResponse);
+                    // TODO setCurrentUser()
+                }
+                return;
+            }).then(() => {
+                this.router.navigate([PATH_HOME]);
+                return;
+            }).catch(() => {
+                console.log('ERROR handling submit');
+                return null;
+            });
     }
 
     createSession() {
@@ -44,9 +57,22 @@ export class LoginComponent implements OnInit {
         // token JWT
     }
 
-    // to think : switch this function to make a api call in bdd
+    /**
+     * If the user exists returns the token, null otherwise
+     */
     checkLogin(login: string, password: string) {
+        return this.userService
+            .login(login, password)
+            .then((token: string) => {
+                // Gestion du token
+                console.log('token : ', token);
+                return token;
+            }).then(() => {
 
-        return true;
+                }
+            ).catch(err => {
+                console.log('ERROR when logging in : ', err);
+                return null;
+            });
     }
 }

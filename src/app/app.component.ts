@@ -22,7 +22,10 @@ export class AppComponent {
         this.userService
             .login('user', 'user')
             .then(
-                (token: string) => this.token = token,
+                (token: string) => {
+                    this.token = token;
+                    console.log('token : ', this.token);
+                }
             );
     }
 
