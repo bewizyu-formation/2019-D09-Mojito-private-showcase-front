@@ -24,7 +24,6 @@ import { SideMenuComponent } from './side-menu/side-menu.component';
 import { OptionsComponent } from './options/options.component';
 import {RouterModule} from '@angular/router';
 import {ROUTES} from './app.routes';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 @NgModule({
 	declarations: [
 	AppComponent,
