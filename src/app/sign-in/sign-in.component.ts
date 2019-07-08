@@ -16,33 +16,36 @@ export class SignInComponent implements OnInit {
   passwordConfirmCtrl: FormControl;
   emailCtrl: FormControl;
   citiesCtrl: FormControl;
+  isArtistCtrl: FormControl;
   formInscription: FormGroup;
 
   user: User;
-
   cities: string[] = [
     'Lyon Rhône',
     'Marseille Bouches Rhône',
     'Rennes, Ille-et-Vilaine'
-  ]
+  ];
 
   isArtist = false;
 
-  city: string = this.cities[0];
+  city = 'Lyon Rhône';
+
   constructor(private fb: FormBuilder, private router: Router) {
 
       this.idUserCtrl = this.fb.control('', [Validators.required]);
       this.passwordCtrl = this.fb.control('', [Validators.required]);
       this.passwordConfirmCtrl = this.fb.control('', [Validators.required]);
       this.emailCtrl = this.fb.control('', [Validators.required, Validators.email]);
-
+      this.isArtistCtrl = this.fb.control(false);
+      this.citiesCtrl = this.fb.control('', [Validators.required]);
       this.formInscription = this.fb.group(
         {
           identifiant : this.idUserCtrl,
           password: this.passwordCtrl,
           passwordConfirm: this.passwordConfirmCtrl,
           email: this.emailCtrl,
-          city: this.citiesCtrl
+          city: this.citiesCtrl,
+          isArtist: this.isArtistCtrl
         }
       );
 
@@ -51,6 +54,9 @@ export class SignInComponent implements OnInit {
   ngOnInit() {
   }
 
+  handleClear() {
+    this.formInscription.reset();
+  }
   handleSubmit() {
     if (this.formInscription.valid) {
       console.log('form submitted');

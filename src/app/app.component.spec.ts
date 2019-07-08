@@ -3,6 +3,7 @@ import {AppComponent} from './app.component';
 import {HttpClientModule} from '@angular/common/http';
 import {APP_CONFIG} from './app.config';
 import {environment} from '../environments/environment';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
@@ -12,6 +13,7 @@ describe('AppComponent', () => {
       ],
       imports: [
         HttpClientModule,
+        RouterTestingModule
       ],
       providers: [
         {provide: APP_CONFIG, useValue: environment},
