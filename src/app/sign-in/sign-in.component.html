@@ -11,10 +11,18 @@
           </div>
           <div class="bounds">
               <input class="Text_Input" type="password" formControlName="password" placeholder="Mot de passe"/>  
-          <div *ngIf="formInscription.get('password').dirty && formInscription.get('password').hasError('required')">
-                      mot de passe requis
+              <div *ngIf="formInscription.get('password').dirty && formInscription.get('password').hasError('required')">
+                          mot de passe requis
+              </div>
+
+              <div *ngIf="formInscription.get('password').errors?.minlength && formInscription.get('password').touched ">
+                      le mot de passe doit avoir 8 caractères minimum
+              </div>
+
+              <div *ngIf="formInscription.get('password').errors?.pattern && formInscription.get('password').touched ">
+                      le mot de passe doit avoir une majuscule et un chiffre
+              </div>
           </div>
-        </div>  
         <div class="bounds">
               <input class="Text_Input" type="password" placeholder="Confirmez le mot de passe" 
               formControlName="passwordConfirm" />
