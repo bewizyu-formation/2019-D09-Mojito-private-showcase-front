@@ -30,6 +30,7 @@ import {ClickOutsideModule} from 'ng-click-outside';
 import {BackButtonComponent} from './header/back-button/back-button.component';
 import {ConnectionButtonsComponent} from './header/connection-buttons/connection-buttons.component';
 
+
 @NgModule({
     declarations: [
         AppComponent,
