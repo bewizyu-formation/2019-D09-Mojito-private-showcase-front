@@ -68,17 +68,16 @@ export class SignInComponent implements OnInit {
        };
   }
 
-  goBack() {
-        this.router.navigate([PATH_HOME]);
-  }
-
+ 
   ngOnInit() {
   }
+
 
 
   goBack() {
     this.router.navigate([PATH_HOME]);
   }
+
 
   handleSubmit() {
 
