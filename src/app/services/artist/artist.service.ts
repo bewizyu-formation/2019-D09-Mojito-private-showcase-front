@@ -5,21 +5,25 @@ import {ArtistRepository} from './artist-repository';
 
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root'
 })
 export class ArtistService {
 
-  constructor(private artistRepository: ArtistRepository, private auth: AuthentificationService) { }
+    constructor(private artistRepository: ArtistRepository, private auth: AuthentificationService) {
+    }
 
     /**
      * Get user by username
      */
     getArtistByUsername(username: string) {
-        return new Promise( resolve => {
+        return new Promise((resolve, reject) => {
             this.artistRepository.getArtistByUsername(username, this.auth.token)
-                .subscribe( (response: HttpResponse<any>) => {
-                    resolve(response.body);
-                });
+                .subscribe((response: HttpResponse<any>) => {
+                        resolve(response.body);
+                    },
+                    err => {
+                        reject(err);
+                    });
         });
     }
 }

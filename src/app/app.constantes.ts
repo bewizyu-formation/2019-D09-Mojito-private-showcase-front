@@ -9,3 +9,7 @@ export const PATH_CONTACT = 'contact';
 export const PATH_EVENTS = PATH_HOME + '/events';
 export const PATH_SETTINGS = 'settings';
 export const PATH_ERROR = '404';
+
+// Requetes
+export const HEADER_AUTHORIZATION = 'Authorization';
+
