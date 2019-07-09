@@ -26,31 +26,31 @@ import {ROUTES} from './app.routes';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    HomeComponent,
-    LoginComponent,
-    SignInComponent,
-    IndexComponent,
-    ArtistComponent,
-    EventsComponent,
-    SettingsComponent,
-    ContactComponent,
-    BookComponent,
-    ErrorComponent,
-    HeaderComponent,
-    SideMenuComponent,
-    OptionsComponent
+  AppComponent,
+  HomeComponent,
+  LoginComponent,
+  SignInComponent,
+  IndexComponent,
+  ArtistComponent,
+  EventsComponent,
+  SettingsComponent,
+  ContactComponent,
+  BookComponent,
+  ErrorComponent,
+  HeaderComponent,
+  SideMenuComponent,
+  OptionsComponent
   ],
   imports: [
-    BrowserModule,
-    HttpClientModule,
-    RouterModule.forRoot(ROUTES),
+  BrowserModule,
+  HttpClientModule,
+  RouterModule.forRoot(ROUTES),
   ],
   providers: [
-    {provide: APP_CONFIG, useValue: environment},
-    {provide : HTTP_INTERCEPTORS, useClass : CommonHeadersInterceptorService, multi: true},
-    {provide : HTTP_INTERCEPTORS, useClass : TokenInterceptorService, multi: true},
-    {provide : HTTP_INTERCEPTORS, useClass : ErrorInterceptorService, multi: true},
+  {provide: APP_CONFIG, useValue: environment},
+  {provide : HTTP_INTERCEPTORS, useClass : CommonHeadersInterceptorService, multi: true},
+  {provide : HTTP_INTERCEPTORS, useClass : TokenInterceptorService, multi: true},
+  {provide : HTTP_INTERCEPTORS, useClass : ErrorInterceptorService, multi: true},
   ],
   bootstrap: [AppComponent]
 })
