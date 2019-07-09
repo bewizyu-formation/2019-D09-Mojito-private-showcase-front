@@ -10,7 +10,7 @@ describe('SignInComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports:[
+      imports: [
         FormsModule,
         ReactiveFormsModule,
         RouterTestingModule.withRoutes([])

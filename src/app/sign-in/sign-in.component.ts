@@ -41,23 +41,23 @@ export class SignInComponent implements OnInit {
       this.artistCheck = this.fb.control('');
       this.idUserCtrl = this.fb.control('', [ Validators.required ]);
       this.passwordCtrl = this.fb.control('', [ Validators.required]);
-      this.passwordConfirmCtrl = this.fb.control('', [Validators.required,confirmSimilarValidator(this.passwordCtrl)]);
+      this.passwordConfirmCtrl = this.fb.control('', [Validators.required, confirmSimilarValidator(this.passwordCtrl)]);
       this.emailCtrl = this.fb.control('', [Validators.required, Validators.email]);
-      this.artistName = this.fb.control('',[]);
-      this.description = this.fb.control('',[]);
+      this.artistName = this.fb.control('', []);
+      this.description = this.fb.control('', []);
       this.formInscription = this.fb.group(
         {
-          artistCheck:this.artistCheck,
+          artistCheck: this.artistCheck,
           artistName : this.artistName,
           identifiant : this.idUserCtrl,
           password: this.passwordCtrl,
-          description:this.description,
+          description: this.description,
           passwordConfirm: this.passwordConfirmCtrl,
           email: this.emailCtrl,
           city: this.citiesCtrl
         },
-        {validator : [conditionallyRequiredValidator(this.artistName,(contoler:AbstractControl) => contoler.value,this.artistCheck),
-        conditionallyRequiredValidator(this.description,(contoler:AbstractControl) => contoler.value,this.artistCheck)]}
+        {validator : [conditionallyRequiredValidator(this.artistName, (contoler: AbstractControl) => contoler.value, this.artistCheck),
+        conditionallyRequiredValidator(this.description, (contoler: AbstractControl) => contoler.value, this.artistCheck)]}
       );
    }
 
@@ -89,7 +89,7 @@ export class SignInComponent implements OnInit {
     }
   }
 
-  isRegisteringArtist(){
+  isRegisteringArtist() {
     return this.isArtist;
   }
 

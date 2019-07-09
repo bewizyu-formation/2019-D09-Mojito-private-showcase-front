@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import { Observable } from 'rxjs';
-import { map,filter,delay } from 'rxjs/operators';
+import { map, filter, delay } from 'rxjs/operators';
 
 
 @Injectable()
@@ -15,6 +15,6 @@ export class ValidatorService {
         map(res => res.json()),
         map(users => users.filter(user => user.username === login)),
         map(users => !users.length)
-      )
+      );
   }
 }
