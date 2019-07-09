@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 import {HelloRepository} from './hello/hello.repository';
-import {UserService} from './user/user.service';
+import {UserService} from './services/user/user.service';
+import {AuthentificationService} from "./services/authentification/authentification.service";
 
 
 @Component({
@@ -10,38 +11,11 @@ import {UserService} from './user/user.service';
 })
 export class AppComponent {
     title = 'private-showcase';
-    token: string;
 
     selecetdFile: File;
     imagePreview: string;
 
-    constructor(private userService: UserService, private hello: HelloRepository) {
-    }
-
-    handleSampleLogin() {
-        this.userService
-            .login('user', 'user')
-            .then(
-                (token: string) => {
-                    this.token = token;
-                    console.log('token : ', this.token);
-                }
-            );
-    }
-
-    handleCheckUserRole() {
-        this.hello.testApiWithUserRole()
-            .subscribe(
-                response => console.log('Check USER ROLE : ', response.message),
-            );
-    }
-
-    handleCheckAdminRole() {
-        this.hello.testApiWithAdminRole()
-            .subscribe(
-                response => console.log('Check ADMIN ROLE : ', response.message),
-                error => console.log('ERROR ', error)
-            );
+    constructor(private hello: HelloRepository) {
     }
 
     onFileUpload(event) {
