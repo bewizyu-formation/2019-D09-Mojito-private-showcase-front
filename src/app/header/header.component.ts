@@ -93,7 +93,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
     }
 
     /**
-     * Indicates if connection buttons are displayed or not are displayed or not
+     * Indicates if authentification buttons are displayed or not are displayed or not
      */
     isConnectionButtonDisplayed(path: string) {
         let result: boolean;
