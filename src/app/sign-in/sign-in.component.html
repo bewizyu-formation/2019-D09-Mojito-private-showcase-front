@@ -16,23 +16,10 @@
           </div>
         </div>
         <div class="bounds">
-<<<<<<< HEAD
-<<<<<<< HEAD
               <input class="Text_Input" type="password" placeholder="Confirmez le mot de passe"
               formControlName="passwordConfirm" />
 
               <div *ngIf="formInscription.get('passwordConfirm').dirty && formInscription.get('passwordConfirm').hasError('required')">
-=======
-              <input class="Text_Input" type="password" placeholder="Confirmez le mot de passe" 
-              formControlName="passwordConfirm" />     
-      
-=======
-              <input class="Text_Input" type="password" placeholder="Confirmez le mot de passe"
-              formControlName="passwordConfirm" />
-
->>>>>>> 6 artist inscription form- ajout de validateurs
-              <div *ngIf="formInscription.get('passwordConfirm').dirty && formInscription.get('passwordConfirm').hasError('confirmSimilar')">
->>>>>>> 6 inscription artist-
                 mot de passe de confirmation requis
               </div>
         </div>
@@ -52,38 +39,12 @@
 
 
       <div class="box-artist">
-<<<<<<< HEAD
         <input type="checkbox" id="checkbox-1" [(ngModel)]="isArtist" [ngModelOptions] = "{standalone: true}" />
-=======
-        <input type="checkbox" id="checkbox-1"  [(ngModel)]="isArtist" formControlName="artistCheck"/>
->>>>>>> 6 artist inscription form- ajout de validateurs
         <div class="label-checkbox">
           <div class="Hint-text" > Êtes vous un artiste proposant des prestations privées ? </div>
         </div>
       </div>
-<<<<<<< HEAD
-<<<<<<< HEAD
 
-      <div class="bounds">
-            <input class="Text_Input" type="name" placeholder="Nom d'artiste"
-            formControlName="passwordConfirm" />
-      </div>
-
-      <div class="boundDescription">
-        <label class="Hint-text-small">Description</label>
-
-          <textarea name="description"
-           class="DescriptionTextArea"
-           placeholder="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam gravida venenatis accumsan. In mi massa tempus"
-           ></textarea>
-      </div>
-
-
-=======
-      
-=======
-
->>>>>>> 6 artist inscription form- ajout de validateurs
       <div *ngIf="isRegisteringArtist()" class="">
         <div class="bounds">
               <input class="Text_Input" type="text" placeholder="Nom d'artiste"
@@ -103,24 +64,14 @@
              ></textarea>
         </div>
       </div>
-<<<<<<< HEAD
-    
-   
-      
-  
-  
->>>>>>> 6 inscription artist-
+
+
+
+
+
       <div class="bounds submit">
         <button type="reset" class="button-bg cancel" (click)="goBack()">Annuler</button>
         <button type="submit" class="button-bg check" [disabled]="formInscription.invalid">Envoyer</button>
-=======
-
-
-
-      <div class="bounds submit">
-        <button type="reset" class="button-bg cancel" (click)="handleClear()">Annuler</button>
-        <button type="submit" [ngClass]="{'button-bg': true, 'check':!formInscription.invalid}" [disabled]="formInscription.invalid">Envoyer</button>
->>>>>>> 6 artist inscription form- ajout de validateurs
       </div>
          </form>
     </div>
