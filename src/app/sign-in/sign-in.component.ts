@@ -85,7 +85,7 @@ export class SignInComponent implements OnInit {
   goBack() {
         this.router.navigate([PATH_HOME]);
   }
-  
+
   handleSubmit() {
     if (this.formInscription.valid) {
       console.log('form submitted');
