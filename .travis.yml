@@ -13,6 +13,7 @@ addons:
       secure: $SONAR_CLOUD_TOKEN
     branches:
     - master
+    - develop
 
 language: node_js
 node_js:
@@ -21,6 +22,7 @@ node_js:
 branches:
   only:
   - master
+  - develop
 
 install:
   - npm install
