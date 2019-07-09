@@ -6,6 +6,8 @@ import { PATH_SIGN_IN, PATH_HOME } from '../app.constantes';
 import { confirmSimilarValidator } from '../validators/confirmCheckValidator';
 import { HttpClient } from 'selenium-webdriver/http';
 import { conditionallyRequiredValidator } from '../validators/conditionallyRequired';
+import { ValidatorService } from '../validators/validatorService';
+import { ValidateLoginNotTaken } from '../validators/dbQueryValidator';
 
 @Component({
   selector: 'app-sign-in',
@@ -37,15 +39,17 @@ export class SignInComponent implements OnInit {
 
   city: string = this.cities[0];
 
-  constructor(private fb: FormBuilder, private router: Router) {
+  constructor(private fb: FormBuilder, private router: Router, private validatorService: ValidatorService) {
       this.artistCheck = this.fb.control('');
-      this.idUserCtrl = this.fb.control('', [Validators.required]);
+      this.idUserCtrl = this.fb.control('', [Validators.required],ValidateLoginNotTaken.createValidator(this.validatorService,"").bind(this));
       this.passwordCtrl = this.fb.control('', [Validators.required,
           Validators.pattern(/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d).*$/)]);
       this.passwordConfirmCtrl = this.fb.control('', [Validators.required]);
       this.emailCtrl = this.fb.control('', [Validators.required, Validators.email]);
       this.artistName = this.fb.control('', []);
       this.description = this.fb.control('', []);
+
+
       this.formInscription = this.fb.group(
         {
           artistCheck: this.artistCheck,
@@ -59,7 +63,8 @@ export class SignInComponent implements OnInit {
         },
         {validator : [conditionallyRequiredValidator(this.artistName, (contoler: AbstractControl) => contoler.value, this.artistCheck),
         this.matchingPasswords('password', 'passwordConfirm'),
-        conditionallyRequiredValidator(this.description, (contoler: AbstractControl) => contoler.value, this.artistCheck)]}
+        conditionallyRequiredValidator(this.description, (contoler: AbstractControl) => contoler.value, this.artistCheck)]
+        }
       );
    }
 
