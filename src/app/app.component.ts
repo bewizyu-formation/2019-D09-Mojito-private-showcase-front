@@ -1,7 +1,5 @@
 import {Component} from '@angular/core';
 import {HelloRepository} from './hello/hello.repository';
-import {UserService} from './services/user/user.service';
-import {AuthentificationService} from "./services/authentification/authentification.service";
 
 
 @Component({
