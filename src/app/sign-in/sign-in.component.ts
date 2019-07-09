@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
+import { FormControl, FormGroup, FormBuilder, Validators, ReactiveFormsModule, AbstractControl } from '@angular/forms';
 import {User} from '../user/user';
 import { Router } from '@angular/router';
-import {PATH_HOME, PATH_SIGN_IN} from '../app.constantes';
+import { PATH_SIGN_IN, PATH_HOME } from '../app.constantes';
+import { confirmSimilarValidator } from '../validators/confirmCheckValidator';
+import { HttpClient } from 'selenium-webdriver/http';
+import { conditionallyRequiredValidator } from '../validators/conditionallyRequired';
 
 @Component({
   selector: 'app-sign-in',
@@ -16,10 +19,14 @@ export class SignInComponent implements OnInit {
   passwordConfirmCtrl: FormControl;
   emailCtrl: FormControl;
   citiesCtrl: FormControl;
-  isArtistCtrl: FormControl;
+  artistCheck: FormControl;
+  artistName: FormControl;
+  description: FormControl;
   formInscription: FormGroup;
 
+
   user: User;
+
   cities: string[] = [
     'Lyon Rhône',
     'Marseille Bouches Rhône',
@@ -28,31 +35,39 @@ export class SignInComponent implements OnInit {
 
   isArtist = false;
 
-  city = 'Lyon Rhône';
+  city: string = this.cities[0];
 
   constructor(private fb: FormBuilder, private router: Router) {
-
+      this.artistCheck = this.fb.control('');
       this.idUserCtrl = this.fb.control('', [Validators.required]);
       this.passwordCtrl = this.fb.control('', [Validators.required,
           Validators.pattern(/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d).*$/)]);
       this.passwordConfirmCtrl = this.fb.control('', [Validators.required]);
       this.emailCtrl = this.fb.control('', [Validators.required, Validators.email]);
-      this.isArtistCtrl = this.fb.control(false);
-      this.citiesCtrl = this.fb.control('', [Validators.required]);
+      this.artistName = this.fb.control('', []);
+      this.description = this.fb.control('', []);
       this.formInscription = this.fb.group(
         {
+          artistCheck: this.artistCheck,
+          artistName : this.artistName,
           identifiant : this.idUserCtrl,
           password: this.passwordCtrl,
+          description: this.description,
           passwordConfirm: this.passwordConfirmCtrl,
           email: this.emailCtrl,
-          city: this.citiesCtrl,
-          isArtist: this.isArtistCtrl
+          city: this.citiesCtrl
         },
-          {validator: this.matchingPasswords('password', 'passwordConfirm')}
+        {validator : [conditionallyRequiredValidator(this.artistName, (contoler: AbstractControl) => contoler.value, this.artistCheck),
+        this.matchingPasswords('password', 'passwordConfirm'),
+        conditionallyRequiredValidator(this.description, (contoler: AbstractControl) => contoler.value, this.artistCheck)]}
       );
    }
 
-   matchingPasswords(password: string, passwordConfirmation: string) {
+
+  ngOnInit() {
+  }
+
+  matchingPasswords(password: string, passwordConfirmation: string) {
        return (group: FormGroup) => {
            const passwordInput = group.controls[password],
                passwordConfirmationInput = group.controls[passwordConfirmation];
@@ -70,10 +85,6 @@ export class SignInComponent implements OnInit {
   goBack() {
         this.router.navigate([PATH_HOME]);
   }
-
-  ngOnInit() {
-  }
-
 
   handleSubmit() {
     if (this.formInscription.valid) {
@@ -108,7 +119,8 @@ export class SignInComponent implements OnInit {
       this.router.navigate([PATH_SIGN_IN]);
     }
   }
+
+  isRegisteringArtist() {
+    return this.isArtist;
+  }
 }
-
-
-
