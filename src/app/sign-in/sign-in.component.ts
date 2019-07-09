@@ -88,7 +88,7 @@ export class SignInComponent implements OnInit {
        };
   }
 
-  handleClear() {
+  goBack() {
         this.router.navigate([PATH_INDEX]);
   }
 
