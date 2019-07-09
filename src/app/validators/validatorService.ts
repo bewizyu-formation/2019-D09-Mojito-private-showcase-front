@@ -9,11 +9,10 @@ export class ValidatorService {
   constructor(private http: HttpClient) {}
 
   checkLoginNotTaken(login: string) {
-    console.log("checking login")
       return this.http.get('http://localhost:8080/common/').pipe(
         delay(1000),
-        map(res => {console.log(res);return res}),
-        map((users : any[]) => users.filter(user => user.username === login)),
+        map(res => res),
+        map((users: any[]) => users.filter(user => user.username === login)),
         map(users => !users.length)
       );
   }

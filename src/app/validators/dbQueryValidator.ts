@@ -4,10 +4,8 @@ import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 
  export class ValidateLoginNotTaken {
-   static createValidator(validatorService: ValidatorService, controllerName: string) : AsyncValidatorFn {
-     console.log("creating validator")
+   static createValidator(validatorService: ValidatorService, controllerName: string): AsyncValidatorFn {
      return (control: AbstractControl): Observable<ValidationErrors | null> => {
-       console.log(control)
        return validatorService.checkLoginNotTaken(control.value).pipe(map(res => {
          return res ? null : { loginTaken: true };
        }));
