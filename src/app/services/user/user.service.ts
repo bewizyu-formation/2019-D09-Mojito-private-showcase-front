@@ -15,10 +15,12 @@ export class UserService {
      * Get user by username
      */
     getUserByUsername(username: string) {
-        return new Promise( resolve => {
+        return new Promise( (resolve, reject) => {
             this.userRepository.getUserByUsername(username, this.auth.token)
                 .subscribe( (response: HttpResponse<any>) => {
                     resolve(response.body);
+                }, err => {
+                    reject(err);
                 });
         });
     }
