@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {PATH_HOME, PATH_INDEX} from '../app.constantes';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import {AuthentificationService} from '../services/authentification/authentification.service';
 
 @Component({
     selector: 'app-login',
@@ -13,9 +14,12 @@ export class LoginComponent implements OnInit {
     passwordCtrl: FormControl;
     loginForm: FormGroup;
 
-    constructor(fb: FormBuilder, private router: Router) {
+    constructor(fb: FormBuilder, private router: Router, private authService: AuthentificationService) {
         this.loginCtrl = fb.control('', [Validators.required]);
-        this.passwordCtrl = fb.control('', [Validators.required, Validators.pattern('^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{8,}$')]);
+        this.passwordCtrl = fb.control('', [
+            Validators.required,
+            Validators.pattern('^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{8,}$')
+        ]);
         this.loginForm = fb.group({
             login: this.loginCtrl,
             password: this.passwordCtrl
@@ -30,23 +34,27 @@ export class LoginComponent implements OnInit {
     }
 
     handleSubmit() {
-        if (this.checkLogin(this.loginForm.value.login, this.loginForm.value.password)) {
-            this.createSession();
-            this.router.navigate([PATH_HOME]);
-        } else {
-
-            console.log(this.loginForm.value);
-        }
+        this.checkLogin(this.loginForm.value.login, this.loginForm.value.password)
+            .then(isConnected => {
+                if (isConnected) {
+                    console.log('connection success');
+                    console.log('token : ', this.authService.token);
+                    console.log('user : ', this.authService.username);
+                    this.router.navigate([PATH_HOME]);
+                } else {
+                    // TODO Not connected message
+                    console.log('Wrong Login');
+                }
+            }).catch(() => {
+                console.log('ERROR handling submit login infos');
+                return null;
+            });
     }
 
-    createSession() {
-        // how do we create a session of user?
-        // token JWT
-    }
-
-    // to think : switch this function to make a api call in bdd
+    /**
+     * Check if the user exists
+     */
     checkLogin(login: string, password: string) {
-
-        return true;
+        return this.authService.login(login, password);
     }
 }
