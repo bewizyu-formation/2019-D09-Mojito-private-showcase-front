@@ -16,7 +16,10 @@ export class SignInComponent implements OnInit {
   passwordConfirmCtrl: FormControl;
   emailCtrl: FormControl;
   citiesCtrl: FormControl;
+<<<<<<< HEAD
   isArtistCtrl: FormControl;
+=======
+>>>>>>> 3_US002_form signin lint
   formInscription: FormGroup;
 
   user: User;
@@ -28,9 +31,20 @@ export class SignInComponent implements OnInit {
 
   isArtist = false;
 
+<<<<<<< HEAD
   city = 'Lyon Rhône';
 
   constructor(private fb: FormBuilder, private router: Router) {
+=======
+  city: string = this.cities[0];
+
+  constructor(private fb: FormBuilder, private router: Router) {
+
+      this.idUserCtrl = this.fb.control(' ', [ Validators.required ]);
+      this.passwordCtrl = this.fb.control(' ', [ Validators.required]);
+      this.passwordConfirmCtrl = this.fb.control('', [Validators.required]);
+      this.emailCtrl = this.fb.control('', [Validators.required, Validators.email]);
+>>>>>>> 3_US002_form signin lint
 
       this.idUserCtrl = this.fb.control('', [Validators.required]);
       this.passwordCtrl = this.fb.control('', [Validators.required]);
