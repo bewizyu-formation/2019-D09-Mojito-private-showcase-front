@@ -74,9 +74,7 @@ export class SignInComponent implements OnInit {
   ngOnInit() {
   }
 
-  handleClear() {
-    this.formInscription.reset();
-  }
+
   handleSubmit() {
 
     if (this.formInscription.valid) {
