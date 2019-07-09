@@ -4,7 +4,7 @@
 <div class="wrapper fond">
 	<h2 class="title">Profil {{user}}</h2>
 	<div class="wrapper-form">
-		<form (ngSubmit)="handleSubmit()" formGroup="settingForm">
+		<form (ngSubmit)="handleSubmit()" [formGroup]="settingForm" >
 			<div class="bounds">
 				<input class="Text_Input" formControlName="password" type="password" placeholder="Ancien mot de passe" >
 			</div>
