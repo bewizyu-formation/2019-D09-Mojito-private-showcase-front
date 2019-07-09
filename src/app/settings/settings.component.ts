@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
 import {PATH_HOME, PATH_INDEX} from '../app.constantes';
-import {AbstractControl,ValidatorFn, FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import {AbstractControl, ValidatorFn, FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 
 @Component({
     selector: 'app-settings',
@@ -11,7 +11,7 @@ import {AbstractControl,ValidatorFn, FormBuilder, FormControl, FormGroup, Valida
 export class SettingsComponent implements OnInit {
 
     // TODO : define name according to the user session
-    user = "NOM DE L'UTILISATEUR";
+    user = 'NOM DE L\'UTILISATEUR';
     passwordCtrl: FormControl;
     newPasswordCtrl: FormControl;
     passwordConfirmationCtrl: FormControl;
@@ -34,7 +34,7 @@ export class SettingsComponent implements OnInit {
         {validator: this.matchingPasswords('newPassword', 'passwordConfirmation')}
         );
     }
-    
+
     matchingPasswords(newPassword: string, passwordConfirmation: string) {
         return (group: FormGroup) => {
             const passwordInput = group.controls[newPassword],
