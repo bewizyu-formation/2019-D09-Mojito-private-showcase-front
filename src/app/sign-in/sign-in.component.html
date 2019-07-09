@@ -1,3 +1,8 @@
+<div>
+    <img class="banniere"
+         src="../assets/banni-re@3x.jpg"
+         alt="showcase" />
+</div>
 <div class="wrapper fond">
   <h2 class="title">Formulaire d'inscription</h2>
   <div class="wrapper-form">
@@ -87,13 +92,9 @@
         </div>
       </div>
 
-
-
-
-
       <div class="bounds submit">
         <button type="reset" class="button-bg cancel" (click)="goBack()">Annuler</button>
-        <button type="submit" [ngClass]="{'button-bg': true,'check':formInscription.valid}" [disabled]="formInscription.invalid">Envoyer</button>
+        <button type="submit" [ngClass]="{'button-bg': true,'check':!formInscription.invalid}" [disabled]="formInscription.invalid">Envoyer</button>
       </div>
          </form>
     </div>
