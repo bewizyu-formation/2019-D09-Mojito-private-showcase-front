@@ -76,7 +76,6 @@ export class SignInComponent implements OnInit {
 
 
   handleSubmit() {
-
     if (this.formInscription.valid) {
       console.log('form submitted');
       console.log(this.formInscription.get('email'));
@@ -85,8 +84,6 @@ export class SignInComponent implements OnInit {
 
       Object.keys(this.formInscription.controls).forEach(field => {
         const control = this.formInscription.get(field);
-        console.log(control);
-        console.log(this.formInscription.validator);
         control.markAsTouched({ onlySelf: true });
 
         const value = control.value;
@@ -111,8 +108,6 @@ export class SignInComponent implements OnInit {
       this.router.navigate([PATH_SIGN_IN]);
     }
   }
-
-
 }
 
 
