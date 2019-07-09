@@ -39,7 +39,7 @@
 
 
       <div class="box-artist">
-        <input type="checkbox" id="checkbox-1" [(ngModel)]="isArtist" [ngModelOptions] = "{standalone: true}" />
+        <input type="checkbox" id="checkbox-1" [(ngModel)]="isArtist" formControlName="artistCheck" />
         <div class="label-checkbox">
           <div class="Hint-text" > Êtes vous un artiste proposant des prestations privées ? </div>
         </div>
@@ -71,7 +71,7 @@
 
       <div class="bounds submit">
         <button type="reset" class="button-bg cancel" (click)="goBack()">Annuler</button>
-        <button type="submit" class="button-bg check" [disabled]="formInscription.invalid">Envoyer</button>
+        <button type="submit" [ngClass]="{'button-bg': true,'check':!formInscription.invalid}" [disabled]="formInscription.invalid">Envoyer</button>
       </div>
          </form>
     </div>
