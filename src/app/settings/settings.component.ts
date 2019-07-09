@@ -44,7 +44,6 @@ export class SettingsComponent implements OnInit {
                 return passwordConfirmationInput.setErrors({notEquivalent: true});
             } else {
                 console.log('password confirmed');
-
                 return passwordConfirmationInput.setErrors(null);
             }
         };
