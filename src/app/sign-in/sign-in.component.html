@@ -85,13 +85,9 @@
         </div>
       </div>
 
-
-
-
-
       <div class="bounds submit">
-        <button type="reset" class="button-bg cancel" (click)="goBack()">Annuler</button>
         <button type="submit" [ngClass]="{'button-bg': true,'check':!formInscription.invalid}" [disabled]="formInscription.invalid">Envoyer</button>
+        <button type="reset" class="button-bg cancel" (click)="handleClear()">Annuler</button>
       </div>
          </form>
     </div>
