@@ -17,6 +17,7 @@
         </div>
         <div class="bounds">
 <<<<<<< HEAD
+<<<<<<< HEAD
               <input class="Text_Input" type="password" placeholder="Confirmez le mot de passe"
               formControlName="passwordConfirm" />
 
@@ -25,6 +26,11 @@
               <input class="Text_Input" type="password" placeholder="Confirmez le mot de passe" 
               formControlName="passwordConfirm" />     
       
+=======
+              <input class="Text_Input" type="password" placeholder="Confirmez le mot de passe"
+              formControlName="passwordConfirm" />
+
+>>>>>>> 6 artist inscription form- ajout de validateurs
               <div *ngIf="formInscription.get('passwordConfirm').dirty && formInscription.get('passwordConfirm').hasError('confirmSimilar')">
 >>>>>>> 6 inscription artist-
                 mot de passe de confirmation requis
@@ -46,11 +52,16 @@
 
 
       <div class="box-artist">
+<<<<<<< HEAD
         <input type="checkbox" id="checkbox-1" [(ngModel)]="isArtist" [ngModelOptions] = "{standalone: true}" />
+=======
+        <input type="checkbox" id="checkbox-1"  [(ngModel)]="isArtist" formControlName="artistCheck"/>
+>>>>>>> 6 artist inscription form- ajout de validateurs
         <div class="label-checkbox">
           <div class="Hint-text" > Êtes vous un artiste proposant des prestations privées ? </div>
         </div>
       </div>
+<<<<<<< HEAD
 <<<<<<< HEAD
 
       <div class="bounds">
@@ -70,18 +81,21 @@
 
 =======
       
+=======
+
+>>>>>>> 6 artist inscription form- ajout de validateurs
       <div *ngIf="isRegisteringArtist()" class="">
         <div class="bounds">
-              <input class="Text_Input" type="text" placeholder="Nom d'artiste" 
-              formControlName="artistName" />    
+              <input class="Text_Input" type="text" placeholder="Nom d'artiste"
+              formControlName="artistName" />
               <div *ngIf="formInscription.get('artistName').dirty && formInscription.get('artistName').hasError('required')">
                   <span>Nom d'artiste requis</span>
               </div>
         </div>
-        
+
         <div class="boundDescription">
           <label class="Hint-text-small">Description</label>
-  
+
             <textarea name="description"
              class="DescriptionTextArea"
              formControlName="description"
@@ -89,6 +103,7 @@
              ></textarea>
         </div>
       </div>
+<<<<<<< HEAD
     
    
       
@@ -98,6 +113,14 @@
       <div class="bounds submit">
         <button type="reset" class="button-bg cancel" (click)="goBack()">Annuler</button>
         <button type="submit" class="button-bg check" [disabled]="formInscription.invalid">Envoyer</button>
+=======
+
+
+
+      <div class="bounds submit">
+        <button type="reset" class="button-bg cancel" (click)="handleClear()">Annuler</button>
+        <button type="submit" [ngClass]="{'button-bg': true, 'check':!formInscription.invalid}" [disabled]="formInscription.invalid">Envoyer</button>
+>>>>>>> 6 artist inscription form- ajout de validateurs
       </div>
          </form>
     </div>
