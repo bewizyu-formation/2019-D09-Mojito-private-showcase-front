@@ -16,7 +16,10 @@ export class LoginComponent implements OnInit {
 
     constructor(fb: FormBuilder, private router: Router, private authService: AuthentificationService) {
         this.loginCtrl = fb.control('', [Validators.required]);
-        this.passwordCtrl = fb.control(''/* TODO, [Validators.required, Validators.pattern('^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{8,}$')] */);
+        this.passwordCtrl = fb.control('', [
+            Validators.required,
+            Validators.pattern('^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{8,}$')
+        ]);
         this.loginForm = fb.group({
             login: this.loginCtrl,
             password: this.passwordCtrl
