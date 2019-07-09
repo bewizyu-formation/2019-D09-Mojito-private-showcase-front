@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SettingsComponent } from './settings.component';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
-
+import { RouterTestingModule } from '@angular/router/testing';
 describe('SettingsComponent', () => {
   let component: SettingsComponent;
   let fixture: ComponentFixture<SettingsComponent>;
@@ -10,7 +10,7 @@ describe('SettingsComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ SettingsComponent ],
-      imports: [ReactiveFormsModule],
+      imports: [ReactiveFormsModule, RouterTestingModule],
       schemas: [NO_ERRORS_SCHEMA]
     })
     .compileComponents();
