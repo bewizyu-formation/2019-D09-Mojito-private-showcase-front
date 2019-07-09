@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {EnvironmentService} from '../environment.service';
+import {HEADER_AUTHORIZATION} from '../../app.constantes';
 
 const RESOURCES_COMMON_USER_BY_USERNAME = '/common/name/';
 
@@ -17,7 +18,7 @@ export class UserRepository {
      */
     getUserByUsername(username: string, token: string): Observable<any> {
         const headers = new HttpHeaders();
-        headers.set('header', token);
+        headers.set(HEADER_AUTHORIZATION, token);
         return this.http.get(
             `${this.env.getPrivateShowcaseApiConfig().uri}${RESOURCES_COMMON_USER_BY_USERNAME}${username}`,
             {headers}

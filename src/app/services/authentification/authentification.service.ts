@@ -1,8 +1,6 @@
 import {Injectable} from '@angular/core';
 import {HttpResponse} from '@angular/common/http';
 import {AuthentificationRepository} from './authentification-repository';
-import {UserRepository} from '../user/user.repository';
-import {ArtistRepository} from '../artist/artist-repository';
 
 @Injectable({
     providedIn: 'root'
@@ -12,13 +10,15 @@ export class AuthentificationService {
     /**
      * Authentification JWT Token
      */
-    public token: string;
+    public token: string = null;
 
-    constructor(
-        private authRepository: AuthentificationRepository,
-        private userRepository: UserRepository,
-        private artistRepository: ArtistRepository,
-        ) {}
+    /**
+     * Current user
+     */
+    public username = '';
+
+    constructor(private authRepository: AuthentificationRepository) {
+    }
 
     /**
      * Login the user and return a promise on whether it went well or not
@@ -31,24 +31,12 @@ export class AuthentificationService {
                 .login(username, password)
                 .subscribe((response: HttpResponse<any>) => {
                     this.token = response.headers.get('Authorization');
-                    resolve(this.token);
-                }, err => {
-                    reject(err);
+                    this.username = username;
+                    resolve(true);
+                }, () => {
+                    reject(false);
                 });
-        }).then(
-            // Check if its a user
-            () => this.userRepository.getUserByUsername(username, this.token)
-                .subscribe((response: HttpResponse<any>) => {
-                    return response.body;
-                })
-        ).then(
-            userResult => {
-                console.log('userResult : ', userResult);
-                return true;
-            }
-        ).catch(
-            () => false
-        );
+        });
     }
 
     /**
@@ -56,5 +44,13 @@ export class AuthentificationService {
      */
     disconnect() {
         this.token = null;
+        this.username = '';
+    }
+
+    /**
+     * Check if there is a connection
+     */
+    isConnected() {
+        return this.token !== null && this.username !== '';
     }
 }
