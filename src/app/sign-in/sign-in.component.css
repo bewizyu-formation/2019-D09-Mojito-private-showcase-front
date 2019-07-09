@@ -1,0 +1,170 @@
+.fond {
+    /* width: 48%; */
+    width: 682px;
+
+  height: auto; 
+    /*height: 554px;*/
+    border-radius: 14px;
+    background-color: #e7e6e6;
+    clear: both;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+  }
+
+.wrapper-form {
+    margin: auto;
+    position: relative;   
+    height: auto;
+    width: 61.5%;
+}
+
+.title {
+  margin-left: 230px;
+  margin-top: 28px;
+  width: 213px;
+  height: 28px;
+  font-family: Roboto;
+  font-size: 20px;
+  font-weight: 500;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.4;
+  letter-spacing: normal;
+  color: rgba(0, 0, 0, 0.54);
+}
+
+.formInscription{
+  width: 396px;
+}
+.bounds-line {
+  margin: auto;
+  position: relative;   
+  height: auto;
+  width: 61.5%;
+  height: 48px;
+  clear: both;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row-reverse;
+  padding-bottom: 12px;
+}
+.bounds {
+  width: 99%;
+  height: 48px;
+  clear: both;
+  margin: 0 auto;
+  margin-top: 15px;
+  display: flex;
+  flex-direction: column;
+}
+
+.bounds-smaller {
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  margin-top: 25px;
+}
+
+.bounds-smaller > input {
+  font-size: 12px;
+  margin-top: 15px;
+}
+
+.bounds.submit {
+  
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: reverse;
+  margin-top: 39px;
+  padding-bottom: 12px;
+  flex-direction: row-reverse;
+  margin-left: 18px;
+  justify-content: end;
+}
+
+.bounds.submit > button {
+  margin-left: 18px;
+}
+
+.check {
+  background-color: #17998c;
+}
+
+
+
+.cancel {
+  background-color:#4a4a4a;
+}
+
+.Hint-text {
+  font-family: Roboto;
+  font-size: 16px;    
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.5;
+  letter-spacing: normal;
+  color: rgba(0, 0, 0, 0.38);
+} 
+
+.Hint-text-small {
+  font-family: Roboto;
+  font-size: 12px;    
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  letter-spacing: normal;
+  color: rgba(0, 0, 0, 0.38);
+  margin-left:12px;
+} 
+
+.box-artist {
+	display: flex;
+	align-items: baseline;
+  margin-top: 33px;
+  padding-left: 5px;
+  flex-wrap: nowrap;
+  width: 115%;
+}
+
+.box-artist > input {
+  width: 6%;
+}
+
+.Text_Input {
+    height: 100%;
+    background: transparent;
+    border-top: none; 
+    border-left: none;
+    border-right: none;
+    -webkit-box-flex: 1;
+    margin-left: 10px;
+
+    font-family: Roboto;
+    font-size: 16px;    
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.5;
+    letter-spacing: normal;
+    color: rgba(0, 0, 0, 0.38);
+    border-bottom: solid 1px rgba(0, 0, 0, 0.12); 
+  }
+
+
+input[type='checkbox']{
+  /* width: 30px; */
+}
+
+
+.button-bg {
+  padding: 0;
+  border: none;
+  width: 93px;  
+  height: 36px;  
+  border-radius: 2px;  
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.24), 0 0 2px 0 rgba(0, 0, 0, 0.12);  
+  color:#fff;
+
+}
