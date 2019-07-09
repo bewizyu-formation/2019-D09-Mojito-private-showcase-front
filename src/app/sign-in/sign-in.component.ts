@@ -33,7 +33,8 @@ export class SignInComponent implements OnInit {
   constructor(private fb: FormBuilder, private router: Router) {
 
       this.idUserCtrl = this.fb.control('', [Validators.required]);
-      this.passwordCtrl = this.fb.control('', [Validators.required]);
+      this.passwordCtrl = this.fb.control('', [Validators.required,
+          Validators.pattern(/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d).*$/)]);
       this.passwordConfirmCtrl = this.fb.control('', [Validators.required]);
       this.emailCtrl = this.fb.control('', [Validators.required, Validators.email]);
       this.isArtistCtrl = this.fb.control(false);
@@ -46,17 +47,34 @@ export class SignInComponent implements OnInit {
           email: this.emailCtrl,
           city: this.citiesCtrl,
           isArtist: this.isArtistCtrl
-        }
+        },
+          {validator: this.matchingPasswords('password', 'passwordConfirm')}
       );
-
    }
+
+   matchingPasswords(password: string, passwordConfirmation: string) {
+       return (group: FormGroup) => {
+           const passwordInput = group.controls[password],
+               passwordConfirmationInput = group.controls[passwordConfirmation];
+           if (passwordInput.value !== passwordConfirmationInput.value) {
+               console.log('password not equals');
+               return passwordConfirmationInput.setErrors({notEquivalent: true});
+           } else {
+               console.log('password confirmed');
+
+               return passwordConfirmationInput.setErrors(null);
+           }
+       };
+  }
+
+  goBack() {
+        this.router.navigate([PATH_HOME]);
+  }
 
   ngOnInit() {
   }
 
-  goBack() {
-    this.router.navigate([PATH_HOME]);
-  }
+
   handleSubmit() {
     if (this.formInscription.valid) {
       console.log('form submitted');
@@ -74,14 +92,22 @@ export class SignInComponent implements OnInit {
 
       this.user = new User(userObj['identifiant'], userObj['email'], userObj['city']);
 
+      if (!this.isArtist) {
+          // call user inscription
+          console.log('inscription user');
+
+      } else {
+
+          console.log('inscription artiste');
+
+          // call artist inscription
+      }
       console.log(this.user);
 
     } else {
       this.router.navigate([PATH_SIGN_IN]);
     }
   }
-
-
 }
 
 
