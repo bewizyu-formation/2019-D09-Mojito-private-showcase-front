@@ -2,13 +2,15 @@
 
 export class User {
 
-        public identifiant: string;
+        public username: string;
         public email: string;
         public city: string;
+        public adress: string;
 
-    constructor(identifiant: string, email: string, city: string) {
-        this.identifiant = identifiant;
+    constructor(username: string, email: string, city: string, adress: string = "") {
+        this.username = username;
         this.email = email;
         this.city = city;
+        this.adress = adress;
     }
 }

@@ -6,17 +6,20 @@
 <div class="wrapper fond">
   <h2 class="title">Formulaire d'inscription</h2>
   <div class="wrapper-form">
-    <form class="formInscription" (ngSubmit) = "handleSubmit()" [formGroup]="formInscription">
+    <form class="formInscription" (ngSubmit) = "handleSubmit()" [formGroup]="formInscription" (change)="clearMessageGlobal()">
       <div class="bounds">
-          <input class="Text_Input" type="text" formControlName="identifiant" placeholder="Identifiant" />
+          <input class="Text_Input" type="text" formControlName="identifiant" placeholder="Identifiant"  (change)="clearMessageLogin()"/>
 
           <div *ngIf="formInscription.get('identifiant').dirty && formInscription.get('identifiant').hasError('required')">
               identifiant requis
           </div>
+          <div class="bounds message" *ngIf="messageLogin">
+              {{messageLogin}}
+          </div>
       </div>
       <div class="bounds">
 
-          <input class="Text_Input" type="password" formControlName="password" placeholder="Mot de passe"/>  
+          <input class="Text_Input" type="password" formControlName="password" placeholder="Mot de passe" (change)="clearMessagePassword"/>  
           <div *ngIf="formInscription.get('password').dirty && formInscription.get('password').hasError('required')">
                       mot de passe requis
           </div>
@@ -26,7 +29,10 @@
           </div>
 
           <div *ngIf="formInscription.get('password').errors?.pattern && formInscription.get('password').touched ">
-                  le mot de passe doit avoir une majuscule et un chiffre
+                  le mot de passe doit avoir au moins une majuscule et un chiffre
+          </div>
+          <div class="bounds error-msg" *ngIf="messagePassword">
+                  {{messagePassword}}
           </div>
       </div>
       <div class="bounds">
@@ -84,7 +90,9 @@
           ></textarea>
         </div>
       </div>
-
+      <div class="bounds error-msg" *ngIf="messageGlobal">
+              {{messageGlobal}}
+      </div>
       <div class="bounds submit">
         <button type="submit" [ngClass]="{'button-bg': true,'check':!formInscription.invalid}" [disabled]="formInscription.invalid">Envoyer</button>
         <button type="reset" class="button-bg cancel" (click)="handleClear()">Annuler</button>
