@@ -6,9 +6,9 @@
 <div class="wrapper fond">
 	<h2 class="title">Formulaire de connexion</h2>
 	<div class="wrapper-form">
-		<form (ngSubmit)="handleSubmit()" [formGroup]="loginForm">
+		<form (ngSubmit)="handleSubmit()" [formGroup]="loginForm" (change)="displayAuthentificationError=false;">
 			<div class="bounds">
-				<input class="Text_Input" formControlName="login" placeholder="Identifiant" >
+				<input class="Text_Input" formControlName="login" placeholder="Identifiant">
 
 			</div>
 			<div class="error-msg" *ngIf="loginForm.get('login').hasError('required') &&
@@ -17,12 +17,16 @@
 			</div>
 			<div class="bounds">
 				<input class="Text_Input" formControlName="password" type="password" placeholder="Password">
-
+				<div class="bounds message" *ngIf="loginForm.get('password').dirty && loginForm.get('password').hasError('require')">
+					Le mot de passe doit être rempli
+				</div>
                 <div *ngIf="loginForm.get('password').errors?.pattern && loginForm.get('password').touched "
                      class="error-msg">
                     Le mot de passe doit comporter au moins : 8 caractères minimum, une majuscule, une minuscule et un chiffre
                 </div>
-
+                <div class="bounds message password" *ngIf="displayAuthentificationError">
+                    Erreur d'authentification. Vérifiez l'identifiant et le mot de passe.
+                </div>
 			</div>
 
 			<div class="wrapper-submit">
