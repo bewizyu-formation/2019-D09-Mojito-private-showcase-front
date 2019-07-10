@@ -28,9 +28,9 @@ export class SignInComponent implements OnInit, OnChanges {
   formInscription: FormGroup;
 
   user: User;
-  messageLogin = "";
-  messagePassword = "";
-  messageGlobal = "";
+  messageLogin = '';
+  messagePassword = '';
+  messageGlobal = '';
 
   cities: string[] = [
   'Lyon Rhône',
@@ -42,7 +42,8 @@ export class SignInComponent implements OnInit, OnChanges {
 
   city = 'Lyon Rhône';
 
- constructor(private fb: FormBuilder, private router: Router, private validatorService: ValidatorService, private userService: UserService) {
+ constructor(private fb: FormBuilder, private router: Router,
+  private validatorService: ValidatorService, private userService: UserService) {
       this.artistCheck = this.fb.control('', []);
       this.idUserCtrl = this.fb.control('', [Validators.required],
       ValidateLoginNotTaken.createValidator(this.validatorService, '').bind(this));
@@ -121,21 +122,21 @@ export class SignInComponent implements OnInit, OnChanges {
         console.log('inscription user');
         this.userService.addUser(this.user, this.formInscription.get('password').value)
           .then(code => {
-            if(code == 1) {
+            if( code === 1 ) {
               console.log('ajout sucess');
               this.router.navigate([PATH_LOGIN]);
             } else {
-              this.messageGlobal = "Veuillez contacter les developpeurs, vous avez gagné un prix et découvert un nouveau bug";
+              this.messageGlobal = 'Veuillez contacter les developpeurs, vous avez gagné un prix et découvert un nouveau bug';
             }
           }).catch( httpResponse => {
-            if(httpResponse.error == 3) {
-              this.messageLogin = "Le login est déjà utilisé";
-            } else if(httpResponse.error == 2) {
-              this.messagePassword = "Le format du mot de passe est incorrect";
-            } else if(httpResponse.error == 0) {
-              this.messageGlobal = "Une erreur est intervenue, veuillez réessayer";
+            if( httpResponse.error === 3 ) {
+              this.messageLogin = 'Le login est déjà utilisé';
+            } else if( httpResponse.error === 2 ) {
+              this.messagePassword = 'Le format du mot de passe est incorrect';
+            } else if( httpResponse.error === 0 ) {
+              this.messageGlobal = 'Une erreur est intervenue, veuillez réessayer';
             } else {
-              this.messageGlobal = "Veuillez contacter les developpeurs, vous avez gagné un prix et découvert un nouveau bug";
+              this.messageGlobal = 'Veuillez contacter les developpeurs, vous avez gagné un prix et découvert un nouveau bug';
             }
             return null;
           });
@@ -156,14 +157,14 @@ export class SignInComponent implements OnInit, OnChanges {
 
   clearMessageLogin() {
     this.clearMessageGlobal()
-    this.messageLogin = "";
+    this.messageLogin = '';
   }
   clearMessagePassWord() {
-    this.clearMessageGlobal()
-    this.messagePassword= "";
+    this.clearMessageGlobal();
+    this.messagePassword = '';
   }
   clearMessageGlobal() {
-    this.messageGlobal = "";
+    this.messageGlobal = '';
   }
   ngOnChanges() {
      console.log(this.formInscription.controls);

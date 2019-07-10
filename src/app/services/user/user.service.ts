@@ -25,7 +25,7 @@ export class UserService {
     });
   }
 
-  addUser(user:User, password:string){
+  addUser(user: User, password: string) {
       return new Promise( (resolve, reject) => {
         this.userRepository.addUser(user, password)
           .subscribe( (response: HttpResponse<any>) => {

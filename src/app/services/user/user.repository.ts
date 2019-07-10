@@ -27,11 +27,7 @@ export class UserRepository {
         );
     }
 
-    addUser(user:User, password:string): Observable<any> {
-      console.log(" add user repository ");
-      console.log(`${this.env.getPrivateShowcaseApiConfig().uri}${RESOURCES_COMMON_ADD}${RESOURCSE_WITH_PASSWORD}${password}`);
-      console.log(JSON.stringify(user));
-
+    addUser(user: User, password: string): Observable<any> {
       return this.http.put(
         `${this.env.getPrivateShowcaseApiConfig().uri}${RESOURCES_COMMON_ADD}${RESOURCSE_WITH_PASSWORD}${password}`,
         JSON.stringify(user)
