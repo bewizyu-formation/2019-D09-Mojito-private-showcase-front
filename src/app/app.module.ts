@@ -29,6 +29,7 @@ import {ROUTES} from './app.routes';
 import {ClickOutsideModule} from 'ng-click-outside';
 import {BackButtonComponent} from './header/back-button/back-button.component';
 import {ConnectionButtonsComponent} from './header/connection-buttons/connection-buttons.component';
+import { ValidatorService } from './validators/validatorService';
 
 
 @NgModule({
@@ -62,6 +63,7 @@ import {ConnectionButtonsComponent} from './header/connection-buttons/connection
         RouterModule.forRoot(ROUTES),
     ],
     providers: [
+        ValidatorService,
         {provide: APP_CONFIG, useValue: environment},
         {provide: HTTP_INTERCEPTORS, useClass: CommonHeadersInterceptorService, multi: true},
         {provide: HTTP_INTERCEPTORS, useClass: TokenInterceptorService, multi: true},

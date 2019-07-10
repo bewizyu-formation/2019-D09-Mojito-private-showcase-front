@@ -13,10 +13,17 @@
               <div *ngIf="formInscription.get('identifiant').dirty && formInscription.get('identifiant').hasError('required')">
                   identifiant requis
               </div>
+
+              <div *ngIf="formInscription.get('identifiant').dirty && formInscription.get('identifiant').hasError('loginTaken')">
+                  Identifiant pris
+              </div>
+              <div *ngIf="formInscription.get('identifiant').dirty && !formInscription.get('identifiant').hasError('loginTaken')">
+                  Identifiant disponible
+              </div>
           </div>
           <div class="bounds">
 
-              <input class="Text_Input" type="password" formControlName="password" placeholder="Mot de passe"/>  
+              <input class="Text_Input" type="password" formControlName="password" placeholder="Mot de passe"/>
               <div *ngIf="formInscription.get('password').dirty && formInscription.get('password').hasError('required')">
                           mot de passe requis
               </div>
@@ -86,8 +93,8 @@
       </div>
 
       <div class="bounds submit">
+        <button type="reset" class="button-bg cancel" (click)="goBack()">Annuler</button>
         <button type="submit" [ngClass]="{'button-bg': true,'check':!formInscription.invalid}" [disabled]="formInscription.invalid">Envoyer</button>
-        <button type="reset" class="button-bg cancel" (click)="handleClear()">Annuler</button>
       </div>
          </form>
     </div>
