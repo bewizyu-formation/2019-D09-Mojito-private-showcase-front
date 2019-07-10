@@ -73,9 +73,6 @@ export class AuthentificationService {
                 this.userType = UserType.ARTIST;
                 console.log('ARTIST : ', resp);
             });
-
-
-
     }
 
     /**

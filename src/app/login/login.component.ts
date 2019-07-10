@@ -1,18 +1,21 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {PATH_HOME, PATH_INDEX} from '../app.constantes';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {AuthentificationService} from '../services/authentification/authentification.service';
+import {Subscription} from 'rxjs';
 
 @Component({
     selector: 'app-login',
     templateUrl: './login.component.html',
     styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent implements OnInit, OnDestroy {
     loginCtrl: FormControl;
     passwordCtrl: FormControl;
     loginForm: FormGroup;
+    displayAuthentificationError = false;
+    formChangeSubscription: Subscription;
 
     constructor(fb: FormBuilder, private router: Router, private authService: AuthentificationService) {
         this.loginCtrl = fb.control('', [Validators.required]);
@@ -24,9 +27,6 @@ export class LoginComponent implements OnInit {
             login: this.loginCtrl,
             password: this.passwordCtrl
         });
-    }
-
-    ngOnInit() {
     }
 
     handleClear() {
@@ -48,9 +48,19 @@ export class LoginComponent implements OnInit {
                     console.log('Wrong Login');
                 }
             }).catch(err => {
-                // TODO Not connected message
+                this.displayAuthentificationError = true;
                 console.log('ERROR handling submit login infos : ', err);
                 return null;
             });
+    }
+
+    ngOnInit() {
+        this.formChangeSubscription = this.loginForm.valueChanges.subscribe(
+            () => this.displayAuthentificationError = false
+        );
+    }
+
+    ngOnDestroy() {
+        this.formChangeSubscription.unsubscribe();
     }
 }
