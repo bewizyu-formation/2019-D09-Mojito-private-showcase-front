@@ -13,11 +13,11 @@ export class ArtistService {
     }
 
     /**
-     * Get user by username
+     * Get user by identifiant
      */
     getArtistByUsername(username: string) {
         return new Promise((resolve, reject) => {
-            this.artistRepository.getArtistByUsername(username, this.auth.token)
+            this.artistRepository.getArtistByUsername(username)
                 .subscribe((response: HttpResponse<any>) => {
                         resolve(response.body);
                     },

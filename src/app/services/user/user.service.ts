@@ -12,11 +12,11 @@ export class UserService {
     }
 
     /**
-     * Get user by username
+     * Get user by identifiant
      */
     getUserByUsername(username: string) {
         return new Promise( (resolve, reject) => {
-            this.userRepository.getUserByUsername(username, this.auth.token)
+            this.userRepository.getUserByUsername(username)
                 .subscribe( (response: HttpResponse<any>) => {
                     resolve(response.body);
                 }, err => {
