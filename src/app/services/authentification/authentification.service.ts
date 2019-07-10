@@ -4,6 +4,7 @@ import {AuthentificationRepository} from './authentification-repository';
 import {UserType} from './user.type';
 import {UserRepository} from '../user/user.repository';
 import {ArtistRepository} from '../artist/artist-repository';
+import {BehaviorSubject} from 'rxjs';
 
 @Injectable({
     providedIn: 'root'
@@ -16,14 +17,19 @@ export class AuthentificationService {
     public token: string = null;
 
     /**
-     * Current user
+     * Current username
      */
-    public identifiant = null;
+    public identifiant$ = new BehaviorSubject<string>(null);
+
+    /**
+     * Obsverable on the connection status
+     */
+    public isConnected$ = new BehaviorSubject<boolean>(false);
 
     /**
      * Type of user
      */
-    public userType: UserType = null;
+    public userType: UserType = UserType.NONE;
 
     constructor(
         private authRepository: AuthentificationRepository,
@@ -43,12 +49,11 @@ export class AuthentificationService {
                 .login(username, password)
                 .subscribe((response: HttpResponse<any>) => {
                         this.token = response.headers.get('Authorization');
-                        this.identifiant = username;
-                        console.log(`${this.identifiant} just connected.`);
 
                         // Looking for the connected user in the database and getting its type
-                        this.findConnectedUserType();
+                        this.findConnectedUserType(username);
 
+                        this.identifiant$.next(username);
                         resolve(true);
                     }, err => reject(err)
                 );
@@ -58,20 +63,22 @@ export class AuthentificationService {
     /**
      * Check the DB for the current connected user and update its type (user or artist)
      */
-    findConnectedUserType(): void {
-        if (!this.isConnected()) {
-            return null;
-        }
-
-        const getUserSub = this.userRepository.getUserByUsername(this.identifiant)
+    findConnectedUserType(username: string): void {
+        this.userRepository.getUserByUsername(username)
             .subscribe( resp => {
-                this.userType = UserType.COMMON;
-                console.log('USER : ', resp);
+                if (resp !== null) {
+                    this.userType = UserType.COMMON;
+                    console.log('USER : ', resp);
+                    this.isConnected$.next(true);
+                }
             });
-        const getArtistSub = this.artistRepository.getArtistByUsername(this.identifiant)
+        this.artistRepository.getArtistByUsername(username)
             .subscribe(resp => {
-                this.userType = UserType.ARTIST;
-                console.log('ARTIST : ', resp);
+                if (resp !== null) {
+                    this.userType = UserType.ARTIST;
+                    console.log('ARTIST : ', resp);
+                    this.isConnected$.next(true);
+                }
             });
     }
 
@@ -80,15 +87,22 @@ export class AuthentificationService {
      */
     disconnect() {
         this.token = null;
-        this.identifiant = null;
-        this.userType = null;
+        this.identifiant$.next(null);
+        this.isConnected$.next(false);
+        this.userType = UserType.NONE;
     }
 
     /**
-     * Check if there is a connection (username and token)
+     * Indicates if the connected user is a normal user
      */
-    isConnected() {
-        return this.token !== null &&
-            this.identifiant !== null;
+    isCommonUserConnected() {
+        return this.userType === UserType.COMMON;
+    }
+
+    /**
+     * Indicates if the connected user is an artist
+     */
+    isArtistConnected() {
+        return this.userType === UserType.ARTIST;
     }
 }
