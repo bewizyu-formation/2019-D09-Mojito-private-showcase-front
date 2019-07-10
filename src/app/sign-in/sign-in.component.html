@@ -44,6 +44,7 @@
       </div>
 
       <div class="bounds">
+        <input class="Text_Input" type="password" formControlName="passwordConfirm" placeholder="Confirmation Mot de passe"/>
         <div *ngIf="formInscription.get('passwordConfirm').errors?.notEquivalent &&
         formInscription.get('passwordConfirm').touched" class="error-msg">Les deux mots de passe doivent être identiques !</div>
 
@@ -51,6 +52,9 @@
          formInscription.get('passwordConfirm').hasError('required')" class="error-msg">
            Veuillez confirmer le mot de passe
         </div>
+      </div>
+      <div class="bounds">
+        <input class="Text_Input" type="text" placeholder="Email" formControlName="email" />
 
         <div *ngIf="formInscription.get('email').dirty && formInscription.get('email').hasError('required')"
              class="error-msg">
@@ -64,7 +68,7 @@
       </div>
 
       <div class="bounds">
-        <input  formControlName="city" class="Text_Input" type="text"  [(ngModel)]="city" placeholder="Ville"/>
+        <input  formControlName="city" class="Text_Input" type="text" placeholder="Ville"/>
       </div>
 
       <div class="box-artist">
