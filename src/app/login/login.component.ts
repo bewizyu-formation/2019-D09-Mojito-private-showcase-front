@@ -33,28 +33,24 @@ export class LoginComponent implements OnInit {
         this.router.navigate([PATH_INDEX]);
     }
 
+    /**
+     * Performs the login
+     */
     handleSubmit() {
-        this.checkLogin(this.loginForm.value.login, this.loginForm.value.password)
+        this.authService.login(this.loginForm.value.login, this.loginForm.value.password)
             .then(isConnected => {
                 if (isConnected) {
                     console.log('connection success');
                     console.log('token : ', this.authService.token);
-                    console.log('user : ', this.authService.username);
+                    console.log('user : ', this.authService.identifiant);
                     this.router.navigate([PATH_HOME]);
                 } else {
-                    // TODO Not connected message
                     console.log('Wrong Login');
                 }
-            }).catch(() => {
-                console.log('ERROR handling submit login infos');
+            }).catch(err => {
+                // TODO Not connected message
+                console.log('ERROR handling submit login infos : ', err);
                 return null;
             });
-    }
-
-    /**
-     * Check if the user exists
-     */
-    checkLogin(login: string, password: string) {
-        return this.authService.login(login, password);
     }
 }
