@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnChanges } from '@angular/core';
 import { FormControl, FormGroup, FormBuilder, Validators, ReactiveFormsModule, AbstractControl } from '@angular/forms';
 import {User} from '../user/user';
 import { Router } from '@angular/router';
@@ -14,7 +14,7 @@ import { ValidateLoginNotTaken } from '../validators/dbQueryValidator';
   templateUrl: './sign-in.component.html',
   styleUrls: ['./sign-in.component.css']
 })
-export class SignInComponent implements OnInit {
+export class SignInComponent implements OnInit, OnChanges {
 
   idUserCtrl: FormControl;
   passwordCtrl: FormControl;
@@ -40,7 +40,7 @@ export class SignInComponent implements OnInit {
 
 
  constructor(private fb: FormBuilder, private router: Router, private validatorService: ValidatorService) {
-      this.artistCheck = this.fb.control('');
+      this.artistCheck = this.fb.control('', []);
       this.idUserCtrl = this.fb.control('', [Validators.required],
       ValidateLoginNotTaken.createValidator(this.validatorService, '').bind(this));
       this.passwordCtrl = this.fb.control('', [Validators.required,
@@ -67,10 +67,11 @@ export class SignInComponent implements OnInit {
         conditionallyRequiredValidator(this.description, (contoler: AbstractControl) => contoler.value, this.artistCheck)]
         }
       );
-   }
+  }
 
 
   ngOnInit() {
+      this.formInscription.valueChanges.subscribe(data => console.log(this.formInscription.valid));
   }
 
   matchingPasswords(password: string, passwordConfirmation: string) {
@@ -93,7 +94,7 @@ export class SignInComponent implements OnInit {
   }
 
   handleSubmit() {
-
+    console.log('starting submition');
     if (this.formInscription.valid) {
       console.log('form submitted');
       console.log(this.formInscription.get('email'));
@@ -110,17 +111,16 @@ export class SignInComponent implements OnInit {
         userObj[field] = value;
       });
 
-      this.user = new User(userObj['identifiant'], userObj['email'], userObj['city']);
+      this.user = new User(userObj['identifiant'], userObj['email'], userObj['password'], userObj['city']);
 
-      if (!this.isArtist) {
+      if (!this.isRegisteringArtist) {
           // call user inscription
-          console.log('inscription user');
 
       } else {
 
-          console.log('inscription artiste');
-
           // call artist inscription
+          this.user['artistName'] = this.formInscription.get('artistName').value;
+          this.user['description'] = this.formInscription.get('description').value;
       }
       console.log(this.user);
 
@@ -129,6 +129,9 @@ export class SignInComponent implements OnInit {
     }
   }
 
+  ngOnChanges() {
+     console.log(this.formInscription.controls);
+  }
 
   isRegisteringArtist() {
     return this.isArtist;
