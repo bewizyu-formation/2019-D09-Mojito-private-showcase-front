@@ -11,8 +11,9 @@
 	 class="options__choices">
 
 	<!-- TODO Display only if current user is an artist and send him to his artist page -->
-	<div class="options__choice"
-		 (click)="navigateToArtist()">
+	<div *ngIf="displayArtistChoice"
+        class="options__choice"
+		(click)="navigateToArtist()">
 		<mat-icon class="options__choiceIcon">
 			group
 		</mat-icon>
