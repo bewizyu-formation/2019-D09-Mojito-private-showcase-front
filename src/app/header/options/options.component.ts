@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {PATH_ARTIST, PATH_INDEX, PATH_SETTINGS} from '../../app.constantes';
+import {AuthentificationService} from '../../services/authentification/authentification.service';
 
 @Component({
     selector: 'app-options',
@@ -11,7 +12,7 @@ export class OptionsComponent implements OnInit {
 
     openOptions = false;
 
-    constructor(private router: Router) {
+    constructor(private router: Router, private auth: AuthentificationService) {
     }
 
     navigateToArtist() {
@@ -24,7 +25,7 @@ export class OptionsComponent implements OnInit {
     }
 
     disconnect() {
-        // TODO disconnect the user
+        this.auth.disconnect();
         this.router.navigate([PATH_INDEX]);
     }
 
