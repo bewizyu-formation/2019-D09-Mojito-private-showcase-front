@@ -8,7 +8,7 @@
   <div class="wrapper-form">
     <form class="formInscription" (ngSubmit) = "handleSubmit()" [formGroup]="formInscription" (change)="clearMessageGlobal()">
       <div class="bounds">
-        <input class="Text_Input" type="text" formControlName="identifiant" placeholder="Identifiant" />
+        <input class="Text_Input" type="text" formControlName="identifiant" placeholder="Identifiant" (change)="clearMessageLogin()"/>
         <div *ngIf="formInscription.get('identifiant').dirty && formInscription.get('identifiant').hasError('required')"
         class="error-msg">
             l'identifiant est obligatoire
@@ -24,7 +24,7 @@
       </div>
 
       <div class="bounds">
-        <input class="Text_Input" type="password" formControlName="password" placeholder="Mot de passe"/>
+        <input class="Text_Input" type="password" formControlName="password" placeholder="Mot de passe" (change)="clearMessagePassWord()"/>
         <div *ngIf="formInscription.get('password').dirty && formInscription.get('password').hasError('required')"
              class="error-msg">
             le mot de passe est requis
