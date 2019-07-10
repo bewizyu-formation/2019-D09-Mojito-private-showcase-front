@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnChanges } from '@angular/core';
 import { FormControl, FormGroup, FormBuilder, Validators, ReactiveFormsModule, AbstractControl } from '@angular/forms';
 import {User} from '../user/user';
 import { Router } from '@angular/router';
@@ -7,13 +7,15 @@ import { confirmSimilarValidator } from '../validators/confirmCheckValidator';
 import { HttpClient } from 'selenium-webdriver/http';
 import { conditionallyRequiredValidator } from '../validators/conditionallyRequired';
 import { UserService } from '../services/user/user.service';
+import { ValidatorService } from '../validators/validatorService';
+import { ValidateLoginNotTaken } from '../validators/dbQueryValidator';
 
 @Component({
   selector: 'app-sign-in',
   templateUrl: './sign-in.component.html',
   styleUrls: ['./sign-in.component.css']
 })
-export class SignInComponent implements OnInit {
+export class SignInComponent implements OnInit, OnChanges {
 
   idUserCtrl: FormControl;
   passwordCtrl: FormControl;
@@ -24,7 +26,6 @@ export class SignInComponent implements OnInit {
   artistName: FormControl;
   description: FormControl;
   formInscription: FormGroup;
-
 
   user: User;
   messageLogin = "";
@@ -39,36 +40,41 @@ export class SignInComponent implements OnInit {
 
   isArtist = false;
 
-  city: string = this.cities[0];
+  city = 'Lyon Rhône';
 
-  constructor(private fb: FormBuilder, private router: Router,  private userService: UserService) {
-    this.artistCheck = this.fb.control('');
-    this.idUserCtrl = this.fb.control('', [Validators.required]);
-    this.passwordCtrl = this.fb.control('', [Validators.required,
-      Validators.pattern(/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d).*$/)]);
-    this.passwordConfirmCtrl = this.fb.control('', [Validators.required]);
-    this.emailCtrl = this.fb.control('', [Validators.required, Validators.email]);
-    this.artistName = this.fb.control('', []);
-    this.description = this.fb.control('', []);
-    this.formInscription = this.fb.group(
-    {
-      artistCheck: this.artistCheck,
-      artistName : this.artistName,
-      identifiant : this.idUserCtrl,
-      password: this.passwordCtrl,
-      description: this.description,
-      passwordConfirm: this.passwordConfirmCtrl,
-      email: this.emailCtrl,
-      city: this.citiesCtrl
-    },
-    {validator : [conditionallyRequiredValidator(this.artistName, (contoler: AbstractControl) => contoler.value, this.artistCheck),
-      this.matchingPasswords('password', 'passwordConfirm'),
-      conditionallyRequiredValidator(this.description, (contoler: AbstractControl) => contoler.value, this.artistCheck)]}
+ constructor(private fb: FormBuilder, private router: Router, private validatorService: ValidatorService, private userService: UserService) {
+      this.artistCheck = this.fb.control('', []);
+      this.idUserCtrl = this.fb.control('', [Validators.required],
+      ValidateLoginNotTaken.createValidator(this.validatorService, '').bind(this));
+      this.passwordCtrl = this.fb.control('', [Validators.required,
+          Validators.pattern(/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d).*$/)]);
+      this.passwordConfirmCtrl = this.fb.control('', [Validators.required]);
+      this.emailCtrl = this.fb.control('', [Validators.required, Validators.email]);
+      this.artistName = this.fb.control('', []);
+      this.description = this.fb.control('', []);
+
+
+      this.formInscription = this.fb.group(
+        {
+          artistCheck: this.artistCheck,
+          artistName : this.artistName,
+          identifiant : this.idUserCtrl,
+          password: this.passwordCtrl,
+          description: this.description,
+          passwordConfirm: this.passwordConfirmCtrl,
+          email: this.emailCtrl,
+          city: this.citiesCtrl
+        },
+        {validator : [conditionallyRequiredValidator(this.artistName, (contoler: AbstractControl) => contoler.value, this.artistCheck),
+        this.matchingPasswords('password', 'passwordConfirm'),
+        conditionallyRequiredValidator(this.description, (contoler: AbstractControl) => contoler.value, this.artistCheck)]
+        }
       );
   }
 
 
   ngOnInit() {
+      this.formInscription.valueChanges.subscribe(data => console.log(this.formInscription.valid));
   }
 
   matchingPasswords(password: string, passwordConfirmation: string) {
@@ -91,6 +97,7 @@ export class SignInComponent implements OnInit {
   }
 
   handleSubmit() {
+    console.log('starting submition');
     if (this.formInscription.valid) {
       console.log('form submitted');
       console.log(this.formInscription.get('email'));
@@ -99,28 +106,28 @@ export class SignInComponent implements OnInit {
 
       Object.keys(this.formInscription.controls).forEach(field => {
         const control = this.formInscription.get(field);
+        console.log(control);
+        console.log(this.formInscription.validator);
         control.markAsTouched({ onlySelf: true });
 
         const value = control.value;
         userObj[field] = value;
       });
 
-      this.user = new User(userObj['identifiant'], userObj['email'], userObj['city']);
+      this.user = new User(userObj['identifiant'], userObj['email'], userObj['password'], userObj['city']);
 
       if (!this.isRegisteringArtist()) {
         // call user inscription
         console.log('inscription user');
         this.userService.addUser(this.user, this.formInscription.get('password').value)
-          .then(isAdded => {
-            console.log(isAdded);
-            if(isAdded) {
+          .then(code => {
+            if(code == 1) {
               console.log('ajout sucess');
-              // this.router.navigate([PATH_LOGIN]);
+              this.router.navigate([PATH_LOGIN]);
+            } else {
+              this.messageGlobal = "Veuillez contacter les developpeurs, vous avez gagné un prix et découvert un nouveau bug";
             }
           }).catch( httpResponse => {
-            console.log(httpResponse);
-            console.log('ERROR handling submit new user infos');
-            console.log(httpResponse.error);
             if(httpResponse.error == 3) {
               this.messageLogin = "Le login est déjà utilisé";
             } else if(httpResponse.error == 2) {
@@ -134,9 +141,11 @@ export class SignInComponent implements OnInit {
           });
       } else {
 
-        console.log('inscription artiste');
+          // call artist inscription
+          this.user['artistName'] = this.formInscription.get('artistName').value;
+          this.user['description'] = this.formInscription.get('description').value;
 
-        // call artist inscription
+          console.log('inscription artiste');
       }
       console.log(this.user);
 
@@ -156,6 +165,10 @@ export class SignInComponent implements OnInit {
   clearMessageGlobal() {
     this.messageGlobal = "";
   }
+  ngOnChanges() {
+     console.log(this.formInscription.controls);
+  }
+
   isRegisteringArtist() {
     return this.isArtist;
   }

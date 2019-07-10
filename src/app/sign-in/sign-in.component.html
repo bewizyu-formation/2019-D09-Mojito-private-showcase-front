@@ -9,23 +9,37 @@
     <form class="formInscription" (ngSubmit) = "handleSubmit()" [formGroup]="formInscription" (change)="clearMessageGlobal()">
       <div class="bounds">
           <input class="Text_Input" type="text" formControlName="identifiant" placeholder="Identifiant"  (change)="clearMessageLogin()"/>
+              <div *ngIf="formInscription.get('identifiant').dirty && formInscription.get('identifiant').hasError('required')"
+              class="error-msg">
+                  l'identifiant est obligatoire
+              </div>
 
-          <div *ngIf="formInscription.get('identifiant').dirty && formInscription.get('identifiant').hasError('required')">
-              identifiant requis
+              <div *ngIf="formInscription.get('identifiant').dirty && formInscription.get('identifiant').hasError('loginTaken')"
+                class="error-msg" >
+                  l'identifiant est déjà utilisé
+              </div>
+            
+              <div class="error-msg" *ngIf="messageLogin">
+                  {{messageLogin}}
+              </div>
           </div>
-          <div class="bounds message" *ngIf="messageLogin">
-              {{messageLogin}}
-          </div>
-      </div>
-      <div class="bounds">
+          <div class="bounds">
 
-          <input class="Text_Input" type="password" formControlName="password" placeholder="Mot de passe" (change)="clearMessagePassword"/>  
-          <div *ngIf="formInscription.get('password').dirty && formInscription.get('password').hasError('required')">
-                      mot de passe requis
-          </div>
+              <input class="Text_Input" type="password" formControlName="password" placeholder="Mot de passe"/>
+              <div *ngIf="formInscription.get('password').dirty && formInscription.get('password').hasError('required')"
+                   class="error-msg">
+                  le mot de passe est requis
+              </div>
 
-          <div *ngIf="formInscription.get('password').errors?.minlength && formInscription.get('password').touched ">
-                  le mot de passe doit avoir 8 caractères minimum
+              <div *ngIf="formInscription.get('password').errors?.minlength && formInscription.get('password').touched "
+                   class="error-msg">
+                  Le mot de passe doit comporter au moins : 8 caractères
+              </div>
+
+              <div *ngIf="formInscription.get('password').errors?.pattern && formInscription.get('password').touched "
+                   class="error-msg">
+                  Le mot de passe doit comporter au moins : une majuscule, une minuscule et un chiffre
+              </div>
           </div>
 
           <div *ngIf="formInscription.get('password').errors?.pattern && formInscription.get('password').touched ">
@@ -37,27 +51,26 @@
       </div>
       <div class="bounds">
 
-         <input class="Text_Input" type="password" placeholder="Confirmez le mot de passe"
-          formControlName="passwordConfirm" />
+          <input class="Text_Input" type="password" placeholder="Confirmez le mot de passe" formControlName="passwordConfirm" />
 
-        <div *ngIf="formInscription.get('passwordConfirm').errors?.notEquivalent &&
-        formInscription.get('passwordConfirm').touched">Mots de passe non identique</div>
+          <div *ngIf="formInscription.get('passwordConfirm').errors?.notEquivalent && formInscription.get('passwordConfirm').touched" class="error-msg">Les deux mots de passe doivent être identiques !</div>
 
-        <div *ngIf="formInscription.get('passwordConfirm').dirty &&
-         formInscription.get('passwordConfirm').hasError('required')">
-            mot de passe de confirmation requis
-        </div>
+          <div *ngIf="formInscription.get('passwordConfirm').dirty && formInscription.get('passwordConfirm').hasError('required')" class="error-msg">Veuillez confirmer le mot de passe</div>
 
       </div>
 
       <div class="bounds">
         <input class="Text_Input" type="text" placeholder="Email" formControlName="email" />
 
-        <div *ngIf="formInscription.get('email').dirty && formInscription.get('email').hasError('email')">
-            Email invalide
+        <div *ngIf="formInscription.get('email').dirty && formInscription.get('email').hasError('required')"
+             class="error-msg">
+            l'adresse email est obligatoire
+        </div>
+        <div *ngIf="formInscription.get('email').dirty && formInscription.get('email').hasError('email')"
+             class="error-msg">
+            l'adresse email n'est pas valide
         </div>
       </div>
-
 
       <div class="bounds">
         <input  formControlName="city" class="Text_Input" type="text"  [(ngModel)]="city" placeholder="Ville"/>
@@ -72,32 +85,37 @@
         </div>
       </div>
 
+
       <div *ngIf="isRegisteringArtist()" class="">
         <div class="bounds">
-          <input class="Text_Input" type="text" placeholder="Nom d'artiste" formControlName="artistName" />
-          <div *ngIf="formInscription.get('artistName').dirty && formInscription.get('artistName').hasError('required')">
-            <span>Nom d'artiste requis</span>
-          </div>
+              <input class="Text_Input" type="text" placeholder="Nom d'artiste" formControlName="artistName" />
+              <div *ngIf="formInscription.get('artistName').dirty && formInscription.get('artistName').value==''" class="error-msg">
+                  <span>Le nom d'artiste est à renseigner</span>
+              </div>
         </div>
 
         <div class="boundDescription">
           <label class="Hint-text-small">Description</label>
 
-          <textarea name="description"
-          class="DescriptionTextArea"
-          formControlName="description"
-          placeholder="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam gravida venenatis accumsan. In mi massa tempus"
-          ></textarea>
+            <textarea name="description"
+             class="DescriptionTextArea"
+             formControlName="description"
+             placeholder="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam gravida venenatis accumsan. In mi massa tempus"
+             ></textarea>
+            <div *ngIf="formInscription.get('description').value=='' && formInscription.get('description').dirty"
+                 class="error-msg">
+                <span>La descritpion est obligatoire</span>
+            </div>
+          
         </div>
       </div>
       <div class="bounds error-msg" *ngIf="messageGlobal">
               {{messageGlobal}}
       </div>
       <div class="bounds submit">
-        <button type="submit" [ngClass]="{'button-bg': true,'check':!formInscription.invalid}" [disabled]="formInscription.invalid">Envoyer</button>
-        <button type="reset" class="button-bg cancel" (click)="handleClear()">Annuler</button>
+        <button type="reset" class="button-bg cancel" (click)="goBack()">Annuler</button>
+        <button type="submit" [ngClass]="{'button-bg': true,'check':formInscription.valid}">Envoyer</button>
       </div>
-
-    </form>
+      </form>
+    </div>
   </div>
-</div>
