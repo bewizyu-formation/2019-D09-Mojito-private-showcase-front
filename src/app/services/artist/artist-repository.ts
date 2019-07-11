@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {HttpClient} from '@angular/common/http';
 import {EnvironmentService} from '../environment.service';
 import Artist from '../../models/artist';
 import {Observable} from 'rxjs';
@@ -25,9 +25,8 @@ export class ArtistRepository {
 
     /**
      * Get an anrtist with its id
-     * @param id
      */
-    getArtistById(id: number): Observable<any>{
+    getArtistById(id: number): Observable<any> {
         return this.http.get(`${this.env.getPrivateShowcaseApiConfig().uri}${RESOURCES_ARTIST_BY_ID}${id}`);
     }
 
