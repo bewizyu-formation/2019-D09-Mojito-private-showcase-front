@@ -12,19 +12,8 @@ export class UserService {
   }
 
   /**
-   * Get user by username
+   * add new User
    */
-  getUserByUsername(username: string) {
-    return new Promise( (resolve, reject) => {
-      this.userRepository.getUserByUsername(username, this.auth.token)
-        .subscribe( (response: HttpResponse<any>) => {
-            resolve(response.body);
-        }, err => {
-            reject(err);
-        });
-    });
-  }
-
   addUser(user: User, password: string) {
       return new Promise( (resolve, reject) => {
         this.userRepository.addUser(user, password)
@@ -35,5 +24,19 @@ export class UserService {
             reject(err);
         });
       });
+  }
+
+  /**
+   * Get user by identifiant
+   */
+  getUserByUsername(username: string) {
+      return new Promise( (resolve, reject) => {
+          this.userRepository.getUserByUsername(username)
+              .subscribe( (response: HttpResponse<any>) => {
+                  resolve(response.body);
+              }, err => {
+                  reject(err);
+              });
+    });
   }
 }

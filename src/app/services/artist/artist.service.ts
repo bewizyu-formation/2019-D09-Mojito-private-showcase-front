@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpResponse} from '@angular/common/http';
 import {AuthentificationService} from '../authentification/authentification.service';
 import {ArtistRepository} from './artist-repository';
+import {Subscription} from 'rxjs';
 
 
 @Injectable({
@@ -17,7 +18,7 @@ export class ArtistService {
      */
     getArtistByUsername(username: string) {
         return new Promise((resolve, reject) => {
-            this.artistRepository.getArtistByUsername(username, this.auth.token)
+            this.artistRepository.getArtistByUsername(username)
                 .subscribe((response: HttpResponse<any>) => {
                         resolve(response.body);
                     },

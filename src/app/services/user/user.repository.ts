@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {EnvironmentService} from '../environment.service';
 import {HEADER_AUTHORIZATION} from '../../app.constantes';
@@ -15,22 +15,21 @@ export class UserRepository {
 
   constructor(private http: HttpClient, private env: EnvironmentService) {}
 
-    /**
-     * Get a User with its name
-     */
-    getUserByUsername(username: string, token: string): Observable<any> {
-      const headers = new HttpHeaders();
-      headers.set(HEADER_AUTHORIZATION, token);
-      return this.http.get(
-        `${this.env.getPrivateShowcaseApiConfig().uri}${RESOURCES_COMMON_USER_BY_USERNAME}${username}`,
-        {headers}
-        );
-    }
+  /**
+   * Get a User with its name
+   */
+  getUserByUsername(username: string): Observable<any> {
+    return this.http.get(`${this.env.getPrivateShowcaseApiConfig().uri}${RESOURCES_COMMON_USER_BY_USERNAME}${username}`);
+  }
 
-    addUser(user: User, password: string): Observable<any> {
-      return this.http.put(
-        `${this.env.getPrivateShowcaseApiConfig().uri}${RESOURCES_COMMON_ADD}${RESOURCSE_WITH_PASSWORD}${password}`,
-        JSON.stringify(user)
-        );
-      }
-    }
+  /**
+   * Add new User
+   */
+  addUser(user: User, password: string): Observable<any> {
+    return this.http.put(
+      `${this.env.getPrivateShowcaseApiConfig().uri}${RESOURCES_COMMON_ADD}${RESOURCSE_WITH_PASSWORD}${password}`,
+      JSON.stringify(user)
+    );
+  }
+
+}
