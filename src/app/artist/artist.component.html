@@ -1,3 +1,5 @@
-<p>
-  artist works!
-</p>
+<div>
+
+    <p *ngIf="artist$ | async as artist">{{artist.username + ' ' + artist.city}}</p>
+
+</div>
