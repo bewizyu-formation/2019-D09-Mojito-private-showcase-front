@@ -40,12 +40,10 @@ export class LoginComponent implements OnInit, OnDestroy {
         this.authService.login(this.loginForm.value.login, this.loginForm.value.password)
             .then(isConnected => {
                 if (isConnected) {
-                    console.log('connection success');
-                    console.log('token : ', this.authService.token);
-                    console.log('user : ', this.authService.identifiant);
                     this.router.navigate([PATH_HOME]);
                 } else {
                     console.log('Wrong Login');
+                    this.displayAuthentificationError = true;
                 }
             }).catch(err => {
                 this.displayAuthentificationError = true;
