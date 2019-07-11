@@ -1,3 +1,4 @@
+
 .outer
 {
      padding: 30px;
@@ -31,6 +32,34 @@
   width: 344px;
   height: 304px;
   background-color: rgba(0,0,0,0.5);
+}
+
+.title{
+  text-align: center;
+  font-family: Roboto, sans-serif;
+	font-size: 36px;
+	font-weight: normal;
+	font-style: normal;
+	font-stretch: normal;
+	line-height: 0.89;
+	letter-spacing: normal;
+  color: white;
+}
+
+.spinnerOverlay{
+  color: white;
+  position: fixed;
+  bottom: 50%;
+  right: 50%;
+  /*align-items: center;
+  margin: 0 20px 0 0;
+  width: 344px;
+  height: 304px;
+  background-color: rgba(0,0,0,0.5);*/
+}
+
+.mat-spinner-color::ng-deep circle{
+stroke: rgba(255, 255, 255, 0.75) !important;
 }
 
 .spinner{

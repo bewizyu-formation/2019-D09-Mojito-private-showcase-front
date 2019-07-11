@@ -10,20 +10,17 @@ import { delay } from 'rxjs/operators';
 })
 export class ArtistServiceComponent implements OnInit {
 
-  artists : Artist[]
+  artists: Artist[];
 
-  constructor(private http : HttpClient) {
+  constructor(private http: HttpClient) {
     this.getArtists();
   }
 
-  getArtists(){
-    console.log('retrieving artists')
-    this.http.get('http://localhost:8080/artist/').pipe(delay(500)).subscribe((res:any)=>{
-      console.log(res);
-      this.artists=res;
-    },(er) => {
-      console.log(er);
-      this.artists=[]
+  getArtists() {
+    this.http.get('http://localhost:8080/artist/').pipe(delay(500)).subscribe((res: any) => {
+      this.artists = res;
+    }, (er) => {
+      this.artists = [];
     });
   }
 
