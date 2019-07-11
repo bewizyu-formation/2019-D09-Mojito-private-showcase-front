@@ -13,7 +13,7 @@ export default class Artist{
 
     image: string;
 
-    imageType :string;
+    imageType: string;
 
     adress: string;
 

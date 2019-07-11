@@ -13,7 +13,9 @@ export class BackButtonComponent implements OnInit {
     }
 
     navigateToHome() {
-        this.router.navigate([PATH_HOME]);
+        this.router.navigate([PATH_HOME])
+            .then(console.log)
+            .catch(console.log);
     }
 
     ngOnInit() {
