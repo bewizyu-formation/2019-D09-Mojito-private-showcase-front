@@ -126,10 +126,16 @@ export class SignInComponent implements OnInit, OnChanges {
             return null;
           });
       } else {
+        // call artist inscription
+        this.artist = new Artist(
+          0,
+          userObj['identifiant'],
+          userObj['email'],
+          userObj['password'],
+          userObj['city'],
+          this.formInscription.get('artistName').value,
+          this.formInscription.get('description').value);
 
-        this.artist = new Artist(0,userObj['identifiant'], userObj['email'], userObj['password'], userObj['city'], this.formInscription.get('artistName').value, this.formInscription.get('description').value);
-        console.log('inscription artiste');
-        console.log(this.artist);
         this.artistService.addArtist(this.artist, this.formInscription.get('password').value)
           .then(code => {
             if (code === 1) {
@@ -148,12 +154,8 @@ export class SignInComponent implements OnInit, OnChanges {
               this.messageGlobal = 'Veuillez contacter les developpeurs, vous avez gagné un prix et découvert un nouveau bug';
             }
             return null;
-          })
-        // call artist inscription
-
-
+          });
       }
-      console.log(this.user);
 
     } else {
       // this.router.navigate([PATH_SIGN_IN]);
