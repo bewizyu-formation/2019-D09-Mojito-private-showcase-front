@@ -1,6 +1,7 @@
 import { Component, OnInit, OnChanges } from '@angular/core';
 import { FormControl, FormGroup, FormBuilder, Validators, ReactiveFormsModule, AbstractControl } from '@angular/forms';
 import {User} from '../user/user';
+import {Artist} from '../user/artist';
 import { Router } from '@angular/router';
 import { PATH_SIGN_IN, PATH_HOME, PATH_LOGIN, PATH_INDEX } from '../app.constantes';
 import { confirmSimilarValidator } from '../validators/confirmCheckValidator';
@@ -9,6 +10,7 @@ import { conditionallyRequiredValidator } from '../validators/conditionallyRequi
 import { ValidatorService } from '../validators/validatorService';
 import { ValidateLoginNotTaken } from '../validators/dbQueryValidator';
 import { UserService } from '../services/user/user.service';
+import { ArtistService } from '../services/artist/artist.service';
 
 @Component({
   selector: 'app-sign-in',
@@ -28,6 +30,7 @@ export class SignInComponent implements OnInit, OnChanges {
   formInscription: FormGroup;
 
   user: User;
+  artist: Artist;
   messageLogin = '';
   messagePassword = '';
   messageGlobal = '';
@@ -36,7 +39,7 @@ export class SignInComponent implements OnInit, OnChanges {
   isArtist = false;
 
  constructor(private fb: FormBuilder, private router: Router,
-  private validatorService: ValidatorService,  private userService: UserService) {
+  private validatorService: ValidatorService,  private userService: UserService, private artistService: ArtistService) {
       this.artistCheck = this.fb.control('', []);
       this.idUserCtrl = this.fb.control('', [Validators.required],
       ValidateLoginNotTaken.createValidator(this.validatorService, '').bind(this));
@@ -124,11 +127,31 @@ export class SignInComponent implements OnInit, OnChanges {
           });
       } else {
 
+        this.artist = new Artist(0,userObj['identifiant'], userObj['email'], userObj['password'], userObj['city'], this.formInscription.get('artistName').value, this.formInscription.get('description').value);
         console.log('inscription artiste');
-
+        console.log(this.artist);
+        this.artistService.addArtist(this.artist, this.formInscription.get('password').value)
+          .then(code => {
+            if (code === 1) {
+              this.router.navigate([PATH_LOGIN]);
+            }
+          }).catch( httpResponse => {
+            if (httpResponse.error === 3) {
+              this.messageLogin = 'Le login est déjà utilisé';
+            } else if (httpResponse.error === 2) {
+              this.messagePassword = 'Le format du mot de passe est incorrect';
+            } else if (httpResponse.error === 4) {
+              this.messageEmail = 'Le format de l\'adresse email est incorrect';
+            } else if (httpResponse.error === 0) {
+              this.messageGlobal = 'Une erreur est intervenue, veuillez réessayer';
+            } else {
+              this.messageGlobal = 'Veuillez contacter les developpeurs, vous avez gagné un prix et découvert un nouveau bug';
+            }
+            return null;
+          })
         // call artist inscription
-        this.user['artistName'] = this.formInscription.get('artistName').value;
-        this.user['description'] = this.formInscription.get('description').value;
+
+
       }
       console.log(this.user);
 
