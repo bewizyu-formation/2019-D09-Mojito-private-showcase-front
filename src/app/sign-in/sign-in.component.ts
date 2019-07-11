@@ -31,6 +31,7 @@ export class SignInComponent implements OnInit, OnChanges {
   messageLogin = '';
   messagePassword = '';
   messageGlobal = '';
+  messageEmail = '';
 
   cities: string[] = [
   'Lyon Rhône',
@@ -120,6 +121,8 @@ export class SignInComponent implements OnInit, OnChanges {
               this.messageLogin = 'Le login est déjà utilisé';
             } else if (httpResponse.error === 2) {
               this.messagePassword = 'Le format du mot de passe est incorrect';
+            } else if (httpResponse.error === 4) {
+              this.messageEmail = 'Le format de l\'adresse email est incorrect';
             } else if (httpResponse.error === 0) {
               this.messageGlobal = 'Une erreur est intervenue, veuillez réessayer';
             } else {
@@ -149,6 +152,9 @@ export class SignInComponent implements OnInit, OnChanges {
   clearMessagePassWord() {
     this.clearMessageGlobal();
     this.messagePassword = '';
+  }
+  clearMessageEmail() {
+    this.messageEmail = '';
   }
   clearMessageGlobal() {
     this.messageGlobal = '';

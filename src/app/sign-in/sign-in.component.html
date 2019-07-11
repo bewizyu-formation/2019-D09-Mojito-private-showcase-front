@@ -8,7 +8,7 @@
   <div class="wrapper-form">
     <form class="formInscription" (ngSubmit) = "handleSubmit()" [formGroup]="formInscription" (change)="clearMessageGlobal()">
       <div class="bounds">
-        <input class="Text_Input" type="text" formControlName="identifiant" placeholder="Identifiant" (change)="clearMessageLogin()"/>
+        <input class="Text_Input" type="text" formControlName="identifiant" placeholder="Identifiant" (focus)="clearMessageLogin()"/>
         <div *ngIf="formInscription.get('identifiant').dirty && formInscription.get('identifiant').hasError('required')"
         class="error-msg">
             l'identifiant est obligatoire
@@ -24,7 +24,7 @@
       </div>
 
       <div class="bounds">
-        <input class="Text_Input" type="password" formControlName="password" placeholder="Mot de passe" (change)="clearMessagePassWord()"/>
+        <input class="Text_Input" type="password" formControlName="password" placeholder="Mot de passe" (focus)="clearMessagePassWord()"/>
         <div *ngIf="formInscription.get('password').dirty && formInscription.get('password').hasError('required')"
              class="error-msg">
             le mot de passe est requis
@@ -54,7 +54,7 @@
         </div>
       </div>
       <div class="bounds">
-        <input class="Text_Input" type="text" placeholder="Email" formControlName="email" />
+        <input class="Text_Input" type="text" placeholder="Email" formControlName="email" (focus)="clearMessageEmail()"/>
 
         <div *ngIf="formInscription.get('email').dirty && formInscription.get('email').hasError('required')"
              class="error-msg">
@@ -64,6 +64,10 @@
         <div *ngIf="formInscription.get('email').dirty && formInscription.get('email').hasError('email')"
              class="error-msg">
             l'adresse email n'est pas valide
+        </div>
+
+        <div class="error-msg" *ngIf="messageEmail">
+                {{messageEmail}}
         </div>
       </div>
 
