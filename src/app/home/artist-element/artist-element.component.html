@@ -1,0 +1,36 @@
+<mat-card class="artistCard" [style.background]="'url(https://material.angular.io/assets/img/examples/shiba2.jpg)'">
+
+  <mat-card-footer class="content">
+    <div class="content-inner">
+      <mat-card-title class="globalTitle">
+        {{artist.name}}
+      </mat-card-title>
+      <mat-card-content class="globalText__sm">
+        {{artist.description}}
+      </mat-card-content>
+    </div>
+
+    <div class="content-inner__sm">
+      <mat-card-actions class="inner-action">
+        <div class="">
+          <p class="globalTitle">*RATING*</p>
+
+        </div>
+        <div class="">
+          <button mat-button class="cardButton" (click)="goToArtist()">
+            <mat-icon class="Icon">remove_red_eye</mat-icon>
+            <span class="buttonText"> VOIR</span>
+          </button>
+          <button mat-button class="cardButton" (click)="goToEvent()">
+            <mat-icon class="Icon__sm">calendar_today</mat-icon>
+            <span class="buttonText">BOOKER</span>
+          </button>
+         </div>
+      </mat-card-actions>
+    </div>
+
+
+  </mat-card-footer>
+
+
+</mat-card>

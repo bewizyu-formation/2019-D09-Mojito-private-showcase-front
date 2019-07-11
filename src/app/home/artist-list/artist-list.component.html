@@ -1,0 +1,13 @@
+<div>
+  <div class="inner">
+    <div *ngFor="let artist of artists" >
+      <div class="cardDiv">
+        <app-artist-element [artist]="artist"></app-artist-element>
+      </div>
+    </div>
+    <div *ngFor="let placeholder of placeHolders" >
+      <div class="plain">
+      </div>
+    </div>
+  </div>
+</div>

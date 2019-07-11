@@ -12,4 +12,3 @@ export const PATH_ERROR = '404';
 
 // Requetes
 export const HEADER_AUTHORIZATION = 'Authorization';
-

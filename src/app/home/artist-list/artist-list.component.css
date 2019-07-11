@@ -1,0 +1,25 @@
+.outer
+{
+     padding: 30px;
+}
+
+.inner
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-content: center;
+    flex-wrap: wrap;
+}
+
+.plain
+{
+    margin: 0 20px 0 0;
+    background-color: transparent;
+    width: 344px;
+    height: 304px;
+}
+
+.cardDiv{
+  margin: 0 20px 20px 0;
+}

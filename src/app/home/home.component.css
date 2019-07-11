@@ -1,0 +1,9 @@
+.container{
+  margin: 0 auto;
+  width: calc(100vw - 2*94px);
+}
+
+
+.test{
+  background-color: transparent;
+}

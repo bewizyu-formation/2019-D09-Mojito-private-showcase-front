@@ -1,7 +1,10 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+
 import {MatToolbarModule, MatIconModule} from '@angular/material';
+import {MatCardModule} from '@angular/material/card';
+import {MatButtonModule} from '@angular/material/button';
 
 import {AppComponent} from './app.component';
 import {environment} from '../environments/environment';
@@ -30,6 +33,8 @@ import {ClickOutsideModule} from 'ng-click-outside';
 import {BackButtonComponent} from './header/back-button/back-button.component';
 import {ConnectionButtonsComponent} from './header/connection-buttons/connection-buttons.component';
 import { ValidatorService } from './validators/validatorService';
+import { ArtistElementComponent } from './home/artist-element/artist-element.component';
+import { ArtistListComponent } from './home/artist-list/artist-list.component';
 
 
 @NgModule({
@@ -50,12 +55,16 @@ import { ValidatorService } from './validators/validatorService';
         OptionsComponent,
         BackButtonComponent,
         ConnectionButtonsComponent,
+        ArtistElementComponent,
+        ArtistListComponent,
     ],
     imports: [
         BrowserModule,
         BrowserAnimationsModule,
+        MatButtonModule,
         MatToolbarModule,
         MatIconModule,
+        MatCardModule,
         ClickOutsideModule,
         HttpClientModule,
         FormsModule,
