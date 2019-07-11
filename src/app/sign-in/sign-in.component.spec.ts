@@ -4,6 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SignInComponent } from './sign-in.component';
 import { RouterTestingModule } from '@angular/router/testing';
 import { ValidatorService } from '../validators/validatorService';
+import { UserService } from '../services/user/user.service';
 import { HttpClient, HttpHandler } from '@angular/common/http';
 
 describe('SignInComponent', () => {
@@ -19,6 +20,7 @@ describe('SignInComponent', () => {
       ],
       declarations: [SignInComponent],
       providers: [ValidatorService,
+        UserService,
         HttpHandler,
         HttpClient]
     })

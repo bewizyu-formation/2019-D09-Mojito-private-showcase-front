@@ -33,15 +33,7 @@ export class SignInComponent implements OnInit, OnChanges {
   messageGlobal = '';
   messageEmail = '';
 
-  cities: string[] = [
-  'Lyon Rhône',
-  'Marseille Bouches Rhône',
-  'Rennes, Ille-et-Vilaine'
-  ];
-
   isArtist = false;
-
-  city = 'Lyon Rhône';
 
  constructor(private fb: FormBuilder, private router: Router,
   private validatorService: ValidatorService,  private userService: UserService) {
