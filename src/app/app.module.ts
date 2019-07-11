@@ -29,6 +29,7 @@ import {ClickOutsideModule} from 'ng-click-outside';
 import {BackButtonComponent} from './header/back-button/back-button.component';
 import {ConnectionButtonsComponent} from './header/connection-buttons/connection-buttons.component';
 import { ValidatorService } from './validators/validatorService';
+import { ArtistPanelComponent } from './artist-panel/artist-panel.component';
 
 
 @NgModule({
@@ -49,6 +50,7 @@ import { ValidatorService } from './validators/validatorService';
         OptionsComponent,
         BackButtonComponent,
         ConnectionButtonsComponent,
+        ArtistPanelComponent,
     ],
     imports: [
         BrowserModule,
