@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {PATH_CONTACT, PATH_EVENTS, PATH_INDEX} from '../../app.constantes';
+import {PATH_CONTACT, PATH_EVENTS, PATH_HOME, PATH_INDEX} from '../../app.constantes';
 import {Router} from '@angular/router';
 
 const MENU_ICON_CLOSED = 'menu';
@@ -26,8 +26,10 @@ export class SideMenuComponent implements OnInit {
         this.openSideMenu = !this.openSideMenu;
     }
 
-    navigateToIndex() {
-        this.router.navigate([PATH_INDEX]);
+    navigateToHome() {
+        this.router.navigateByUrl(PATH_INDEX, {skipLocationChange: true}).then(
+            () => this.router.navigate([PATH_HOME])
+        );
     }
 
     navigateToEvents() {
