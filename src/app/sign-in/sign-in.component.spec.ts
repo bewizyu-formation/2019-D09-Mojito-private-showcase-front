@@ -4,7 +4,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SignInComponent } from './sign-in.component';
 import { RouterTestingModule } from '@angular/router/testing';
 import { ValidatorService } from '../validators/validatorService';
+import { UserService } from '../services/user/user.service';
 import { HttpClient, HttpHandler } from '@angular/common/http';
+
+import {APP_CONFIG} from '../app.config';
+import {environment} from '../../environments/environment';
 
 describe('SignInComponent', () => {
   let component: SignInComponent;
@@ -18,7 +22,10 @@ describe('SignInComponent', () => {
         RouterTestingModule.withRoutes([])
       ],
       declarations: [SignInComponent],
-      providers: [ValidatorService,
+      providers: [
+        {provide: APP_CONFIG, useValue: environment},
+        ValidatorService,
+        UserService,
         HttpHandler,
         HttpClient]
     })

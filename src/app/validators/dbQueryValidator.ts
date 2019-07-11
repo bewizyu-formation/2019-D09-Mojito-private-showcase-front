@@ -3,6 +3,7 @@ import { ValidatorService } from './validatorService';
 import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 
+
  export class ValidateLoginNotTaken {
    static createValidator(validatorService: ValidatorService, controllerName: string): AsyncValidatorFn {
      return (control: AbstractControl): Observable<ValidationErrors | null> => {

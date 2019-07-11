@@ -6,80 +6,82 @@
 <div class="wrapper fond">
   <h2 class="title">Formulaire d'inscription</h2>
   <div class="wrapper-form">
-      <form class="formInscription" (ngSubmit) = "handleSubmit()" [formGroup]="formInscription">
-          <div class="bounds">
-              <input class="Text_Input" type="text" formControlName="identifiant" placeholder="Identifiant" />
-
-              <div *ngIf="formInscription.get('identifiant').dirty && formInscription.get('identifiant').hasError('required')"
-              class="error-msg">
-                  l'identifiant est obligatoire
-              </div>
-
-              <div *ngIf="formInscription.get('identifiant').dirty && formInscription.get('identifiant').hasError('loginTaken')"
-                class="error-msg" >
-                  l'identifiant est déjà utilisé
-              </div>
-
-          </div>
-          <div class="bounds">
-
-              <input class="Text_Input" type="password" formControlName="password" placeholder="Mot de passe"/>
-              <div *ngIf="formInscription.get('password').dirty && formInscription.get('password').hasError('required')"
-                   class="error-msg">
-                  le mot de passe est requis
-              </div>
-
-              <div *ngIf="formInscription.get('password').errors?.minlength && formInscription.get('password').touched "
-                   class="error-msg">
-                  Le mot de passe doit comporter au moins : 8 caractères
-              </div>
-
-              <div *ngIf="formInscription.get('password').errors?.pattern && formInscription.get('password').touched "
-                   class="error-msg">
-                  Le mot de passe doit comporter au moins : une majuscule, une minuscule et un chiffre
-              </div>
-          </div>
-        <div class="bounds">
-
-             <input class="Text_Input" type="password" placeholder="Confirmez le mot de passe"
-              formControlName="passwordConfirm" />
-
-            <div *ngIf="formInscription.get('passwordConfirm').errors?.notEquivalent &&
-            formInscription.get('passwordConfirm').touched" class="error-msg">Les deux mots de passe doivent être identiques !</div>
-
-            <div *ngIf="formInscription.get('passwordConfirm').dirty &&
-             formInscription.get('passwordConfirm').hasError('required')" class="error-msg">
-               Veuillez confirmer le mot de passe
-            </div>
-
+    <form class="formInscription" (ngSubmit) = "handleSubmit()" [formGroup]="formInscription" (change)="clearMessageGlobal()">
+      <div class="bounds">
+        <input class="Text_Input" type="text" formControlName="identifiant" placeholder="Identifiant" (focus)="clearMessageLogin()"/>
+        <div *ngIf="formInscription.get('identifiant').dirty && formInscription.get('identifiant').hasError('required')"
+        class="error-msg">
+            l'identifiant est obligatoire
         </div>
 
-        <div class="bounds">
-            <input class="Text_Input" type="text" placeholder="Email" formControlName="email" />
-
-            <div *ngIf="formInscription.get('email').dirty && formInscription.get('email').hasError('required')"
-                 class="error-msg">
-                l'adresse email est obligatoire
-            </div>
-            <div *ngIf="formInscription.get('email').dirty && formInscription.get('email').hasError('email')"
-                 class="error-msg">
-                l'adresse email n'est pas valide
-            </div>
+        <div *ngIf="formInscription.get('identifiant').dirty && formInscription.get('identifiant').hasError('loginTaken')"
+          class="error-msg" >
+            l'identifiant est déjà utilisé
+        </div>
+        <div class="error-msg" *ngIf="messageLogin">
+              {{messageLogin}}
+        </div>
       </div>
-
 
       <div class="bounds">
-          <input  formControlName="city" class="Text_Input" type="text"  [(ngModel)]="city" placeholder="Ville"/>
+        <input class="Text_Input" type="password" formControlName="password" placeholder="Mot de passe" (focus)="clearMessagePassWord()"/>
+        <div *ngIf="formInscription.get('password').dirty && formInscription.get('password').hasError('required')"
+             class="error-msg">
+            le mot de passe est requis
+        </div>
+        <div *ngIf="formInscription.get('password').errors?.minlength && formInscription.get('password').touched "
+             class="error-msg">
+            Le mot de passe doit comporter au moins : 8 caractères
+        </div>
+
+        <div *ngIf="formInscription.get('password').errors?.pattern && formInscription.get('password').touched "
+             class="error-msg">
+            Le mot de passe doit comporter au moins : une majuscule, une minuscule et un chiffre
+        </div>
+        <div class="error-msg" *ngIf="messagePassword">
+                {{messagePassword}}
+        </div>
       </div>
 
+      <div class="bounds">
+        <input class="Text_Input" type="password" formControlName="passwordConfirm" placeholder="Confirmation Mot de passe"/>
+        <div *ngIf="formInscription.get('passwordConfirm').errors?.notEquivalent &&
+        formInscription.get('passwordConfirm').touched" class="error-msg">Les deux mots de passe doivent être identiques !</div>
+
+        <div *ngIf="formInscription.get('passwordConfirm').dirty &&
+         formInscription.get('passwordConfirm').hasError('required')" class="error-msg">
+           Veuillez confirmer le mot de passe
+        </div>
+      </div>
+      <div class="bounds">
+        <input class="Text_Input" type="text" placeholder="Email" formControlName="email" (focus)="clearMessageEmail()"/>
+
+        <div *ngIf="formInscription.get('email').dirty && formInscription.get('email').hasError('required')"
+             class="error-msg">
+            l'adresse email est obligatoire
+        </div>
+
+        <div *ngIf="formInscription.get('email').dirty && formInscription.get('email').hasError('email')"
+             class="error-msg">
+            l'adresse email n'est pas valide
+        </div>
+
+        <div class="error-msg" *ngIf="messageEmail">
+                {{messageEmail}}
+        </div>
+      </div>
+
+      <div class="bounds">
+        <input  formControlName="city" class="Text_Input" type="text" placeholder="Ville"/>
+      </div>
 
       <div class="box-artist">
         <input type="checkbox" id="checkbox-1" [(ngModel)]="isArtist" formControlName="artistCheck" />
         <div class="label-checkbox">
-          <div class="Hint-text" > Êtes vous un artiste proposant des prestations privées ? </div>
+          <div class="Hint-text" > Êtes vous un artiste proposant des prestations privées ? 
+          </div>
         </div>
       </div>
-
 
       <div *ngIf="isRegisteringArtist()" class="">
         <div class="bounds">
@@ -93,7 +95,6 @@
 
         <div class="boundDescription">
           <label class="Hint-text-small">Description</label>
-
             <textarea name="description"
              class="DescriptionTextArea"
              formControlName="description"
@@ -105,12 +106,13 @@
             </div>
         </div>
       </div>
-
+      <div class="bounds error-msg" *ngIf="messageGlobal">
+              {{messageGlobal}}
+      </div>
       <div class="bounds submit">
-        <button type="reset" class="button-bg cancel" (click)="goBack()">Annuler</button>
+        <button type="reset" class="button-bg cancel" (click)="handleClear()">Annuler</button>
         <button type="submit" [ngClass]="{'button-bg': true,'check':formInscription.valid}">Envoyer</button>
       </div>
-      </form>
-    </div>
+    </form>
   </div>
-
+</div>
