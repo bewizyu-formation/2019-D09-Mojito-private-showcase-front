@@ -18,7 +18,7 @@ export class BackButtonComponent implements OnInit, OnDestroy {
     }
 
     navigate() {
-        this.router.navigate([this.pathToNavigateTo])
+        this.router.navigate([this.pathToNavigateTo]);
     }
 
     ngOnInit() {
@@ -36,7 +36,7 @@ export class BackButtonComponent implements OnInit, OnDestroy {
     }
 
     ngOnDestroy(): void {
-        if(this.authentificationChangesSubscription !== undefined) {
+        if (this.authentificationChangesSubscription !== undefined) {
             this.authentificationChangesSubscription.unsubscribe();
         }
     }
