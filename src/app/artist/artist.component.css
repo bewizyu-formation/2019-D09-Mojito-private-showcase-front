@@ -28,66 +28,7 @@
     background-color: #fafafa;
     margin-left: 58px;
     margin-right: 58px;
-    margin-bottom: 10px;
-}
-.container__pan__first{
-    padding-right: 77px;
-}
-
-.pan__photoBounds{
-    margin: 24px 47px 29px 33px;
-    width: 277px;
-    height: 245px;
-}
-
-.pan__photo {
-    width: 277px;
-    height: 245px;
-}
-
-.pan__infos{
-    flex: auto;
-}
-
-.pan__artistName{
-    max-width: 500px;
-    margin-top: 22px;
-    margin-bottom: 10px;
-    font-family: Roboto, sans-serif;
-    font-size: 24px;
-    font-weight: 500;
-    font-style: normal;
-    font-stretch: normal;
-    line-height: 1.17;
-    letter-spacing: normal;
-    color: rgba(0, 0, 0, 0.87);
-}
-
-.pan__shortDescription{
-    max-width: 730px;
-    margin-bottom: 10px;
-    font-family: Roboto, sans-serif;
-    font-size: 16px;
-    font-weight: normal;
-    font-style: normal;
-    font-stretch: normal;
-    line-height: 1.5;
-    letter-spacing: normal;
-    color: rgba(0, 0, 0, 0.87);
-}
-
-.pan__longDescription{
-    max-width: 730px;
-    margin-bottom: 30px;
-    font-family: Roboto, sans-serif;
-    font-size: 14px;
-    font-weight: normal;
-    font-style: normal;
-    font-stretch: normal;
-    line-height: 1.43;
-    letter-spacing: normal;
-    text-align: justify;
-    color: rgba(0, 0, 0, 0.87);
+    margin-bottom: 200px;
 }
 
 .pan__info{
