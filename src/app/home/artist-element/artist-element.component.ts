@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import Artist from 'src/app/models/artist';
+import Artist from '../../models/artist';
 import { Router } from '@angular/router';
 import { PATH_SIGN_IN, PATH_BOOK, PATH_ARTIST } from 'src/app/app.constantes';
 

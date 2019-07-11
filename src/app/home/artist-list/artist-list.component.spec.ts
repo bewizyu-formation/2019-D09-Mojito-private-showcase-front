@@ -1,7 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ArtistListComponent } from './artist-list.component';
-import Artist from 'src/app/models/artist';
 import { ArtistElementComponent } from '../artist-element/artist-element.component';
 import { MatProgressSpinnerModule, MatIconModule, MatCardModule } from '@angular/material';
 
