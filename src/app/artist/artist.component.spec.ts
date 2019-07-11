@@ -1,6 +1,8 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
 import {ArtistComponent} from './artist.component';
+import {AppModule} from '../app.module';
+import {RouterTestingModule} from '@angular/router/testing';
 
 describe('ArtistComponent', () => {
     let component: ArtistComponent;
@@ -8,16 +10,15 @@ describe('ArtistComponent', () => {
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
-            declarations: [ArtistComponent]
+            imports: [
+                AppModule,
+                RouterTestingModule.withRoutes([]),
+            ]
         })
-            .compileComponents();
-    }));
-
-    beforeEach(() => {
+        .compileComponents();
         fixture = TestBed.createComponent(ArtistComponent);
         component = fixture.componentInstance;
-        fixture.detectChanges();
-    });
+    }));
 
     it('should create', () => {
         expect(component).toBeTruthy();
