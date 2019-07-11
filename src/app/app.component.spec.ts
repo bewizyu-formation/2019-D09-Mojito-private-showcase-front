@@ -6,6 +6,7 @@ import {environment} from '../environments/environment';
 import { RouterTestingModule } from '@angular/router/testing';
 import {AppModule} from './app.module';
 
+
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({

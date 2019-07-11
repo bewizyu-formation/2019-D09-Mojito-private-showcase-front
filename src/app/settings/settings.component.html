@@ -1,6 +1,10 @@
-<p>
-	settings works!
-</p>
+
+<div>
+    <img class="banniere"
+         src="../assets/banni-re@3x.jpg"
+         alt="showcase" />
+</div>
+
 <div class="wrapper fond">
 	<h2 class="title">Profil {{user}}</h2>
 	<div class="wrapper-form">
@@ -14,11 +18,16 @@
 			<div class="bounds">
 				<input class="Text_Input" formControlName="passwordConfirmation" type="password" placeholder="Confirmez le mot de passe" >
 			</div>
-			<div class="bounds">
+            <div class="error-msg"
+                 *ngIf="(settingForm.get('passwordConfirmation').errors?.notEquivalent)
+                 && settingForm.get('passwordConfirmation').touched">Les deux mots de passe doivent être identiques !</div>
+
+            <div class="bounds">
 				<input class="Text_Input" formControlName="email" placeholder="Email" >
 			</div>
-			<div class="bounds message"*ngIf="(settingForm.get('passwordConfirmation').errors?.notEquivalent) && settingForm.get('passwordConfirmation').touched">Mots de passe non identique</div>
-
+            <div class="error-msg"
+                 *ngIf="(settingForm.get('email').errors?.email)
+                 && settingForm.get('passwordConfirmation').touched">l'adresse email n'est pas valide</div>
 
 		<div class="wrapper-submit">
 			<button type="submit" class="button-bg check" [disabled]="settingForm.invalid">Valider</button>

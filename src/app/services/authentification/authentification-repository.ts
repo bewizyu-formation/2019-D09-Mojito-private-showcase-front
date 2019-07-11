@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {Observable} from 'rxjs';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {EnvironmentService} from '../environment.service';
 
 export const RESOURCES_LOGIN = '/login';
@@ -21,11 +21,13 @@ export class AuthentificationRepository {
      * @param password User Password
      */
     login(username: string, password: string): Observable<any> {
+        const headers = new HttpHeaders();
+        headers.set('Content-Type', 'application/json');
         return this.http.post(`${this.env.getPrivateShowcaseApiConfig().uri}${RESOURCES_LOGIN}`, {
                 username,
                 password,
             },
-            {observe: 'response'}
+            {observe: 'response', headers}
         );
     }
 }

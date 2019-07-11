@@ -1,18 +1,21 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {PATH_HOME, PATH_INDEX} from '../app.constantes';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {AuthentificationService} from '../services/authentification/authentification.service';
+import {Subscription} from 'rxjs';
 
 @Component({
     selector: 'app-login',
     templateUrl: './login.component.html',
     styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent implements OnInit, OnDestroy {
     loginCtrl: FormControl;
     passwordCtrl: FormControl;
     loginForm: FormGroup;
+    displayAuthentificationError = false;
+    formChangeSubscription: Subscription;
 
     constructor(fb: FormBuilder, private router: Router, private authService: AuthentificationService) {
         this.loginCtrl = fb.control('', [Validators.required]);
@@ -26,35 +29,36 @@ export class LoginComponent implements OnInit {
         });
     }
 
-    ngOnInit() {
-    }
-
     handleClear() {
         this.router.navigate([PATH_INDEX]);
     }
 
+    /**
+     * Performs the login
+     */
     handleSubmit() {
-        this.checkLogin(this.loginForm.value.login, this.loginForm.value.password)
+        this.authService.login(this.loginForm.value.login, this.loginForm.value.password)
             .then(isConnected => {
                 if (isConnected) {
-                    console.log('connection success');
-                    console.log('token : ', this.authService.token);
-                    console.log('user : ', this.authService.username);
                     this.router.navigate([PATH_HOME]);
                 } else {
-                    // TODO Not connected message
                     console.log('Wrong Login');
+                    this.displayAuthentificationError = true;
                 }
-            }).catch(() => {
-                console.log('ERROR handling submit login infos');
+            }).catch(err => {
+                this.displayAuthentificationError = true;
+                console.log('ERROR handling submit login infos : ', err);
                 return null;
             });
     }
 
-    /**
-     * Check if the user exists
-     */
-    checkLogin(login: string, password: string) {
-        return this.authService.login(login, password);
+    ngOnInit() {
+        this.formChangeSubscription = this.loginForm.valueChanges.subscribe(
+            () => this.displayAuthentificationError = false
+        );
+    }
+
+    ngOnDestroy() {
+        this.formChangeSubscription.unsubscribe();
     }
 }
