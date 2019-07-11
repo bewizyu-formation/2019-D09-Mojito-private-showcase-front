@@ -1,4 +1,4 @@
-import { Component, OnInit, ElementRef, HostListener } from '@angular/core';
+import { Component, OnInit, ElementRef, HostListener, Input, EventEmitter, Output } from '@angular/core';
 
 import Artist from 'src/app/models/Artist';
 
@@ -11,8 +11,22 @@ const BORDER = 188
   styleUrls: ['./artist-list.component.css']
 })
 export class ArtistListComponent implements OnInit {
+  _artists:Artist[]
 
-  artists: Artist[];
+  loading: boolean;
+
+  @Input()
+  set artists(val) {
+    console.log('changed', val);
+    this._artists = val
+    this.loading=false;
+    this.getScreenSize();
+  }
+
+  get artists(){
+    return this._artists
+  }
+
   placeHolders: any[]
 
   scrHeight:any;
@@ -20,18 +34,22 @@ export class ArtistListComponent implements OnInit {
 
   elementPerLine: number;
 
+  @Output()
+  loadingRequired:EventEmitter<void> = new EventEmitter<void>();
+
+
   constructor(private el:ElementRef) {
-    this.artists = [new Artist(0,'test Artist',"a@a.fr",'Amiens','NOM ARTISTE','Description courte'),
-      new Artist(1,'test Artist',"a@a.fr",'Amiens','Theodore Owen','bla bla bla bla bla bla'),
-      new Artist(2,'test Artist',"a@a.fr",'Amiens','Lorem Ipsum','Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'),
-      new Artist(3,'test Artist',"a@a.fr",'Amiens','Lorem Ipsum','Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'),
-      new Artist(4,'test Artist',"a@a.fr",'Amiens','Theodore Owen','Description courte')];
+      this.loading = true;
       this.getScreenSize();
-}
+    }
 
-  ngOnInit() {
+    ngOnInit() {
+      this.loading = true;
+    }
 
-  }
+    isLoadingArtist(){
+      return this.loading;
+    }
 
     getElementPerLine(){
       console.log(Math.floor((this.scrWidth-BORDER)))
@@ -41,7 +59,7 @@ export class ArtistListComponent implements OnInit {
     }
 
     getNumberOfPlaceHolder(): number{
-      const numArtist = this.artists.length
+      const numArtist = (this.artists || []).length + (this.isLoadingArtist()?1:0);
       if(numArtist > this.elementPerLine){
         return this.elementPerLine-(((numArtist-1)%this.elementPerLine)+1)
       }
@@ -51,6 +69,19 @@ export class ArtistListComponent implements OnInit {
     }
 
 
+    @HostListener('window:scroll', ['$event'])
+    onWindowScroll(event?) {
+      if ((window.innerHeight + window.scrollY + 1) >= document.body.offsetHeight) {
+        console.log("scrolled bottom")
+        this.loading = true;
+        this.getScreenSize()
+        this.loadingRequired.emit();
+      }
+      /*console.log(window.scrollY);
+      console.log(window.innerWidth);
+      console.log(window.pageYOffset);
+      console.log(window);*/
+    }
 
     @HostListener('window:resize', ['$event'])
     getScreenSize(event?) {
@@ -58,7 +89,8 @@ export class ArtistListComponent implements OnInit {
       this.scrWidth = window.innerWidth;
       console.log(this.scrHeight, this.scrWidth);
       this.elementPerLine = this.getElementPerLine();
-      const numberOfPlaceholders = this.getNumberOfPlaceHolder()
+      const numberOfPlaceholders = this.getNumberOfPlaceHolder();
+
       console.log("nombre placeholder :", numberOfPlaceholders)
       if(numberOfPlaceholders > 0){
         this.placeHolders = new Array(numberOfPlaceholders)

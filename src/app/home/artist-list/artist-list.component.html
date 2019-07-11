@@ -5,6 +5,13 @@
         <app-artist-element [artist]="artist"></app-artist-element>
       </div>
     </div>
+
+    <div *ngIf="isLoadingArtist()" >
+      <div class="overlay">
+        <mat-spinner class="spinner"></mat-spinner>
+      </div>
+    </div>
+
     <div *ngFor="let placeholder of placeHolders" >
       <div class="plain">
       </div>

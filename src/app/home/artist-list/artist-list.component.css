@@ -23,3 +23,16 @@
 .cardDiv{
   margin: 0 20px 20px 0;
 }
+
+.overlay{
+  display: flex;
+  align-items: center;
+  margin: 0 20px 0 0;
+  width: 344px;
+  height: 304px;
+  background-color: rgba(0,0,0,0.5);
+}
+
+.spinner{
+  margin: 0 auto;
+}

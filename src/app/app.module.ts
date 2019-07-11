@@ -5,6 +5,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatToolbarModule, MatIconModule} from '@angular/material';
 import {MatCardModule} from '@angular/material/card';
 import {MatButtonModule} from '@angular/material/button';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 import {AppComponent} from './app.component';
 import {environment} from '../environments/environment';
@@ -35,6 +36,7 @@ import {ConnectionButtonsComponent} from './header/connection-buttons/connection
 import { ValidatorService } from './validators/validatorService';
 import { ArtistElementComponent } from './home/artist-element/artist-element.component';
 import { ArtistListComponent } from './home/artist-list/artist-list.component';
+import { ArtistServiceComponent } from './home/artist-service/artist-service.component';
 
 
 @NgModule({
@@ -57,6 +59,7 @@ import { ArtistListComponent } from './home/artist-list/artist-list.component';
         ConnectionButtonsComponent,
         ArtistElementComponent,
         ArtistListComponent,
+        ArtistServiceComponent,
     ],
     imports: [
         BrowserModule,
@@ -65,6 +68,7 @@ import { ArtistListComponent } from './home/artist-list/artist-list.component';
         MatToolbarModule,
         MatIconModule,
         MatCardModule,
+        MatProgressSpinnerModule,
         ClickOutsideModule,
         HttpClientModule,
         FormsModule,
