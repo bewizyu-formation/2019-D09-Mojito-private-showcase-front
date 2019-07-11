@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import Artist from '../../models/Artist';
+import Artist from '../../models/artist';
 import { HttpClient } from '@angular/common/http';
 import { delay } from 'rxjs/operators';
 
