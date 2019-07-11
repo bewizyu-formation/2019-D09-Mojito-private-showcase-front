@@ -2,8 +2,8 @@ import {Injectable} from '@angular/core';
 import {HttpResponse} from '@angular/common/http';
 import {AuthentificationService} from '../authentification/authentification.service';
 import {ArtistRepository} from './artist-repository';
-import {Subscription} from 'rxjs';
-import {Artist} from '../../user/artist';
+import {Observable, Subscription} from 'rxjs';
+import Artist from '../../models/artist';
 
 
 @Injectable({
@@ -15,7 +15,7 @@ export class ArtistService {
     }
 
     /**
-     * Get user by username
+     * Get artist by username
      */
     getArtistByUsername(username: string) {
         return new Promise((resolve, reject) => {
@@ -28,18 +28,26 @@ export class ArtistService {
                     });
         });
     }
+
     /**
-    * add new User
-    */
+     * Get artist by id
+     */
+    getArtistById(id: number): Observable<Artist> {
+        return this.artistRepository.getArtistById(id);
+    }
+
+    /**
+     * add new User
+     */
     addArtist(artist: Artist, password: string) {
-      return new Promise( (resolve, reject) => {
-        this.artistRepository.addArtist(artist, password)
-          .subscribe( (response: HttpResponse<any>) => {
-            console.log(response.status);
-            resolve(response);
-        }, err => {
-            reject(err);
+        return new Promise((resolve, reject) => {
+            this.artistRepository.addArtist(artist, password)
+                .subscribe((response: HttpResponse<any>) => {
+                    console.log(response.status);
+                    resolve(response);
+                }, err => {
+                    reject(err);
+                });
         });
-      });
     }
 }
