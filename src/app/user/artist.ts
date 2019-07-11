@@ -1,17 +1,27 @@
 
-export class Artist{
+export class Artist {
   id: number;
   username: string;
   email: string;
   city: string;
   name: string;
   image: string;
-  imageType :string;
+  imageType: string;
   adress: string;
   description: string;
   longDescription: string;
 
-  constructor(id:number, username: string, email: string, city: string, name:string, description: string,longDescription?: string, adress?: string, image?: string, imageType?: string){
+  constructor (
+    id: number,
+    username: string,
+    email: string,
+    city: string,
+    name: string,
+    description: string,
+    longDescription?: string,
+    adress?: string,
+    image?: string,
+    imageType?: string) {
     this.id = id;
     this.username = username;
     this.email = email;
