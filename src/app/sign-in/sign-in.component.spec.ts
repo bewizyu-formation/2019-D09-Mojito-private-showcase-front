@@ -7,6 +7,9 @@ import { ValidatorService } from '../validators/validatorService';
 import { UserService } from '../services/user/user.service';
 import { HttpClient, HttpHandler } from '@angular/common/http';
 
+import {APP_CONFIG} from '../app.config';
+import {environment} from '../../environments/environment';
+
 describe('SignInComponent', () => {
   let component: SignInComponent;
   let fixture: ComponentFixture<SignInComponent>;
@@ -19,7 +22,9 @@ describe('SignInComponent', () => {
         RouterTestingModule.withRoutes([])
       ],
       declarations: [SignInComponent],
-      providers: [ValidatorService,
+      providers: [
+        {provide: APP_CONFIG, useValue: environment},
+        ValidatorService,
         UserService,
         HttpHandler,
         HttpClient]
