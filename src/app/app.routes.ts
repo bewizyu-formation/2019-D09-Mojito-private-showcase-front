@@ -21,14 +21,15 @@ import {EventsComponent} from './events/events.component';
 import {SettingsComponent} from './settings/settings.component';
 import {ErrorComponent} from './error/error.component';
 
+const ARTIST_PARAM = '/:idartist';
 
 export const ROUTES: Routes = [
     {path: PATH_INDEX, component: IndexComponent},
     {path: PATH_HOME, component: HomeComponent},
     {path: PATH_LOGIN, component: LoginComponent},
     {path: PATH_SIGN_IN, component: SignInComponent},
-    {path: PATH_ARTIST + '/:idArtist', component: ArtistComponent},
-    {path: PATH_BOOK + '/:idArtist', component: BookComponent},
+    {path: PATH_ARTIST + ARTIST_PARAM, component: ArtistComponent},
+    {path: PATH_BOOK + ARTIST_PARAM, component: BookComponent},
     {path: PATH_CONTACT, component: ContactComponent},
     {path: PATH_EVENTS, component: EventsComponent},
     {path: PATH_SETTINGS, component: SettingsComponent},

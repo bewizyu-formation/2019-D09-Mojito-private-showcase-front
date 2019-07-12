@@ -1,12 +1,12 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import {ArtistComponent} from './artist.component';
+import {ArtistPanelComponent} from './artist-panel.component';
 import {AppModule} from '../app.module';
 import {RouterTestingModule} from '@angular/router/testing';
 
-describe('ArtistComponent', () => {
-    let component: ArtistComponent;
-    let fixture: ComponentFixture<ArtistComponent>;
+describe('ArtistPanelComponent', () => {
+    let component: ArtistPanelComponent;
+    let fixture: ComponentFixture<ArtistPanelComponent>;
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
@@ -16,7 +16,7 @@ describe('ArtistComponent', () => {
             ]
         })
         .compileComponents();
-        fixture = TestBed.createComponent(ArtistComponent);
+        fixture = TestBed.createComponent(ArtistPanelComponent);
         component = fixture.componentInstance;
     }));
 

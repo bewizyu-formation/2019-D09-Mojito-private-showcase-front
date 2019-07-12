@@ -37,6 +37,7 @@ import { ValidatorService } from './validators/validatorService';
 import { ArtistElementComponent } from './home/artist-element/artist-element.component';
 import { ArtistListComponent } from './home/artist-list/artist-list.component';
 import { ArtistServiceComponent } from './home/artist-service/artist-service.component';
+import { ArtistPanelComponent } from './artist-panel/artist-panel.component';
 
 
 @NgModule({
@@ -60,6 +61,7 @@ import { ArtistServiceComponent } from './home/artist-service/artist-service.com
         ArtistElementComponent,
         ArtistListComponent,
         ArtistServiceComponent,
+        ArtistPanelComponent,
     ],
     imports: [
         BrowserModule,

@@ -1,3 +1,50 @@
-<p>
-  artist works!
-</p>
+<div *ngIf="artist$ | async as artist" class="container">
+
+    <div>
+        <h2 class="container__title">Présentation</h2>
+    </div>
+    <app-artist-panel [artist]="artist$ | async"></app-artist-panel>
+
+    <div>
+        <h2 class="container__title">Informations générales</h2>
+    </div>
+
+    <div class="container__pan">
+        <div class="pan__info pan__contentsTopLeft">
+            <div class="pan__contactLine">
+                <mat-icon class="pan__contactIcon pan__contactIcon__first">
+                    alternate_email
+                </mat-icon>
+                <p class="pan__contactText">
+                    {{artist.email}}
+                </p>
+            </div>
+
+            <!-- phone not yet implemented -->
+            <div class="pan__contactLine" *ngIf="artist.hasOwnProperty('phone')">
+                <mat-icon class="pan__contactIcon">
+                    phone
+                </mat-icon>
+                <p class="pan__contactText">
+                    <!-- {{artist.phone}} -->
+                </p>
+            </div>
+
+            <div class="pan__contactLine">
+                <mat-icon class="pan__contactIcon">
+                    mail
+                </mat-icon>
+                <p class="pan__contactText">
+                    {{artist.adress}}
+                </p>
+            </div>
+        </div>
+        <div class="pan__centralBar">
+
+        </div>
+        <div class="pan__info pan__contentsTopLeft pan__info__second">
+            <h3 class="pan__title">Départements accéptés :</h3>
+        </div>
+    </div>
+
+</div>
