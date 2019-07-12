@@ -1,5 +1,5 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {Observable, Subscription} from 'rxjs';
+import {Observable, Subscription, merge} from 'rxjs';
 import {ArtistService} from '../services/artist/artist.service';
 import {AuthentificationService} from '../services/authentification/authentification.service';
 import Artist from '../models/artist';
@@ -16,6 +16,8 @@ export class ArtistComponent implements OnInit, OnDestroy {
 
     artist$: Observable<Artist>;
     artistSub: Subscription;
+    routeSub: Subscription;
+    displayEdition = false;
 
     constructor(
         private artistService: ArtistService,
@@ -23,22 +25,28 @@ export class ArtistComponent implements OnInit, OnDestroy {
         private route: ActivatedRoute
     ) {}
 
+    userConnectedIsArtistDisplayed(idUrl: string, idConnected): void {
+        this.displayEdition = idUrl === idConnected;
+    }
+
     ngOnInit() {
         // Get the id in the url
-        this.route.paramMap.subscribe( (params: ParamMap) => {
+        this.routeSub = this.route.paramMap.subscribe( (params: ParamMap) => {
             const idArtistURL = params.get(URL_PARAM);
             console.log('Param : ', Number.parseInt(idArtistURL, 10));
-            this.artist$ = this.artistService.getArtistById(Number.parseInt(idArtistURL, 10));
-        });
+            this.artist$ = this.artistService.getArtistById(Number.parseInt(idArtistURL, 10))
 
-        if (this.auth.isArtistConnected()) {
-            // Handling edition if artist is connected
-        }
+            // Enabling edition mode if the artist displayed is connected
+            this.userConnectedIsArtistDisplayed(idArtistURL, this.auth.userConnectedId);
+        });
     }
 
     ngOnDestroy(): void {
         if (this.artistSub !== undefined) {
             this.artistSub.unsubscribe();
+        }
+        if (this.routeSub !== undefined) {
+            this.routeSub.unsubscribe();
         }
     }
 
