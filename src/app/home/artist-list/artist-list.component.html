@@ -1,0 +1,28 @@
+
+
+<div>
+  <div *ngIf="!isLoadingArtist() && (artists.length == 0)">
+    <h1 class="title">Aucun artiste dans votre département</h1>
+  </div>
+  <div class="inner">
+    <div *ngFor="let artist of artists" >
+      <div class="cardDiv">
+        <app-artist-element [artist]="artist"></app-artist-element>
+      </div>
+    </div>
+
+      <!--<div *ngIf="isLoadingArtist()" >
+      <div class="plain">
+      <mat-spinner class="spinner"></mat-spinner>
+      </div>
+    </div>-->
+
+    <div *ngFor="let placeholder of placeHolders" >
+      <div class="plain">
+      </div>
+    </div>
+  </div>
+</div>
+<div *ngIf="isLoadingArtist()" >
+    <mat-spinner class="spinnerOverlay mat-spinner-color"></mat-spinner>
+</div>
