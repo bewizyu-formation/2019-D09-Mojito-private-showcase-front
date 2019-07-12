@@ -3,7 +3,7 @@
     <div>
         <h2 class="container__title">Présentation</h2>
     </div>
-    <app-artist-panel [artist]="artist$ | async"></app-artist-panel>
+    <app-artist-panel [artist]="artist$ | async" [displayEdition]="this.displayEdition"></app-artist-panel>
 
     <div>
         <h2 class="container__title">Informations générales</h2>

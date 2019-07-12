@@ -15,6 +15,38 @@
     padding-right: 77px;
 }
 
+.pan__line__horizontalAlign{
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.pan__editIconWrapper{
+    position: relative;
+    top: 5px;
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+}
+
+.pan__editIconWrapper.pan__editIconWrapper__longDescHeight{
+    margin-top: 16px;
+    align-self: flex-start;
+}
+
+.pan__editIcon{
+    position: relative;
+    font-size: 24px;
+    margin-left: 13px;
+    color: #5b9a12;
+}
+
+.pan__editIcon:hover{
+    cursor: pointer;
+}
+
 .pan__photoBounds{
     margin: 24px 47px 29px 33px;
     width: 277px;
