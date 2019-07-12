@@ -38,6 +38,9 @@ import { ArtistElementComponent } from './home/artist-element/artist-element.com
 import { ArtistListComponent } from './home/artist-list/artist-list.component';
 import { ArtistServiceComponent } from './home/artist-service/artist-service.component';
 import { ArtistPanelComponent } from './artist-panel/artist-panel.component';
+import { EventElementComponent } from './events/event-element/event-element.component';
+import { EventListComponent } from './events/event-list/event-list.component';
+import { EventServiceComponent } from './events/event-service/event-service.component';
 
 
 @NgModule({
@@ -62,6 +65,9 @@ import { ArtistPanelComponent } from './artist-panel/artist-panel.component';
         ArtistListComponent,
         ArtistServiceComponent,
         ArtistPanelComponent,
+        EventElementComponent,
+        EventListComponent,
+        EventServiceComponent,
     ],
     imports: [
         BrowserModule,

@@ -1,0 +1,16 @@
+<p>
+	events list works!
+</p>
+<div class="list-event-element">
+	<div *ngFor="let event of events" >
+      <div class="cardDiv">
+        <app-event-element [event]="event"></app-event-element>
+      </div>
+    </div>
+	<app-event-element></app-event-element>
+	<app-event-element></app-event-element>
+	<app-event-element></app-event-element>
+	<app-event-element></app-event-element>
+	<app-event-element></app-event-element>
+</div>
+<!-- <app-event-element [event]="event"></app-event-element> -->

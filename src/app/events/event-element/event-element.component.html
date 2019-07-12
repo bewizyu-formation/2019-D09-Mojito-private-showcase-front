@@ -1,0 +1,35 @@
+<div class="event-element-container">
+  <div class="event-element-container-container">
+    <div class="event-date-container">VEN 19/10 20h30</div>
+    <img class="image-placeholder">
+    <div class="information-container">
+      <div class="information-top">
+        <div class="name-artist">{{event?.artist?.name}}</div>
+      </div>
+      <div class="information-bottom">
+        <mat-icon class="icon-mail">email</mat-icon>
+        <div class="adress-container">
+          <div class="adress-top">
+            <div class="adress-detail">event?.adress</div>
+          </div>
+          <div class="adress-bottom">
+            <div class="adress-phone">event?.artist?.phone</div>
+            <div class="adress-city">event?.city</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="left-container">
+      <div class="complement-container">
+        <div class="information-vote">5 etoiles au moins</div>
+        <div class="information-nb-place">complet</div>
+      </div>
+      <!-- ngif here -->
+      <div class="invitation-container">
+        <div class="invitation-message">message</div>
+        <div class="invitation-icones">icones</div>
+      </div>
+    </div>
+  </div>
+</div>
