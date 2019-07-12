@@ -1,0 +1,22 @@
+.starList{
+  display: flex;
+  flex-direction: row;
+  cursor: default;
+}
+
+.starRating{
+  width: 120px;
+  color: #f5a623;
+}
+
+.text{
+  margin: auto;
+  font-family: Roboto;
+  font-size: 12px;
+  font-weight: 500;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: 0.43px;
+  text-align: center;
+}

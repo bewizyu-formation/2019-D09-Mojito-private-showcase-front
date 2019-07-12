@@ -38,6 +38,10 @@ import { ArtistElementComponent } from './home/artist-element/artist-element.com
 import { ArtistListComponent } from './home/artist-list/artist-list.component';
 import { ArtistServiceComponent } from './home/artist-service/artist-service.component';
 import { ArtistPanelComponent } from './artist-panel/artist-panel.component';
+import { StarElementComponent } from './rating/star-element/star-element.component';
+import { StarListComponent } from './rating/star-list/star-list.component';
+import { StarServiceComponent } from './rating/star-service/star-service.component';
+import { RatingElementComponent } from './rating/rating-element/rating-element.component';
 
 
 @NgModule({
@@ -62,6 +66,10 @@ import { ArtistPanelComponent } from './artist-panel/artist-panel.component';
         ArtistListComponent,
         ArtistServiceComponent,
         ArtistPanelComponent,
+        StarElementComponent,
+        StarListComponent,
+        StarServiceComponent,
+        RatingElementComponent,
     ],
     imports: [
         BrowserModule,

@@ -1,0 +1,12 @@
+<div class="">
+  <div *ngIf="isFilled(); else empty" >
+    <mat-icon class="noselect">star</mat-icon>
+  </div>
+  <ng-template #empty>
+    <div>
+      <mat-icon class="noselect">star_border</mat-icon>
+    </div>
+  </ng-template>
+
+
+</div>
