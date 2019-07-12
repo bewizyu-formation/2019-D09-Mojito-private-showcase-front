@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-star-list',
@@ -7,7 +7,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class StarListComponent implements OnInit {
 
+  @Input()
+  editable: boolean;
   idList: number[] = [1,2,3,4,5];
+  @Input()
   ratings: number[];
 
   getRatingNumber() {

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, HostListener } from '@angular/core';
 
 @Component({
   selector: 'app-star-element',
@@ -14,7 +14,12 @@ export class StarElementComponent implements OnInit {
   @Input()
   editable: boolean;
 
-
+  @HostListener('mousemove') onMouseMove() {
+      console.log(this.editable)
+      if(this.editable){
+        console.log('hovering over ' + this.id)
+      }
+  	};
 
   isFilled(){
     return this.id <= this.rating + 0.5;

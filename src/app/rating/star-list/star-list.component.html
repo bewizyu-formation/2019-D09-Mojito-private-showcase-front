@@ -1,7 +1,7 @@
 <div class="starRating">
   <div class="starList">
     <div *ngFor="let id of idList" >
-      <app-star-element [id]="id" [rating]="getAverageNote()"></app-star-element>
+      <app-star-element [id]="id" [rating]="getAverageNote()" [editable]="editable"></app-star-element>
     </div>
   </div>
   <div class="text">
