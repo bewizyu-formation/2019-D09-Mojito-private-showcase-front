@@ -10,6 +10,9 @@ export class ArtistPanelComponent implements OnInit {
     @Input()
     artist: {name: string, description: string, longDescription: string} = null;
 
+    @Input()
+    displayEdition = false;
+
     constructor() {
     }
 

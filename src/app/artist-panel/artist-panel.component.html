@@ -5,30 +5,51 @@
 
     <div class="pan__infos">
 
-        <h3 class="pan__artistName">
-            {{artist?.name}}
-        </h3>
+        <div class="pan__line__horizontalAlign">
+            <h3 class="pan__artistName">
+                {{artist.name}}
+            </h3>
+            <div class="pan__editIconWrapper">
+                <mat-icon class="pan__editIcon">
+                    edit
+                </mat-icon>
+            </div>
+        </div>
 
-        <p class="pan__shortDescription">
-            {{artist?.description}}
-        </p>
+        <div class="pan__line__horizontalAlign">
+            <p class="pan__shortDescription">
+                {{artist.description}}
+            </p>
+            <div class="pan__editIconWrapper">
+                <mat-icon class="pan__editIcon">
+                    edit
+                </mat-icon>
+            </div>
+        </div>
 
-        <p *ngIf="artist !== null && artist.longDescription !== null"
-            class="pan__longDescription">
-            {{artist?.longDescription}}
-            <!-- Text to test css Curabitur lobortis id lorem id bibendum. Ut id consectetur magna.
-            Quisque volutpat augue enim, pulvinar lobortis nibh lacinia at.
-            Vestibulum nec erat ut mi sollicitudin porttitor id sit amet risus.
-            Nam tempus vel odio vitae aliquam. In imperdiet eros id lacus vestibulum vestibulum.
-            Suspendisse fermentum sem sagittis ante venenatis egestas quis vel justo.
-            Maecenas semper suscipit nunc, sed aliquam sapien convallis eu.
-            Nulla ut turpis in diam dapibus consequat. Curabitur lobortis id lorem id bibendum.
-            Ut id consectetur magna. Quisque volutpat augue enim, pulvinar lobortis nibh lacinia at.
-            Vestibulum nec erat ut mi sollicitudin porttitor id sit amet risus. Nam tempus vel odio vitae aliquam.
-            In imperdiet eros id lacus vestibulum vestibulum.
-            Suspendisse fermentum sem sagittis ante venenatis egestas quis vel justo. Maecenas semper suscipit nunc,
-            sed aliquam sapien convallis eu. Nulla ut turpis in diam dapibus consequat.
-            -->
-        </p>
+        <div class="pan__line__horizontalAlign">
+            <p *ngIf="artist.longDescription !== null"
+               class="pan__longDescription">
+                {{artist.longDescription}}
+                Text to test css Curabitur lobortis id lorem id bibendum. Ut id consectetur magna.
+                Quisque volutpat augue enim, pulvinar lobortis nibh lacinia at.
+                Vestibulum nec erat ut mi sollicitudin porttitor id sit amet risus.
+                Nam tempus vel odio vitae aliquam. In imperdiet eros id lacus vestibulum vestibulum.
+                Suspendisse fermentum sem sagittis ante venenatis egestas quis vel justo.
+                Maecenas semper suscipit nunc, sed aliquam sapien convallis eu.
+                Nulla ut turpis in diam dapibus consequat. Curabitur lobortis id lorem id bibendum.
+                Ut id consectetur magna. Quisque volutpat augue enim, pulvinar lobortis nibh lacinia at.
+                Vestibulum nec erat ut mi sollicitudin porttitor id sit amet risus. Nam tempus vel odio vitae aliquam.
+                In imperdiet eros id lacus vestibulum vestibulum.
+                Suspendisse fermentum sem sagittis ante venenatis egestas quis vel justo. Maecenas semper suscipit nunc,
+                sed aliquam sapien convallis eu. Nulla ut turpis in diam dapibus consequat.
+
+            </p>
+            <div class="pan__editIconWrapper pan__editIconWrapper__longDescHeight">
+                <mat-icon class="pan__editIcon">
+                    edit
+                </mat-icon>
+            </div>
+        </div>
     </div>
 </div>
