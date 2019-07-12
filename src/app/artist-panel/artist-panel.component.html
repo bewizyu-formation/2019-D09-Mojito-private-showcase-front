@@ -4,52 +4,62 @@
     </div>
 
     <div class="pan__infos">
-
-        <div class="pan__line__horizontalAlign">
-            <h3 class="pan__artistName">
-                {{artist.name}}
-            </h3>
-            <div class="pan__editIconWrapper">
-                <mat-icon class="pan__editIcon">
-                    edit
-                </mat-icon>
+        <form [formGroup]="artistForm">
+            <div class="pan__line__horizontalAlign">
+                <mat-form-field matFormFieldControl="nameCtrl">
+                    <input
+                        matinput
+                        class="pan__artistName"
+                        placeholder="Nom de l'artiste"
+                        [value]="artist.name"
+                        [attr.disabled]="inputNameDisabled?'':null">
+                </mat-form-field>
+                <div class="pan__editIconWrapper" (click)="inputNameDisabled = !inputNameDisabled">
+                    <mat-icon class="pan__editIcon">
+                        edit
+                    </mat-icon>
+                </div>
             </div>
-        </div>
 
-        <div class="pan__line__horizontalAlign">
-            <p class="pan__shortDescription">
-                {{artist.description}}
-            </p>
-            <div class="pan__editIconWrapper">
-                <mat-icon class="pan__editIcon">
-                    edit
-                </mat-icon>
+            <div class="pan__line__horizontalAlign">
+                <p class="pan__shortDescription">
+                    {{artist.description}}
+                </p>
+                <div class="pan__editIconWrapper"
+                     (click)="inputShortDescriptionDisabled = !inputShortDescriptionDisabled">
+                    <mat-icon class="pan__editIcon">
+                        edit
+                    </mat-icon>
+                </div>
             </div>
-        </div>
 
-        <div class="pan__line__horizontalAlign">
-            <p *ngIf="artist.longDescription !== null"
-               class="pan__longDescription">
-                {{artist.longDescription}}
-                Text to test css Curabitur lobortis id lorem id bibendum. Ut id consectetur magna.
-                Quisque volutpat augue enim, pulvinar lobortis nibh lacinia at.
-                Vestibulum nec erat ut mi sollicitudin porttitor id sit amet risus.
-                Nam tempus vel odio vitae aliquam. In imperdiet eros id lacus vestibulum vestibulum.
-                Suspendisse fermentum sem sagittis ante venenatis egestas quis vel justo.
-                Maecenas semper suscipit nunc, sed aliquam sapien convallis eu.
-                Nulla ut turpis in diam dapibus consequat. Curabitur lobortis id lorem id bibendum.
-                Ut id consectetur magna. Quisque volutpat augue enim, pulvinar lobortis nibh lacinia at.
-                Vestibulum nec erat ut mi sollicitudin porttitor id sit amet risus. Nam tempus vel odio vitae aliquam.
-                In imperdiet eros id lacus vestibulum vestibulum.
-                Suspendisse fermentum sem sagittis ante venenatis egestas quis vel justo. Maecenas semper suscipit nunc,
-                sed aliquam sapien convallis eu. Nulla ut turpis in diam dapibus consequat.
+            <div class="pan__line__horizontalAlign">
+                <p *ngIf="artist.longDescription !== null"
+                   class="pan__longDescription">
+                    {{artist.longDescription}}
+                    Text to test css Curabitur lobortis id lorem id bibendum. Ut id consectetur magna.
+                    Quisque volutpat augue enim, pulvinar lobortis nibh lacinia at.
+                    Vestibulum nec erat ut mi sollicitudin porttitor id sit amet risus.
+                    Nam tempus vel odio vitae aliquam. In imperdiet eros id lacus vestibulum vestibulum.
+                    Suspendisse fermentum sem sagittis ante venenatis egestas quis vel justo.
+                    Maecenas semper suscipit nunc, sed aliquam sapien convallis eu.
+                    Nulla ut turpis in diam dapibus consequat. Curabitur lobortis id lorem id bibendum.
+                    Ut id consectetur magna. Quisque volutpat augue enim, pulvinar lobortis nibh lacinia at.
+                    Vestibulum nec erat ut mi sollicitudin porttitor id sit amet risus. Nam tempus vel odio vitae
+                    aliquam.
+                    In imperdiet eros id lacus vestibulum vestibulum.
+                    Suspendisse fermentum sem sagittis ante venenatis egestas quis vel justo. Maecenas semper suscipit
+                    nunc,
+                    sed aliquam sapien convallis eu. Nulla ut turpis in diam dapibus consequat.
 
-            </p>
-            <div class="pan__editIconWrapper pan__editIconWrapper__longDescHeight">
-                <mat-icon class="pan__editIcon">
-                    edit
-                </mat-icon>
+                </p>
+                <div class="pan__editIconWrapper pan__editIconWrapper__longDescHeight"
+                     (click)="inputLongDescriptionDisabled = !inputLongDescriptionDisabled">
+                    <mat-icon class="pan__editIcon">
+                        edit
+                    </mat-icon>
+                </div>
             </div>
-        </div>
+        </form>
     </div>
 </div>
