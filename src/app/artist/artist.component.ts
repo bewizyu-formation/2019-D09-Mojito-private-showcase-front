@@ -36,7 +36,7 @@ export class ArtistComponent implements OnInit, OnDestroy {
             console.log('Param : ', Number.parseInt(idArtistURL, 10));
             this.artist$ = this.artistService.getArtistById(Number.parseInt(idArtistURL, 10))
 
-            // Enabling edition mode if the artist displayed is connected
+            // Enabling edition mode if the artist displayed is the user connected
             this.userConnectedIsArtistDisplayed(idArtistURL, this.auth.userConnectedId);
         });
     }

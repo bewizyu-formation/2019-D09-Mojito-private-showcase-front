@@ -6,6 +6,7 @@ import {Observable} from 'rxjs';
 
 const RESOURCES_ARTIST_BY_USERNAME = '/artist/name/';
 const RESOURCES_ARTIST_BY_ID = '/artist/id/';
+const RESOURCES_ARTIST_UPADTE = '/artist/id/';
 const RESOURCES_ARTIST_ADD = '/artist/';
 const RESOURCSE_WITH_PASSWORD = '?password=';
 
@@ -36,6 +37,15 @@ export class ArtistRepository {
     addArtist(artist: Artist, password: string): Observable<any> {
         return this.http.put(
             `${this.env.getPrivateShowcaseApiConfig().uri}${RESOURCES_ARTIST_ADD}${RESOURCSE_WITH_PASSWORD}${password}`,
+            JSON.stringify(artist)
+        );
+    }
+
+    /**
+     * Update an artist
+     */
+    updateArtist(artist: Artist): Observable<any> {
+        return this.http.post(`${this.env.getPrivateShowcaseApiConfig().uri}${RESOURCES_ARTIST_UPADTE}${artist.id}`,
             JSON.stringify(artist)
         );
     }
