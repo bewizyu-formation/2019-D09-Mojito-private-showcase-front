@@ -2,7 +2,7 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Observable, Subscription, merge} from 'rxjs';
 import {ArtistService} from '../services/artist/artist.service';
 import {AuthentificationService} from '../services/authentification/authentification.service';
-import Artist from '../models/artist';
+import {Artist} from '../models/artist';
 import {ActivatedRoute, ParamMap} from '@angular/router';
 
 const URL_PARAM = 'idartist';

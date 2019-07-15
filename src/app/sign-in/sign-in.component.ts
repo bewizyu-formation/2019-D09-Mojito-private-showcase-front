@@ -1,16 +1,15 @@
 import { Component, OnInit, OnChanges } from '@angular/core';
-import { FormControl, FormGroup, FormBuilder, Validators, ReactiveFormsModule, AbstractControl } from '@angular/forms';
 import User from '../models/user';
 import Artist from '../models/artist';
 import { Router } from '@angular/router';
-import { PATH_SIGN_IN, PATH_HOME, PATH_LOGIN, PATH_INDEX } from '../app.constantes';
-import { confirmSimilarValidator } from '../validators/confirmCheckValidator';
-import { HttpClient } from 'selenium-webdriver/http';
 import { conditionallyRequiredValidator } from '../validators/conditionallyRequired';
 import { ValidatorService } from '../validators/validatorService';
 import { ValidateLoginNotTaken } from '../validators/dbQueryValidator';
 import { UserService } from '../services/user/user.service';
 import { ArtistService } from '../services/artist/artist.service';
+import {AbstractControl, FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import {PATH_INDEX, PATH_LOGIN} from '../app.constantes';
+
 
 @Component({
   selector: 'app-sign-in',
@@ -131,12 +130,12 @@ export class SignInComponent implements OnInit, OnChanges {
           0,
           userObj['identifiant'],
           userObj['email'],
-          userObj['password'],
           userObj['city'],
           this.formInscription.get('artistName').value,
           this.formInscription.get('description').value);
 
-        this.artistService.addArtist(this.artist, this.formInscription.get('password').value)
+        console.log('adding : ', this.artist);
+          this.artistService.addArtist(this.artist, this.formInscription.get('password').value)
           .then(code => {
             if (code === 1) {
               this.router.navigate([PATH_LOGIN]);
