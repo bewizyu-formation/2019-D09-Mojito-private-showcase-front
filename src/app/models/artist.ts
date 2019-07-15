@@ -19,10 +19,10 @@ export default class Artist {
         city: string,
         name: string,
         description: string,
-        longDescription?: string,
         adress?: string,
         image?: string,
         imageType?: string,
+        longDescription?: string,
         phone?: string
     ) {
         this.id = id;
