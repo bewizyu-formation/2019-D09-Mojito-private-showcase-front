@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {EnvironmentService} from '../environment.service';
-import Artist from '../../models/artist';
+import { Artist } from '../../models/artist';
 import {Observable} from 'rxjs';
 
 const RESOURCES_ARTIST_BY_USERNAME = '/artist/name/';

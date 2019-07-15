@@ -1,5 +1,5 @@
 import { Component, OnInit, ElementRef, HostListener, Input, EventEmitter, Output } from '@angular/core';
-import Artist from '../../models/artist';
+import { Artist } from '../../models/artist';
 
 const CARD_SIZE = 364;
 const BORDER = 188;

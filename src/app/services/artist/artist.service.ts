@@ -2,8 +2,8 @@ import {Injectable} from '@angular/core';
 import {HttpResponse} from '@angular/common/http';
 import {AuthentificationService} from '../authentification/authentification.service';
 import {ArtistRepository} from './artist-repository';
-import {Observable, Subscription} from 'rxjs';
-import Artist from '../../models/artist';
+import {Observable} from 'rxjs';
+import {Artist} from '../../models/artist';
 
 
 @Injectable({
