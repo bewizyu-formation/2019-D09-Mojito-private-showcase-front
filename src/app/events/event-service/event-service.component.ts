@@ -56,7 +56,7 @@ export class EventServiceComponent implements OnInit {
       '159159-159');
     this.event1 = new Event(1, new Date(), 15, 10, this.artist1 );
     this.event2 = new Event(2, new Date(), 25, 20, this.artist1 );
- 
+
     this.artist1 = new Artist( 12 ,
       'Utilisateur3',
       'Utilisateur3@aa.aa',
