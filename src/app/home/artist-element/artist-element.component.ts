@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
-import Artist from '../../models/artist';
+import Artist from 'src/app/models/artist';
 import { Router } from '@angular/router';
-import { PATH_SIGN_IN, PATH_BOOK, PATH_ARTIST } from 'src/app/app.constantes';
+import { PATH_SIGN_IN, PATH_BOOK, PATH_ARTIST, PATH_EVENTS } from 'src/app/app.constantes';
 
 
 @Component({
@@ -10,6 +10,7 @@ import { PATH_SIGN_IN, PATH_BOOK, PATH_ARTIST } from 'src/app/app.constantes';
   styleUrls: ['./artist-element.component.css']
 })
 export class ArtistElementComponent implements OnInit {
+
   @Input()
   artist: Artist;
 
@@ -20,7 +21,7 @@ export class ArtistElementComponent implements OnInit {
   }
 
   goToEvent() {
-    this.router.navigate([PATH_BOOK, this.artist.id]);
+    this.router.navigate([PATH_EVENTS], {queryParams: { artist: this.artist.id }});
   }
 
   goToArtist() {
