@@ -1,49 +1,71 @@
-<div *ngIf="artist$ | async as artist" class="container">
+<div *ngIf="artist !== undefined" class="container">
 
     <div>
         <h2 class="container__title">Présentation</h2>
     </div>
-    <app-artist-panel [artist]="artist$ | async" [displayEdition]="this.displayEdition"></app-artist-panel>
+    <app-artist-panel
+        [artist]="artist"
+        [displayEdition]="this.displayEdition"
+        [idArtistURL]="idArtistURL">
+    </app-artist-panel>
 
     <div>
         <h2 class="container__title">Informations générales</h2>
     </div>
 
     <div class="container__pan">
-        <div class="pan__info pan__contentsTopLeft">
-            <div class="pan__contactLine">
-                <mat-icon class="pan__contactIcon pan__contactIcon__first">
-                    alternate_email
-                </mat-icon>
-                <p class="pan__contactText">
-                    {{artist.email}}
-                </p>
-            </div>
+        <form [formGroup]="artistDetailForm"
+              (ngSubmit)="handleSubmit()"
+              class="container__panForm">
+            <div class="pan__info pan__contentsTopLeft">
 
-            <div class="pan__contactLine">
-                <mat-icon class="pan__contactIcon">
-                    phone
-                </mat-icon>
-                <p class="pan__contactText">
-                    {{artist.phone}}
-                </p>
-            </div>
+                <div class="pan__contactLine">
+                    <mat-icon class="pan__contactIcon pan__contactIcon__first">
+                        alternate_email
+                    </mat-icon>
+                    <mat-form-field
+                        matFormField="emailCtrl"
+                        class="pan__mailFormField">
+                        <input
+                            matInput
+                            formControlName="email"
+                            class="pan__contactText"
+                            [value]="artist.email">
+                    </mat-form-field>
+                </div>
 
-            <div class="pan__contactLine">
-                <mat-icon class="pan__contactIcon">
-                    mail
-                </mat-icon>
-                <p class="pan__contactText">
-                    {{artist.adress}}
-                </p>
-            </div>
-        </div>
-        <div class="pan__centralBar">
+                <div class="pan__contactLine">
+                    <mat-icon class="pan__contactIcon">
+                        phone
+                    </mat-icon>
+                    <mat-form-field
+                        matFormField="phoneCtrl"
+                        class="pan__phoneFormField">
+                        <input
+                            matInput
+                            formControlName="phone"
+                            class="pan__contactText"
+                            [value]="artist.phone">
+                    </mat-form-field>
+                </div>
 
-        </div>
-        <div class="pan__info pan__contentsTopLeft pan__info__second">
-            <h3 class="pan__title">Départements accéptés :</h3>
-        </div>
+                <div class="pan__contactLine">
+                    <mat-icon class="pan__contactIcon">
+                        mail
+                    </mat-icon>
+                    <mat-form-field
+                        matFormField="adressCtrl"
+                        class="pan__phoneFormField">
+                        <input
+                            matInput
+                            formControlName="adress"
+                            class="pan__contactText"
+                            [value]="artist.adress">
+                    </mat-form-field>
+                </div>
+                <button type="submit" class="pan__buttonSubmit">Valider</button>
+            </div>
+        </form>
     </div>
 
 </div>
