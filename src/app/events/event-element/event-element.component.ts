@@ -8,12 +8,18 @@ import Event from '../../models/event';
 })
 export class EventElementComponent implements OnInit {
 
-	@Input()
+  @Input()
   event: Event;
 
-  constructor() { }
+  message: string;
+
+  constructor() {
+    // TODO faire une requête pour connaitre le lien entre utilisateur et event
+    this.message = 'Validation';
+  }
 
   ngOnInit() {
+    console.log(this.event.artist.phone == null);
   }
 
 }

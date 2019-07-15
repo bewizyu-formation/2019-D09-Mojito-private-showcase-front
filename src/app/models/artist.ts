@@ -10,6 +10,7 @@ export default class Artist {
     adress: string;
     description: string;
     longDescription: string;
+    phone: string;
 
     constructor(
         id: number,
@@ -21,7 +22,8 @@ export default class Artist {
         longDescription?: string,
         adress?: string,
         image?: string,
-        imageType?: string
+        imageType?: string,
+        phone?: string
     ) {
         this.id = id;
         this.username = username;
@@ -33,5 +35,6 @@ export default class Artist {
         this.adress = adress;
         this.description = description;
         this.longDescription = longDescription;
+        this.phone = phone;
     }
 }

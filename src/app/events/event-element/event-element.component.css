@@ -1,5 +1,5 @@
 .event-element-container {
-	margin: auto;
+	margin: 0 auto;
 	width: 898px;
 	height: 92px;
 	box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.12), 0 0 2px 0 rgba(0, 0, 0, 0.14);
@@ -15,6 +15,7 @@
 
 	display: flex;
 	flex-direction: row;
+	justify-content: space-around;
 	align-items: center;
 }
 
@@ -38,8 +39,43 @@
 	border-radius: 4px;
 	border: solid 1px rgba(0, 0, 0, 0.87);
 	margin-right: 16px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-content: center;
 }
 
+.event-date-day {
+	margin-left: auto;
+	margin-right: auto;
+	width: 100%;
+	height: 20px;
+	font-family: Roboto;
+	font-size: 20px;
+	font-weight: bold;
+	font-style: normal;
+	font-stretch: normal;
+	line-height: 1;
+	letter-spacing: normal;
+	text-align: center;
+	color: rgba(0, 0, 0, 0.87);
+}
+
+.event-date-hour {
+	margin-left: auto;
+	margin-right: auto;
+	width: 100%;
+	height: 14px;
+	font-family: Roboto;
+	font-size: 14px;
+	font-weight: normal;
+	font-style: normal;
+	font-stretch: normal;
+	line-height: 1.43;
+	letter-spacing: normal;
+	text-align: center;
+	color: rgba(0, 0, 0, 0.87);
+}
 .image-placeholder {
 	width: 87px;
 	height: 76px;
@@ -48,8 +84,8 @@
 
 .icon-mail {
 	color: rgba(0, 0, 0, 0.54);
-	margin-right: 6px;
-	font-size: 28px;
+	margin-right: 8px;
+	font-size: 32px;
 }
 
 .information-bottom {
@@ -86,8 +122,70 @@
 	margin-left: auto;
 	display: flex;
 	flex-direction: row;
+	justify-content: space-around;
 }
 
 .invitation-container {
-	/*margin-left: auto;*/
+	width: 150px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.invitation-message {
+	width: 143px;
+	height: 24px;
+	font-family: Roboto;
+	font-size: 20px;
+	font-weight: 500;
+	font-style: normal;
+	font-stretch: normal;
+	line-height: normal;
+	letter-spacing: normal;
+	color: rgba(0, 0, 0, 0.87);
+	text-align: center;
+}
+
+.complement-container {
+	margin-right: 25px;
+	width: 150px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.information-vote {
+	height: 55px;
+	text-align: center;
+}
+
+.information-nb-place {
+	display:block;
+	clear:both;
+	width: 100%;
+	height: 19px;
+	font-family: Roboto;
+	font-size: 16px;
+	font-weight: 500;
+	font-style: normal;
+	font-stretch: normal;
+	line-height: normal;
+	letter-spacing: normal;
+	color: #d0021b;
+	text-align: center;
+}
+
+.icon-check {
+	width: 21px;
+	height: 16px;
+	color: #5da210;
+}
+
+.icon-close {
+  width: 17px;
+  height: 17px;
+  color: #d80000;
+  margin-right: 21px;
 }

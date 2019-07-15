@@ -1,16 +1,10 @@
-<p>
-	events list works!
-</p>
+<div *ngIf="events.length == 0">
+	<h1 class="title">Aucun Evenenement en vue</h1>
+</div>
 <div class="list-event-element">
 	<div *ngFor="let event of events" >
-      <div class="cardDiv">
-        <app-event-element [event]="event"></app-event-element>
-      </div>
-    </div>
-	<app-event-element></app-event-element>
-	<app-event-element></app-event-element>
-	<app-event-element></app-event-element>
-	<app-event-element></app-event-element>
-	<app-event-element></app-event-element>
+		<div class="cardDiv">
+			<app-event-element [event]="event"></app-event-element>
+		</div>
+	</div>
 </div>
-<!-- <app-event-element [event]="event"></app-event-element> -->
