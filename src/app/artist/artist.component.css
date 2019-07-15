@@ -31,6 +31,12 @@
     margin-bottom: 200px;
 }
 
+.container__panForm{
+    display: flex;
+    flex-direction: row;
+    flex: auto;
+}
+
 .pan__info{
     flex: auto;
     padding-top: 31px;
@@ -95,4 +101,19 @@
     line-height: 1.33;
     letter-spacing: normal;
     color: rgba(0, 0, 0, 0.87);
+}
+
+.pan__buttonSubmit {
+    padding: 0;
+    margin-left: auto;
+    margin-top: 35.5px;
+    margin-right: 77px;
+    border: none;
+    width: 93px;
+    height: 36px;
+    border-radius: 2px;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.24), 0 0 2px 0 rgba(0, 0, 0, 0.12);
+    color:#fff;
+    background-color: #17998c;
+    margin-bottom: 15px;
 }

@@ -3,6 +3,8 @@ import {FormBuilder, FormControl, FormGroup} from '@angular/forms';
 import {debounceTime} from 'rxjs/operators';
 import {Artist} from '../models/artist';
 import {ArtistService} from '../services/artist/artist.service';
+import {PATH_ARTIST, PATH_HOME} from '../app.constantes';
+import {Router} from '@angular/router';
 
 const DEBOUNCE_TIME = 300;
 
@@ -19,6 +21,9 @@ export class ArtistPanelComponent implements OnInit {
     @Input()
     displayEdition = false;
 
+    @Input()
+    idArtistURL = '';
+
     inputNameDisabled = true;
     inputShortDescriptionDisabled = true;
     inputLongDescriptionDisabled = true;
@@ -28,7 +33,11 @@ export class ArtistPanelComponent implements OnInit {
     longDescCtrl: FormControl;
     artistForm: FormGroup;
 
-    constructor(private artistService: ArtistService, private fb: FormBuilder) {
+    constructor(
+        private artistService: ArtistService,
+        private fb: FormBuilder,
+        private router: Router
+    ) {
         this.nameCtrl = fb.control('');
         this.shortDescCtrl = fb.control('');
         this.longDescCtrl = fb.control('');
@@ -74,6 +83,13 @@ export class ArtistPanelComponent implements OnInit {
                     console.log('problem while updating user')
                 }
             });
+
+        // refreshing
+        this.router.navigateByUrl(PATH_HOME)
+            .then(() => {
+                    this.router.navigate([PATH_ARTIST, this.idArtistURL]);
+                }
+            );
     }
 
     ngOnInit() {
