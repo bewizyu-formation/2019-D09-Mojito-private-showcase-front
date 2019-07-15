@@ -6,16 +6,16 @@
     <div class="pan__infos">
 
         <h3 class="pan__artistName">
-            {{artist.name}}
+            {{artist?.name}}
         </h3>
 
         <p class="pan__shortDescription">
-            {{artist.description}}
+            {{artist?.description}}
         </p>
 
-        <p *ngIf="artist.longDescription !== null"
+        <p *ngIf="artist !== null && artist.longDescription !== null"
             class="pan__longDescription">
-            {{artist.longDescription}}
+            {{artist?.longDescription}}
             <!-- Text to test css Curabitur lobortis id lorem id bibendum. Ut id consectetur magna.
             Quisque volutpat augue enim, pulvinar lobortis nibh lacinia at.
             Vestibulum nec erat ut mi sollicitudin porttitor id sit amet risus.
