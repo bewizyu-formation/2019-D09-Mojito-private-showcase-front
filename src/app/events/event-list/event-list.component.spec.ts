@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { HttpClientModule } from '@angular/common/http';
+import { EventElementComponent } from '../event-element/event-element.component';
 import { EventListComponent } from './event-list.component';
+import { MatProgressSpinnerModule, MatIconModule, MatCardModule } from '@angular/material';
 
 describe('EventListComponent', () => {
   let component: EventListComponent;
@@ -8,7 +10,15 @@ describe('EventListComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ EventListComponent ]
+     imports: [
+        MatIconModule,
+        MatCardModule,
+        MatProgressSpinnerModule,
+        HttpClientModule
+      ],
+      declarations: [
+        EventListComponent, 
+        EventElementComponent ]
     })
     .compileComponents();
   }));

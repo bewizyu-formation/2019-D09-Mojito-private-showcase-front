@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, ElementRef, OnInit, Input } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import Event from '../../models/event';
 
@@ -8,7 +8,7 @@ import Event from '../../models/event';
   styleUrls: ['./event-list.component.css']
 })
 export class EventListComponent implements OnInit {
-  _events: Event[];
+  _events: Event[] = [];
 
   @Input()
   set events(val) {
@@ -19,7 +19,7 @@ export class EventListComponent implements OnInit {
   get events() {
     return this._events;
   }
-  constructor(private http: HttpClient) {
+  constructor(private el: ElementRef, private http: HttpClient) {
   }
 
   ngOnInit() {

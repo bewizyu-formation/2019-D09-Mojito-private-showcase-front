@@ -9,7 +9,7 @@ import Event from '../../models/event';
 export class EventElementComponent implements OnInit {
 
   @Input()
-  event: Event;
+  event: Event = null;
 
   message: string;
 
@@ -19,7 +19,6 @@ export class EventElementComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log(this.event.artist.phone == null);
   }
 
 }
