@@ -62,7 +62,7 @@
     flex: auto;
 }
 
-.pan__artistName{
+.pan__artistNameInput{
     max-width: 500px;
     margin-top: 22px;
     margin-bottom: 10px;
@@ -76,7 +76,7 @@
     color: rgba(0, 0, 0, 0.87);
 }
 
-.pan__shortDescription{
+.pan__shortDescriptionInput{
     max-width: 730px;
     margin-bottom: 10px;
     font-family: Roboto, sans-serif;
@@ -89,7 +89,7 @@
     color: rgba(0, 0, 0, 0.87);
 }
 
-.pan__longDescription{
+.pan__longDescriptionInput{
     max-width: 730px;
     margin-bottom: 30px;
     font-family: Roboto, sans-serif;
@@ -101,4 +101,8 @@
     letter-spacing: normal;
     text-align: justify;
     color: rgba(0, 0, 0, 0.87);
+}
+
+.pan__artistNameFormField, .pan__artistShortDescFormField{
+    width:400px !important;
 }

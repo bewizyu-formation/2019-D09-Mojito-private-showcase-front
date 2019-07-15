@@ -1,5 +1,8 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup} from '@angular/forms';
+import {debounceTime} from 'rxjs/operators';
+
+const DEBOUNCE_TIME = 300;
 
 @Component({
     selector: 'app-artist-panel',
@@ -29,9 +32,20 @@ export class ArtistPanelComponent implements OnInit {
         this.longDescCtrl = fb.control('');
         this.artistForm = fb.group({
             name: this.nameCtrl,
-            shortdesc: this.shortDescCtrl,
+            shortDesc: this.shortDescCtrl,
             longDesc: this.longDescCtrl,
         });
+    }
+
+    inputNameToggle() {
+        this.inputNameDisabled = !this.inputNameDisabled;
+    }
+    shortDescriptionToggle() {
+        this.inputShortDescriptionDisabled = !this.inputShortDescriptionDisabled;
+    }
+
+    longDescriptionToggle() {
+        this.inputLongDescriptionDisabled = !this.inputLongDescriptionDisabled;
     }
 
     handleSubmit() {
@@ -39,6 +53,21 @@ export class ArtistPanelComponent implements OnInit {
     }
 
     ngOnInit() {
+        this.nameCtrl.valueChanges
+            .pipe(
+                debounceTime(DEBOUNCE_TIME)
+            )
+            .subscribe(console.log);
+        this.shortDescCtrl.valueChanges
+            .pipe(
+                debounceTime(DEBOUNCE_TIME)
+            )
+            .subscribe(console.log);
+        this.longDescCtrl.valueChanges
+            .pipe(
+                debounceTime(DEBOUNCE_TIME)
+            )
+            .subscribe(console.log);
     }
 
 }

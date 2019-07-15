@@ -6,15 +6,17 @@
     <div class="pan__infos">
         <form [formGroup]="artistForm">
             <div class="pan__line__horizontalAlign">
-                <mat-form-field matFormFieldControl="nameCtrl">
+                <mat-form-field
+                    matFormFieldControl="nameCtrl"
+                    class="pan__artistNameFormField">
                     <input
-                        matinput
-                        class="pan__artistName"
-                        placeholder="Nom de l'artiste"
+                        matInput
+                        formControlName="name"
+                        class="pan__artistNameInput"
                         [value]="artist.name"
-                        [attr.disabled]="inputNameDisabled?'':null">
+                        [readonly]="inputNameDisabled">
                 </mat-form-field>
-                <div class="pan__editIconWrapper" (click)="inputNameDisabled = !inputNameDisabled">
+                <div class="pan__editIconWrapper" (click)="inputNameToggle()">
                     <mat-icon class="pan__editIcon">
                         edit
                     </mat-icon>
@@ -22,9 +24,15 @@
             </div>
 
             <div class="pan__line__horizontalAlign">
-                <p class="pan__shortDescription">
-                    {{artist.description}}
-                </p>
+                <mat-form-field
+                    matFormFieldControl="shortDescCtrl"
+                    class="pan__artistShortDescFormField">
+                    <input matInput
+                           formControlName="shortDesc"
+                           class="pan__shortDescriptionInput"
+                           [value]="artist.description"
+                           [readonly]="inputShortDescriptionDisabled">
+                </mat-form-field>
                 <div class="pan__editIconWrapper"
                      (click)="inputShortDescriptionDisabled = !inputShortDescriptionDisabled">
                     <mat-icon class="pan__editIcon">
@@ -33,9 +41,9 @@
                 </div>
             </div>
 
-            <div class="pan__line__horizontalAlign">
-                <p *ngIf="artist.longDescription !== null"
-                   class="pan__longDescription">
+            <div class="pan__line__horizontalAlign"
+                 *ngIf="artist.longDescription !== undefined">
+                <p class="pan__longDescriptionInput">
                     {{artist.longDescription}}
                     Text to test css Curabitur lobortis id lorem id bibendum. Ut id consectetur magna.
                     Quisque volutpat augue enim, pulvinar lobortis nibh lacinia at.
