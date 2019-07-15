@@ -1,9 +1,17 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { EventServiceComponent } from './event-service/event-service.component';
-import { EventsComponent } from './events.component';  
+import { EventsComponent } from './events.component';
 import { EventElementComponent } from './event-element/event-element.component';
 import { EventListComponent } from './event-list/event-list.component';
-import { MatProgressSpinnerModule, MatIconModule, MatCardModule, MatFormFieldModule, MatNativeDateModule, MatInputModule, MatDatepickerModule } from '@angular/material';
+import {
+  MatProgressSpinnerModule,
+  MatIconModule,
+  MatCardModule,
+  MatFormFieldModule,
+  MatNativeDateModule,
+  MatInputModule,
+  MatDatepickerModule
+} from '@angular/material';
 import { AuthentificationService } from '../services/authentification/authentification.service';
 import { ArtistPanelComponent } from '../artist-panel/artist-panel.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
@@ -12,8 +20,6 @@ import { HttpClient, HttpHandler, HttpClientModule } from '@angular/common/http'
 import { InjectionToken } from '@angular/core';
 import { APP_CONFIG } from '../app.config';
 import { environment } from 'src/environments/environment';
-import {APP_CONFIG} from '../app.config';
-import {environment} from '../../environments/environment';
 
 describe('EventsComponent', () => {
   let component: EventsComponent;
@@ -38,7 +44,7 @@ describe('EventsComponent', () => {
         ArtistPanelComponent,
         EventServiceComponent,
         EventsComponent,
-        EventListComponent, 
+        EventListComponent,
         EventElementComponent],
       providers : [
         AuthentificationService,

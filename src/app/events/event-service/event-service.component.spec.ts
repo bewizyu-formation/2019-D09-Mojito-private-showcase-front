@@ -21,11 +21,11 @@ describe('EventServiceComponent', () => {
       ],
       declarations: [
         EventServiceComponent,
-        EventListComponent, 
+        EventListComponent,
         EventElementComponent ],
       providers: [
-        {provide: APP_CONFIG, useValue: environment},
-        ]
+        {provide: APP_CONFIG, useValue: environment}
+      ]
     })
     .compileComponents();
   }));

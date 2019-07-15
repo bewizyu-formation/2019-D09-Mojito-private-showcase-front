@@ -17,8 +17,9 @@ describe('EventListComponent', () => {
         HttpClientModule
       ],
       declarations: [
-        EventListComponent, 
-        EventElementComponent ]
+        EventListComponent,
+        EventElementComponent
+      ]
     })
     .compileComponents();
   }));
