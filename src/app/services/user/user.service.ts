@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {UserRepository} from './user.repository';
 import {HttpResponse} from '@angular/common/http';
 import {AuthentificationService} from '../authentification/authentification.service';
-import {User} from '../../user/user';
+import User from '../../models/user';
 @Injectable({
     providedIn: 'root'
 })

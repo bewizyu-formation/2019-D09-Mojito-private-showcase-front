@@ -1,0 +1,23 @@
+<div class="event-background">
+	<div>
+		<div class="title-filter">Filtrer les énénements</div>
+		<div class="list-filter">
+			<div class="bounds-filter">
+				<input type="checkbox" id="owned" name="owned" checked (change)="updateOwned()">
+				<label >Organisateur</label>
+				<!-- <mat-icon class="icon-check_box">icon-check_box</mat-icon> -->
+			</div>
+			<div class="bounds-filter">
+				<input type="checkbox" id="incoming" name="incoming" checked (change)="updateIncoming()">
+				<label >A venir</label>
+				<!-- <mat-icon class="icon-check_box">icon-check_box</mat-icon> -->
+			</div>
+			<div class="bounds-filter">
+				<input type="checkbox" id="past" name="past" checked (change)="updatePast()">
+				<label >Passé</label>
+				<!-- <mat-icon class="icon-check_box">icon-check_box</mat-icon> -->
+			</div>
+		</div>
+	</div>
+	<app-event-list [events]="events" (loadingRequired)="getEvents()"></app-event-list>
+</div>
