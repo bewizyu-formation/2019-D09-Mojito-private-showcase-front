@@ -1,6 +1,8 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, ElementRef, Input, OnInit, ViewChild} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup} from '@angular/forms';
 import {debounceTime} from 'rxjs/operators';
+import {Artist} from '../models/artist';
+import {ArtistService} from '../services/artist/artist.service';
 
 const DEBOUNCE_TIME = 300;
 
@@ -12,7 +14,7 @@ const DEBOUNCE_TIME = 300;
 export class ArtistPanelComponent implements OnInit {
 
     @Input()
-    artist: {name: string, description: string, longDescription: string} = null;
+    artist: Artist = null;
 
     @Input()
     displayEdition = false;
@@ -26,7 +28,7 @@ export class ArtistPanelComponent implements OnInit {
     longDescCtrl: FormControl;
     artistForm: FormGroup;
 
-    constructor(private fb: FormBuilder) {
+    constructor(private artistService: ArtistService, private fb: FormBuilder) {
         this.nameCtrl = fb.control('');
         this.shortDescCtrl = fb.control('');
         this.longDescCtrl = fb.control('');
@@ -37,19 +39,41 @@ export class ArtistPanelComponent implements OnInit {
         });
     }
 
+    @ViewChild('name') nameField: ElementRef;
     inputNameToggle() {
         this.inputNameDisabled = !this.inputNameDisabled;
-    }
-    shortDescriptionToggle() {
-        this.inputShortDescriptionDisabled = !this.inputShortDescriptionDisabled;
+        if (!this.inputNameDisabled) {
+            this.nameField.nativeElement.focus();
+        }
     }
 
+    @ViewChild('shortDesc') shortDescField: ElementRef;
+    shortDescriptionToggle() {
+        this.inputShortDescriptionDisabled = !this.inputShortDescriptionDisabled;
+        if (!this.inputShortDescriptionDisabled) {
+            this.shortDescField.nativeElement.focus();
+        }
+    }
+
+    @ViewChild('longDesc') longDescField: ElementRef;
     longDescriptionToggle() {
         this.inputLongDescriptionDisabled = !this.inputLongDescriptionDisabled;
+        if (!this.inputLongDescriptionDisabled) {
+            this.longDescField.nativeElement.focus();
+        }
     }
 
     handleSubmit() {
-        console.log('TODO');
+        console.log('going to send : ');
+        console.log(this.artist);
+        this.artistService.updateArtist(this.artist)
+            .subscribe( (result: boolean) => {
+                if (result) {
+                    console.log('user updated');
+                } else {
+                    console.log('problem while updating user')
+                }
+            });
     }
 
     ngOnInit() {
@@ -57,17 +81,23 @@ export class ArtistPanelComponent implements OnInit {
             .pipe(
                 debounceTime(DEBOUNCE_TIME)
             )
-            .subscribe(console.log);
+            .subscribe( name => {
+                this.artist.name = name;
+            });
         this.shortDescCtrl.valueChanges
             .pipe(
                 debounceTime(DEBOUNCE_TIME)
             )
-            .subscribe(console.log);
+            .subscribe(shortDesc => {
+                this.artist.description = shortDesc;
+            });
         this.longDescCtrl.valueChanges
             .pipe(
                 debounceTime(DEBOUNCE_TIME)
             )
-            .subscribe(console.log);
+            .subscribe(longDesc => {
+                this.artist.longDescription = longDesc;
+            });
     }
 
 }

@@ -50,4 +50,11 @@ export class ArtistService {
                 });
         });
     }
+
+    /**
+     * modify a user
+     */
+    updateArtist(artist: Artist) {
+        return this.artistRepository.updateArtist(artist);
+    }
 }
