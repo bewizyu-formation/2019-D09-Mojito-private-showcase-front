@@ -20,6 +20,10 @@ import { HttpClient, HttpHandler, HttpClientModule } from '@angular/common/http'
 import { InjectionToken } from '@angular/core';
 import { APP_CONFIG } from '../app.config';
 import { environment } from 'src/environments/environment';
+import { RatingElementComponent } from '../rating/rating-element/rating-element.component';
+import { StarServiceComponent } from '../rating/star-service/star-service.component';
+import { StarListComponent } from '../rating/star-list/star-list.component';
+import { StarElementComponent } from '../rating/star-element/star-element.component';
 
 describe('EventsComponent', () => {
   let component: EventsComponent;
@@ -45,7 +49,12 @@ describe('EventsComponent', () => {
         EventServiceComponent,
         EventsComponent,
         EventListComponent,
-        EventElementComponent],
+        EventElementComponent,
+        RatingElementComponent,
+        StarServiceComponent,
+        StarListComponent,
+        StarElementComponent
+      ],
       providers : [
         AuthentificationService,
         {provide: APP_CONFIG, useValue: environment},

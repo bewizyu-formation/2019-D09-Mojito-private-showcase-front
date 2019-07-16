@@ -7,6 +7,10 @@ import { EventElementComponent } from '../event-element/event-element.component'
 
 import {APP_CONFIG} from '../../app.config';
 import {environment} from '../../../environments/environment';
+import { RatingElementComponent } from 'src/app/rating/rating-element/rating-element.component';
+import { StarServiceComponent } from 'src/app/rating/star-service/star-service.component';
+import { StarListComponent } from 'src/app/rating/star-list/star-list.component';
+import { StarElementComponent } from 'src/app/rating/star-element/star-element.component';
 describe('EventServiceComponent', () => {
   let component: EventServiceComponent;
   let fixture: ComponentFixture<EventServiceComponent>;
@@ -22,7 +26,11 @@ describe('EventServiceComponent', () => {
       declarations: [
         EventServiceComponent,
         EventListComponent,
-        EventElementComponent ],
+        EventElementComponent,
+        RatingElementComponent,
+        StarServiceComponent,
+        StarListComponent,
+        StarElementComponent ],
       providers: [
         {provide: APP_CONFIG, useValue: environment}
       ]

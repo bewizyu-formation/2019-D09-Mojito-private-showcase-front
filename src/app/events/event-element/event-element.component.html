@@ -26,7 +26,10 @@
 
     <div class="left-container">
       <div class="complement-container">
-        <div class="information-vote">5 etoiles au moins</div>
+        <div class="information-vote">
+          <!--5 etoiles au moins-->
+          <app-rating-element></app-rating-element>
+        </div>
         <!-- Si vous possedez x places :  -->
         <!-- <div *ngIf="event.nbPlaceRestante == 0" class="information-nb-place">complet</div> -->
         <!-- sinon, si vous ne possedez pas de place pour cet evenemnt : -->
