@@ -1,0 +1,10 @@
+<div class="starRating">
+  <div class="starList">
+    <div *ngFor="let id of idList" >
+      <app-star-element [id]="id" [rating]="getAverageNote()" [editable]="editable"></app-star-element>
+    </div>
+  </div>
+  <div class="text">
+      <span>({{getRatingNumber()}} vote{{getRatingNumber()>1?'s':''}})</span>
+  </div>
+</div>

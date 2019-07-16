@@ -15,6 +15,7 @@
 }
 
 .options__choices {
+	z-index: 5;
 	position: absolute;
 	z-index: 5;
 	top: 100%;

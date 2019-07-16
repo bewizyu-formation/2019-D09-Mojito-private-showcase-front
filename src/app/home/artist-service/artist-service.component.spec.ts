@@ -5,6 +5,10 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { ArtistListComponent } from '../artist-list/artist-list.component';
 import { ArtistElementComponent } from '../artist-element/artist-element.component';
 import { MatIconModule, MatCardModule, MatProgressSpinnerModule } from '@angular/material';
+import { RatingElementComponent } from 'src/app/rating/rating-element/rating-element.component';
+import { StarServiceComponent } from 'src/app/rating/star-service/star-service.component';
+import { StarListComponent } from 'src/app/rating/star-list/star-list.component';
+import { StarElementComponent } from 'src/app/rating/star-element/star-element.component';
 
 describe('ArtistServiceComponent', () => {
   let component: ArtistServiceComponent;
@@ -21,7 +25,11 @@ describe('ArtistServiceComponent', () => {
       ],
       declarations: [ ArtistServiceComponent,
         ArtistListComponent,
-        ArtistElementComponent ]
+        ArtistElementComponent,
+        RatingElementComponent,
+          StarServiceComponent,
+            StarListComponent,
+            StarElementComponent  ]
     })
     .compileComponents();
   }));

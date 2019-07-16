@@ -25,6 +25,7 @@
 }
 
 .menu__choices {
+	z-index: 2;
 	position: absolute;
 	z-index: 5;
 	top: 100%;
