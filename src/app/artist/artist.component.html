@@ -30,7 +30,8 @@
                             matInput
                             formControlName="email"
                             class="pan__contactText"
-                            [value]="artist.email">
+                            [value]="artist.email"
+                            [readonly]="!displayEdition">
                     </mat-form-field>
                 </div>
 
@@ -45,7 +46,8 @@
                             matInput
                             formControlName="phone"
                             class="pan__contactText"
-                            [value]="artist.phone">
+                            [value]="artist.phone"
+                            [readonly]="!displayEdition">
                     </mat-form-field>
                 </div>
 
@@ -60,10 +62,15 @@
                             matInput
                             formControlName="adress"
                             class="pan__contactText"
-                            [value]="artist.adress">
+                            [value]="artist.adress"
+                            [readonly]="!displayEdition">
                     </mat-form-field>
                 </div>
-                <button type="submit" class="pan__buttonSubmit">Valider</button>
+                <button *ngIf="displayEdition"
+                        type="submit"
+                        class="pan__buttonSubmit">
+                    Valider
+                </button>
             </div>
         </form>
     </div>
