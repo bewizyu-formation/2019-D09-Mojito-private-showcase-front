@@ -31,9 +31,9 @@
         <!-- Si vous possedez x places :  -->
         <!-- <div *ngIf="event.nbPlaceRestante == 0" class="information-nb-place">complet</div> -->
         <!-- sinon, si vous ne possedez pas de place pour cet evenemnt : -->
-        <div *ngIf="event?.nbPlaceRestante > 1" class="information-nb-place">{{event?.nbPlaceRestante}} places restantes</div>
-        <div *ngIf="event?.nbPlaceRestante == 1" class="information-nb-place">{{event?.nbPlaceRestante}} place restante</div>
-        <div *ngIf="event?.nbPlaceRestante == 0" class="information-nb-place">complet</div>
+        <div *ngIf="event?.nbPlace > 1" class="information-nb-place">{{event?.nbPlace}} places restantes</div>
+        <div *ngIf="event?.nbPlace == 1" class="information-nb-place">{{event?.nbPlace}} place restante</div>
+        <div *ngIf="event?.nbPlace == 0" class="information-nb-place">complet</div>
       </div>
       <!-- ngif here -->
       <div class="invitation-container">
