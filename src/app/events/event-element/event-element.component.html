@@ -5,7 +5,8 @@
       <div class="event-date-day">{{event?.date| date:'d' }} / {{event?.date| date:'M' }} </div>
       <div class="event-date-hour">à {{event?.date| date:'HH:mm' }}</div>
     </div>
-    <img class="image-placeholder" [src]="event?.artist.image">
+    <img *ngIf="event?.artist.image != null" class="image-placeholder" [src]="event?.artist.image">
+    <img *ngIf="event?.artist.image == null" class="image-placeholder" src="https://www.i-cad.fr/uploads/acheter_chat.jpg">
     <div class="information-container">
       <div class="information-top">
         <div class="name-artist">{{event?.artist.username}}</div>

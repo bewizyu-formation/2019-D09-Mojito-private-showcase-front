@@ -28,10 +28,15 @@ export class EventServiceComponent implements OnInit {
 
   getEvents() {
     console.log('http://localhost:8080/event/?owned=' + this.owned + '&incoming=' + this.incoming + '&past=' + this.past);
-    this.http.get('http://localhost:8080/event/?owned=' + this.owned + '&incoming=' + this.incoming + '&past=' + this.past).pipe(delay(500)).subscribe((res: any) => {
+    this.http.get('http://localhost:8080/event/?owned='
+      + this.owned
+       + '&incoming='
+        + this.incoming
+         + '&past='
+          + this.past).pipe(delay(500)).subscribe((res: any) => {
       this.events = res;
       console.log(res);
-      //this.events = this.mockedEvents();
+      // this.events = this.mockedEvents();
       // this.events = [];
     }, (er) => {
       this.events = [];
@@ -39,6 +44,7 @@ export class EventServiceComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.getEvents();
   }
 
   mockedEvents() {
