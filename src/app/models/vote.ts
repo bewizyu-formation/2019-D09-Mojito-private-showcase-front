@@ -1,6 +1,6 @@
-export default class Vote{
+export default class Vote {
   note: number;
-  constructor(note: number){
+  constructor(note: number) {
     this.note = note;
   }
 }

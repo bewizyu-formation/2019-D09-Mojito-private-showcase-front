@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { StarElementComponent } from './star-element.component';
+import { MatIconModule } from '@angular/material';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('StarElementComponent', () => {
   let component: StarElementComponent;
@@ -8,6 +10,10 @@ describe('StarElementComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [
+        MatIconModule,
+        RouterTestingModule.withRoutes([])
+      ],
       declarations: [ StarElementComponent ]
     })
     .compileComponents();

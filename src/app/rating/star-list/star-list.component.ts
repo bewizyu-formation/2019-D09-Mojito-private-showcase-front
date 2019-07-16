@@ -9,29 +9,29 @@ export class StarListComponent implements OnInit {
 
   @Input()
   editable: boolean;
-  idList: number[] = [1,2,3,4,5];
+  idList: number[] = [1, 2, 3, 4, 5];
   @Input()
   ratings: number[];
 
   getRatingNumber() {
-    return this.ratings.length
+    return this.ratings.length;
   }
 
   getAverageNote() {
-    if(this.getRatingNumber() === 0) {
+    if (this.getRatingNumber() === 0) {
       return 0;
-    }else{
+    } else {
       let note = 0;
       this.ratings.forEach(num => {
-        note += num
-      })
+        note += num;
+      });
 
       return note / this.getRatingNumber();
     }
   }
 
   constructor() {
-    this.ratings = [2,5,2,1,3,5,5,5]
+    this.ratings = [2, 5, 2, 1, 3, 5, 5, 5];
   }
 
   ngOnInit() {

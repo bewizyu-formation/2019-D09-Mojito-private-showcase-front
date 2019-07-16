@@ -18,9 +18,9 @@ export class StarServiceComponent implements OnInit {
   ngOnInit() {
   }
 
-  getVotes(){
-    this.http.get("http://localhost:8080/vote/artist/"+this.artistId).subscribe((res) => {
+  getVotes() {
+    this.http.get('http://localhost:8080/vote/artist/' + this.artistId).subscribe((res) => {
       console.log(res);
-    })
+    });
   }
 }

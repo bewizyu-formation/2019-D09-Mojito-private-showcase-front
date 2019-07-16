@@ -15,13 +15,13 @@ export class StarElementComponent implements OnInit {
   editable: boolean;
 
   @HostListener('mousemove') onMouseMove() {
-      console.log(this.editable)
-      if(this.editable){
-        console.log('hovering over ' + this.id)
-      }
-  	};
+    console.log(this.editable);
+    if (this.editable) {
+      console.log('hovering over ' + this.id);
+    }
+  }
 
-  isFilled(){
+  isFilled() {
     return this.id <= this.rating + 0.5;
   }
 

@@ -4,6 +4,11 @@ import { ArtistElementComponent } from './artist-element.component';
 import { MatCardModule, MatIconModule } from '@angular/material';
 import { Router } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
+import { RatingElementComponent } from 'src/app/rating/rating-element/rating-element.component';
+import { StarServiceComponent } from 'src/app/rating/star-service/star-service.component';
+import { StarListComponent } from 'src/app/rating/star-list/star-list.component';
+import { StarElementComponent } from 'src/app/rating/star-element/star-element.component';
+import { HttpClientModule } from '@angular/common/http';
 
 describe('ArtistElementComponent', () => {
   let component: ArtistElementComponent;
@@ -12,12 +17,16 @@ describe('ArtistElementComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
+        HttpClientModule,
         MatIconModule,
         MatCardModule,
         RouterTestingModule.withRoutes([])
-
       ],
-      declarations: [ ArtistElementComponent ],
+      declarations: [ ArtistElementComponent,
+        RatingElementComponent,
+          StarServiceComponent,
+            StarListComponent,
+            StarElementComponent  ],
       providers: [
       ]
     })
