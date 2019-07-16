@@ -33,6 +33,10 @@ export class ArtistPanelComponent implements OnInit {
     longDescCtrl: FormControl;
     artistForm: FormGroup;
 
+    @ViewChild('name') nameField: ElementRef;
+    @ViewChild('shortDesc') shortDescField: ElementRef;
+    @ViewChild('longDesc') longDescField: ElementRef;
+
     constructor(
         private artistService: ArtistService,
         private fb: FormBuilder,
@@ -48,23 +52,18 @@ export class ArtistPanelComponent implements OnInit {
         });
     }
 
-    @ViewChild('name') nameField: ElementRef;
     inputNameToggle() {
         this.inputNameDisabled = !this.inputNameDisabled;
         if (!this.inputNameDisabled) {
             this.nameField.nativeElement.focus();
         }
     }
-
-    @ViewChild('shortDesc') shortDescField: ElementRef;
     shortDescriptionToggle() {
         this.inputShortDescriptionDisabled = !this.inputShortDescriptionDisabled;
         if (!this.inputShortDescriptionDisabled) {
             this.shortDescField.nativeElement.focus();
         }
     }
-
-    @ViewChild('longDesc') longDescField: ElementRef;
     longDescriptionToggle() {
         this.inputLongDescriptionDisabled = !this.inputLongDescriptionDisabled;
         if (!this.inputLongDescriptionDisabled) {
@@ -80,7 +79,7 @@ export class ArtistPanelComponent implements OnInit {
                 if (result) {
                     console.log('user updated');
                 } else {
-                    console.log('problem while updating user')
+                    console.log('problem while updating user');
                 }
             });
 
