@@ -1,7 +1,7 @@
 import {Component, ElementRef, Input, OnInit, ViewChild} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup} from '@angular/forms';
 import {debounceTime} from 'rxjs/operators';
-import {Artist} from '../models/artist';
+import Artist from '../models/artist';
 import {ArtistService} from '../services/artist/artist.service';
 import {PATH_ARTIST, PATH_HOME} from '../app.constantes';
 import {Router} from '@angular/router';

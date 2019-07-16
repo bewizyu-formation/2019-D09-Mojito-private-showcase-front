@@ -3,7 +3,7 @@ import {HttpResponse} from '@angular/common/http';
 import {AuthentificationService} from '../authentification/authentification.service';
 import {ArtistRepository} from './artist-repository';
 import {Observable} from 'rxjs';
-import {Artist} from '../../models/artist';
+import Artist from '../../models/artist';
 
 
 @Injectable({
