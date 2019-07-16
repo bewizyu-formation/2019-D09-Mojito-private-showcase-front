@@ -1,7 +1,7 @@
 import { Component, OnInit, OnChanges } from '@angular/core';
 import { FormControl, FormGroup, FormBuilder, Validators, ReactiveFormsModule, AbstractControl } from '@angular/forms';
-import {User} from '../user/user';
-import {Artist} from '../user/artist';
+import User from '../models/user';
+import Artist from '../models/artist';
 import { Router } from '@angular/router';
 import { PATH_SIGN_IN, PATH_HOME, PATH_LOGIN, PATH_INDEX } from '../app.constantes';
 import { confirmSimilarValidator } from '../validators/confirmCheckValidator';

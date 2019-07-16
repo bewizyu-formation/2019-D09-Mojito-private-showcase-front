@@ -1,0 +1,55 @@
+.event-background {
+  margin-top: 51px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 51px;
+  width: 1164px;
+  padding-bottom: 51px;
+  border: solid 1px #979797;
+  background-color: #fafafa;
+}
+
+.title-filter {
+  margin-top: 21px;
+  margin-right: 133px;
+  height: 24px;
+  font-family: Roboto;
+  font-size: 20px;
+  font-weight: 500;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: right;
+  color: rgba(0, 0, 0, 0.54);
+}
+
+.list-filter {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  margin-top: 17px;
+  margin-right: 133px;
+  
+}
+
+.bounds-filter {
+  width: 118px;
+  height: 40px;
+  text-align: right;
+}
+
+
+
+.list-filter label {
+  width: 71px;
+  height: 15px;
+  font-family: Roboto;
+  font-size: 13px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: rgba(0, 0, 0, 0.87);
+}

@@ -1,0 +1,48 @@
+<div class="event-element-container">
+  <div class="event-element-container-container">
+    <div class="event-date-container">
+      <div class="event-date-day">{{event?.date| date:'EEE' }}</div>
+      <div class="event-date-day">{{event?.date| date:'d' }} / {{event?.date| date:'M' }} </div>
+      <div class="event-date-hour">à {{event?.date| date:'HH:mm' }}</div>
+    </div>
+    <img class="image-placeholder" [src]="event?.artist.image">
+    <div class="information-container">
+      <div class="information-top">
+        <div class="name-artist">{{event?.artist.username}}</div>
+      </div>
+      <div class="information-bottom">
+        <mat-icon class="icon-mail">email</mat-icon>
+        <div class="adress-container">
+          <div class="adress-top">
+            <div class="adress-detail">{{event?.artist.adress}}</div>
+          </div>
+          <div class="adress-bottom">
+            <div *ngIf="event?.artist.phone != null" class="adress-phone">{{event?.artist.phone}}</div>
+            <div class="adress-city">{{event?.artist.city}}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="left-container">
+      <div class="complement-container">
+        <div class="information-vote">5 etoiles au moins</div>
+        <!-- Si vous possedez x places :  -->
+        <!-- <div *ngIf="event.nbPlaceRestante == 0" class="information-nb-place">complet</div> -->
+        <!-- sinon, si vous ne possedez pas de place pour cet evenemnt : -->
+        <div *ngIf="event?.nbPlaceRestante > 1" class="information-nb-place">{{event?.nbPlaceRestante}} places restantes</div>
+        <div *ngIf="event?.nbPlaceRestante == 1" class="information-nb-place">{{event?.nbPlaceRestante}} place restante</div>
+        <div *ngIf="event?.nbPlaceRestante == 0" class="information-nb-place">complet</div>
+      </div>
+      <!-- ngif here -->
+      <div class="invitation-container">
+        <!-- TODO faire une requête pour connaitre le lien entre utilisateur et event -->
+        <div class="invitation-message">{{message}}</div>
+        <div class="invitation-icones">
+          <mat-icon class="icon-close">close</mat-icon>
+          <mat-icon class="icon-check">check</mat-icon>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

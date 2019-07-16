@@ -27,6 +27,7 @@
 .menu__choices {
 	z-index: 2;
 	position: absolute;
+	z-index: 5;
 	top: 100%;
 	width: 318px;
 	max-height: 193px;

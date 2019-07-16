@@ -2,10 +2,12 @@ import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
-import {MatToolbarModule, MatIconModule} from '@angular/material';
+import {MatToolbarModule, MatIconModule, MatNativeDateModule, MatInputModule} from '@angular/material';
 import {MatCardModule} from '@angular/material/card';
 import {MatButtonModule} from '@angular/material/button';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatFormFieldModule, MatFormFieldControl} from '@angular/material/form-field';
 
 import {AppComponent} from './app.component';
 import {environment} from '../environments/environment';
@@ -42,6 +44,10 @@ import { StarElementComponent } from './rating/star-element/star-element.compone
 import { StarListComponent } from './rating/star-list/star-list.component';
 import { StarServiceComponent } from './rating/star-service/star-service.component';
 import { RatingElementComponent } from './rating/rating-element/rating-element.component';
+import { EventElementComponent } from './events/event-element/event-element.component';
+import { EventListComponent } from './events/event-list/event-list.component';
+import { EventServiceComponent } from './events/event-service/event-service.component';
+
 
 
 @NgModule({
@@ -70,6 +76,9 @@ import { RatingElementComponent } from './rating/rating-element/rating-element.c
         StarListComponent,
         StarServiceComponent,
         RatingElementComponent,
+        EventElementComponent,
+        EventListComponent,
+        EventServiceComponent,
     ],
     imports: [
         BrowserModule,
@@ -79,6 +88,10 @@ import { RatingElementComponent } from './rating/rating-element/rating-element.c
         MatIconModule,
         MatCardModule,
         MatProgressSpinnerModule,
+        MatDatepickerModule,
+        MatFormFieldModule,
+        MatNativeDateModule,
+        MatInputModule,
         ClickOutsideModule,
         HttpClientModule,
         FormsModule,

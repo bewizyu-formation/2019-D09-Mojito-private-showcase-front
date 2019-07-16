@@ -1,3 +1,48 @@
-<p>
-  events works!
-</p>
+<div *ngIf="isBooking()" >
+  <div class="mainOverlay">
+    <div>
+        <h2 class="container__title">Présentation</h2>
+    </div>
+    <app-artist-panel [artist]="artist$ | async"></app-artist-panel>
+
+
+      <div class="container__booker">
+        <div class="formContainer">
+          <form class="formInscription" (ngSubmit) = "bookEvent()" [formGroup]="formBook">
+            <div class="formInput">
+              <mat-form-field>
+                <input matInput [matDatepicker]="picker" placeholder="Choisir une date" [formControl]="bookDate">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+                <mat-error *ngIf="bookDate.invalid">veuillez renseigner une date</mat-error>
+
+              </mat-form-field>
+            </div>
+
+            <div class="formInput">
+              <mat-form-field>
+                <input matInput type="time"  placeholder="Nombre de persone max " [formControl]="bookTime">
+                <mat-error *ngIf="bookTime.invalid">veuillez renseigner une horaire valide</mat-error>
+              </mat-form-field>
+            </div>
+
+
+            <div class="formInput">
+              <mat-form-field>
+                <input matInput type="number"  placeholder="Nombre de persone max " [formControl]="maxNumber">
+                <mat-error *ngIf="maxNumber.invalid">veuillez renseigner un nombre</mat-error>
+              </mat-form-field>
+            </div>
+
+            <div class="formInput">
+              <button type="submit" [ngClass]="{'button-bg': true,'check':!formBook.invalid}">Envoyer</button>
+            </div>
+          </form>
+        </div>
+      </div>
+  </div>
+</div>
+
+<div class="content">
+  <app-event-service></app-event-service>
+</div>

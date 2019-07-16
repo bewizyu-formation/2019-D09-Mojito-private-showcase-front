@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {EnvironmentService} from '../environment.service';
-import {User} from '../../user/user';
+import User from '../../models/user';
 
 const RESOURCES_COMMON_USER_BY_USERNAME = '/common/name/';
 const RESOURCES_COMMON_ADD = '/common/';
