@@ -31,7 +31,7 @@ export class EventsComponent implements OnInit {
      private http: HttpClient, private auth: AuthentificationService) {
     this.booking = false;
     this.bookDate = this.fb.control('', [Validators.required]);
-    this.bookTime = this.fb.control('', [Validators.required]);
+    this.bookTime = this.fb.control('10:00', [Validators.required]);
     this.maxNumber = this.fb.control(30, [Validators.required]);
 
     this.formBook = this.fb.group(

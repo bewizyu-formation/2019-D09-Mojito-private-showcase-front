@@ -96,9 +96,9 @@
   -webkit-box-direction: reverse;
   margin-top: 39px;
   padding-bottom: 12px;
-  flex-direction: row-reverse;
+  flex-direction: row;
   margin-left: 18px;
-  justify-content: end;
+  justify-content: flex-end;
 }
 
 .bounds.submit > button {

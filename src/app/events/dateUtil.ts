@@ -17,6 +17,6 @@ export default class DateUtils {
 
   static convertDate(date: string, time: string) {
     const splittedDate = date.split(' ');
-    return `${splittedDate[3]}-${DateUtils.monthConverter[splittedDate[1]]}-${splittedDate[2]} ${time}`;
+    return `${splittedDate[3]}-${DateUtils.monthConverter[splittedDate[1]]}-${splittedDate[2]} ${time}:00`;
   }
 }
