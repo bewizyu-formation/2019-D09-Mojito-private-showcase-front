@@ -19,12 +19,12 @@
 .fond {
 	width: 682px;
 	height: auto;
-	margin: 0 auto;
 	border-radius: 14px;
 	background-color: #e7e6e6;
 	padding-bottom: 32px;
 	clear: both;
 	margin: 0 auto;
+    margin-bottom: 80px;
 	display: flex;
 	flex-direction: column;
 }
